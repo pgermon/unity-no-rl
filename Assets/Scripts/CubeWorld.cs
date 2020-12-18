@@ -13,6 +13,7 @@ public class CubeWorld : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		GameObject surface_go = Instantiate(surface, new Vector3(0f, 0f, 0f), Quaternion.identity);
 		Transform surface_t = surface.transform;
 		Vector3 surface_dimensions = surface_t.lossyScale;
 
