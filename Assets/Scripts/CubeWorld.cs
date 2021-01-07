@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class CubeWorld : MonoBehaviour
 {
+	[Header("Obstacles")]
 	/** Terrain où générer des obstacles. */
-	public GameObject surface;
+	[SerializeField] public GameObject surface;
 	/** Pilier */
-	public GameObject cube;
+	[SerializeField] public GameObject cube;
 
 	// Start is called before the first frame update
 	void Start()
