@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   surface: {fileID: 1930993146}
-  cube: {fileID: 3015532635464418913, guid: 67d6bae1981e78ac69125d00b739c8a7, type: 3}
+  cube: {fileID: 3133429536943949068, guid: 25cb56d59f80f614b9da0e9a36c48a05, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
