@@ -48,7 +48,7 @@ public class TileGeneration : MonoBehaviour
         }
 
         // update the vertices in the mesh and update its properties
-        GetComponent<MeshFilter>().mesh.Clear();
+        //GetComponent<MeshFilter>().mesh.Clear();
         GetComponent<MeshFilter>().mesh.vertices = meshVertices;
         GetComponent<MeshFilter>().mesh.RecalculateBounds();
         GetComponent<MeshFilter>().mesh.RecalculateNormals();
