@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 [System.Serializable]
@@ -11,21 +9,12 @@ public class TerrainType
     public Color color;
 }
 
+[RequireComponent(typeof(NoiseMapGeneration))]
+[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshCollider))]
 public class TileGeneration : MonoBehaviour
 {
-
-    [SerializeField]
-    public NoiseMapGeneration noiseMapGeneration;
-
-    [SerializeField]
-    private MeshRenderer tileRenderer;
-
-    [SerializeField]
-    private MeshFilter meshFilter;
-
-    [SerializeField]
-    private MeshCollider meshCollider;
-
     [SerializeField]
     private float mapScale;
 
@@ -40,7 +29,7 @@ public class TileGeneration : MonoBehaviour
         int tileDepth = heightMap.GetLength(0);
         int tileWidth = heightMap.GetLength(1);
 
-        Vector3[] meshVertices = this.meshFilter.mesh.vertices;
+        Vector3[] meshVertices = GetComponent<MeshFilter>().mesh.vertices;
 
         // iterate through all the heightMap coordinates, updating the vertex index
         int vertexIndex = 0;
@@ -59,11 +48,11 @@ public class TileGeneration : MonoBehaviour
         }
 
         // update the vertices in the mesh and update its properties
-        this.meshFilter.mesh.vertices = meshVertices;
-        this.meshFilter.mesh.RecalculateBounds();
-        this.meshFilter.mesh.RecalculateNormals();
+        GetComponent<MeshFilter>().mesh.vertices = meshVertices;
+        GetComponent<MeshFilter>().mesh.RecalculateBounds();
+        GetComponent<MeshFilter>().mesh.RecalculateNormals();
         // update the mesh collider
-        this.meshCollider.sharedMesh = this.meshFilter.mesh;
+        GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().mesh;
     }
 
     void Start()
@@ -74,16 +63,16 @@ public class TileGeneration : MonoBehaviour
     void GenerateTile()
     {
         // calculate tile depth and width based on the mesh vertices
-        Vector3[] meshVertices = this.meshFilter.mesh.vertices;
+        Vector3[] meshVertices = GetComponent<MeshFilter>().mesh.vertices;
         int tileDepth = (int)Mathf.Sqrt(meshVertices.Length);
         int tileWidth = tileDepth;
 
         // calculate the offsets based on the tile position
-        float[,] heightMap = this.noiseMapGeneration.GenerateNoiseMap(tileDepth, tileWidth, this.mapScale);
+        float[,] heightMap = GetComponent<NoiseMapGeneration>().GenerateNoiseMap(tileDepth, tileWidth, this.mapScale);
 
         // generate a heightMap using noise
         Texture2D tileTexture = BuildTexture(heightMap);
-        this.tileRenderer.material.mainTexture = tileTexture;
+        GetComponent<MeshRenderer>().material.mainTexture = tileTexture;
         UpdateMeshVertices(heightMap);
     }
 
