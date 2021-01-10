@@ -1,11 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
-public class CubeWorld : MonoBehaviour
+/// Génération des arbres
+[RequireComponent(typeof(Transform))]
+public class GenerationArbres : MonoBehaviour
 {
-	[Header("Obstacles")]
-	/** Terrain où générer des obstacles. */
-	[SerializeField] public GameObject surface;
+    [Header("Sol")]
+    [SerializeField] private float amplitude = 4f;
+    [SerializeField] private float frequence = 0.2f;
+
+	[Header("Arbres")]
 	/** Pilier */
 	[SerializeField] public GameObject arbre1;
     [SerializeField] public GameObject arbre2;
@@ -17,10 +21,11 @@ public class CubeWorld : MonoBehaviour
     void Start()
 	{
 		// GameObject surface_go = Instantiate(surface, new Vector3(0f, 0f, 0f), Quaternion.identity);
-		Transform surface_t = surface.transform;
-		Vector3 surface_dimensions = surface_t.lossyScale;
+		Transform surface_t = GetComponent<Transform>().transform;
+		Vector3 surface_dimensions = GetComponent<Transform>().lossyScale;
 
-		Perlin2DMap perlin = new Perlin2DMap(0.1f, 0.4f, 4f);
+        // TODO: utiliser NoiseMapGeneration
+		Perlin2DMap perlin = new Perlin2DMap(frequence, frequence, amplitude);
 		for (int x = (int) Mathf.Floor(-surface_dimensions.x * 5); x < (int) Math.Ceiling(surface_dimensions.x * 5); x++)
 			for (int z = (int) Mathf.Floor(-surface_dimensions.z * 5); z < (int) Math.Ceiling(surface_dimensions.z * 5); z++) {
                 float noise = UnityEngine.Random.Range(0f, 2f);
