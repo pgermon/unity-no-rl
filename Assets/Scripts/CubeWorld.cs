@@ -52,7 +52,7 @@ public class CubeWorld : MonoBehaviour
                         case 3:
                             GameObject obstacle4 = GameObject.Instantiate(arbre4);
                             obstacle4.transform.position = surface_t.position + new Vector3(x, 0, z);
-                            obstacle4.transform.localScale = new Vector3(1f, 1f+ noiseSize, 1f);
+                            obstacle4.transform.localScale = new Vector3(1f, 1f+ noiseSize, 1f  );
                             obstacle4.transform.position += new Vector3(0.5f + noise, 0, 0.5f + noise);
                             break;
                         default:
