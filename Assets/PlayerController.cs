@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     Vector3 rot = Vector3.zero;
     float rotSpeed = 40f;
     float movementSpeed = 10f;
+    Vector3 size = new Vector3(0.2f, 0.2f, 0.2f);
     public Camera mycam;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
         anim = gameObject.GetComponent<Animator>();
         gameObject.transform.eulerAngles = rot;
+        gameObject.transform.localScale = size;
         
 
     }
@@ -34,6 +36,10 @@ public class PlayerController : MonoBehaviour
     void CheckKey()
     {
         // Walk
+        if (anim.IsInTransition(0))
+        {
+            anim.Play("Idle");
+        }
         if (Input.GetKey(KeyCode.Z))
         {
   
@@ -67,21 +73,20 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            if (!anim.IsInTransition(0) && (this.anim.GetCurrentAnimatorStateInfo(0).IsName("Attack")|| this.anim.GetCurrentAnimatorStateInfo(0).IsName("Run")|| this.anim.GetCurrentAnimatorStateInfo(0).IsName("Walk")))
-            {
-                Debug.Log("WAIT");
-            }
-            else
+    
+            if (anim.IsInTransition(0) || (this.anim.GetCurrentAnimatorStateInfo(0).IsName("Idle")))
             {
                 anim.Play("Attack");
             }
-              
             
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKey(KeyCode.O))
         {
-            anim.Play("Idle");
+            //test changement de taille
+            gameObject.transform.localScale += new Vector3(0.001f, 0.001f, 0.001f);
+
         }
+
 
     }
 
