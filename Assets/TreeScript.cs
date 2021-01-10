@@ -8,7 +8,7 @@ public class TreeScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider coll)
     {
-        Debug.Log(coll.gameObject.name);
+  
         if (coll.gameObject.name != "GameTerrain")
         {
             Destroy(this.gameObject);
@@ -26,6 +26,9 @@ public class TreeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (this.transform.position.y<-2)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

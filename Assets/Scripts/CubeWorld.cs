@@ -21,42 +21,42 @@ public class CubeWorld : MonoBehaviour
 		Vector3 surface_dimensions = surface_t.lossyScale;
 
 		Perlin2DMap perlin = new Perlin2DMap(0.1f, 0.4f, 4f);
-		for (int x = (int) Mathf.Floor(-surface_dimensions.x * 5)-1; x < (int) Math.Ceiling(surface_dimensions.x * 5)-1; x++)
-			for (int z = (int) Mathf.Floor(-surface_dimensions.z * 5)-1; z < (int) Math.Ceiling(surface_dimensions.z * 5)-1; z++) {
+		for (int x = (int) Mathf.Floor(-surface_dimensions.x * 5); x < (int) Math.Ceiling(surface_dimensions.x * 5); x++)
+			for (int z = (int) Mathf.Floor(-surface_dimensions.z * 5); z < (int) Math.Ceiling(surface_dimensions.z * 5); z++) {
                 float noise = UnityEngine.Random.Range(0f, 2f);
                 float noiseSize = UnityEngine.Random.Range(0f, 0.8f);
                 float height = (float) Math.Floor(perlin.at(x, z));
 				if (height >= 1f ) {
                     int selector = UnityEngine.Random.Range(0, 4);
-                    Debug.Log(selector);
+            
                     switch (selector)
                     {
                         case 0:
                             GameObject obstacle = GameObject.Instantiate(arbre1);
                             obstacle.transform.position = surface_t.position + new Vector3(x, 0, z);
                             obstacle.transform.localScale = new Vector3(1f, 1f- noiseSize, 1f);
-                            obstacle.transform.position += new Vector3(0.5f + noise, 20, 0.5f + noise);
+                            obstacle.transform.position += new Vector3((obstacle.transform.position.x<0)?0.5f + noise : 0.5f-noise, 20, (obstacle.transform.position.z < 0)?0.5f + noise: 0.5f-noise);
                             break;
                         case 1:
                             GameObject obstacle2 = GameObject.Instantiate(arbre2);
                             obstacle2.transform.position = surface_t.position + new Vector3(x, 0, z);
                             obstacle2.transform.localScale = new Vector3(1f, 1f+ noiseSize, 1f);
-                            obstacle2.transform.position += new Vector3(0.5f + noise, 20, 0.5f + noise);
+                            obstacle2.transform.position += new Vector3((obstacle2.transform.position.x < 0) ? 0.5f + noise : -0.5f - noise, 20, (obstacle2.transform.position.z < 0) ? 0.5f + noise : -0.5f - noise);
                             break;
                         case 2:
                             GameObject obstacle3 = GameObject.Instantiate(arbre3);
                             obstacle3.transform.position = surface_t.position + new Vector3(x, 0, z);
                             obstacle3.transform.localScale = new Vector3(1f, 1f- noiseSize, 1f);
-                            obstacle3.transform.position += new Vector3(0.5f + noise, 20, 0.5f + noise);
+                            obstacle3.transform.position += new Vector3((obstacle3.transform.position.x < 0) ? 0.5f + noise : -0.5f - noise, 20, (obstacle3.transform.position.z < 0) ? 0.5f + noise : -0.5f - noise);
                             break;
                         case 3:
                             GameObject obstacle4 = GameObject.Instantiate(arbre4);
                             obstacle4.transform.position = surface_t.position + new Vector3(x, 0, z);
                             obstacle4.transform.localScale = new Vector3(1f, 1f+ noiseSize, 1f  );
-                            obstacle4.transform.position += new Vector3(0.5f + noise, 20, 0.5f + noise);
+                            obstacle4.transform.position += new Vector3((obstacle4.transform.position.x<0)?0.5f + noise : -0.5f-noise, 20, (obstacle4.transform.position.z < 0)?0.5f + noise: -0.5f-noise);
                             break;
                         default:
-                            Console.WriteLine("Default case");
+                         
                             break;
                     }
                     
