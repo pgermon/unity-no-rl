@@ -61,9 +61,26 @@ public class PlayerController : MonoBehaviour
             this.transform.position -= transform.forward * Time.deltaTime * movementSpeed/2;
 
         }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            anim.Play("Idle");
+        }
         if (Input.GetKey(KeyCode.Space))
         {
-            anim.Play("Attack");
+            if (!anim.IsInTransition(0) && (this.anim.GetCurrentAnimatorStateInfo(0).IsName("Attack")|| this.anim.GetCurrentAnimatorStateInfo(0).IsName("Run")|| this.anim.GetCurrentAnimatorStateInfo(0).IsName("Walk")))
+            {
+                Debug.Log("WAIT");
+            }
+            else
+            {
+                anim.Play("Attack");
+            }
+              
+            
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            anim.Play("Idle");
         }
 
     }
