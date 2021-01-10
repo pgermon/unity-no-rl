@@ -9,7 +9,7 @@ public class TreeScript : MonoBehaviour
     private void OnTriggerEnter(Collider coll)
     {
   
-        if (coll.gameObject.name != "GameTerrain")
+        if (coll.gameObject.name != "GameTerrain" && coll.gameObject.name != "Player-TRex")
         {
             Destroy(this.gameObject);
         }
