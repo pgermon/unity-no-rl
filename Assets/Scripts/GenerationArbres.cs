@@ -1,12 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// Génération des arbres
 [RequireComponent(typeof(Transform))]
 public class GenerationArbres : MonoBehaviour
 {
-    [Header("Sol")]
-    [SerializeField] private float amplitude = 4f;
     [SerializeField] private float frequence = 0.2f;
 
 	[Header("Arbres")]
@@ -16,56 +13,41 @@ public class GenerationArbres : MonoBehaviour
     [SerializeField] public GameObject arbre3;
     [SerializeField] public GameObject arbre4;
 
+    private 
+
 
     // Start is called before the first frame update
     void Start()
 	{
-		// GameObject surface_go = Instantiate(surface, new Vector3(0f, 0f, 0f), Quaternion.identity);
 		Transform surface_t = GetComponent<Transform>().transform;
 		Vector3 surface_dimensions = GetComponent<Transform>().lossyScale;
 
-        // TODO: utiliser NoiseMapGeneration
-		Perlin2DMap perlin = new Perlin2DMap(frequence, frequence, amplitude);
-		for (int x = (int) Mathf.Floor(-surface_dimensions.x * 5); x < (int) Math.Ceiling(surface_dimensions.x * 5); x++)
-			for (int z = (int) Mathf.Floor(-surface_dimensions.z * 5); z < (int) Math.Ceiling(surface_dimensions.z * 5); z++) {
-                float noise = UnityEngine.Random.Range(0f, 2f);
-                float noiseSize = UnityEngine.Random.Range(0f, 0.8f);
-                float height = (float) Math.Floor(perlin.at(x, z));
-				if (height >= 1f ) {
-                    int selector = UnityEngine.Random.Range(0, 4);
+		for (int x = (int) Mathf.Ceil(-surface_dimensions.x * 5); x < (int) Mathf.Floor(surface_dimensions.x * 5); x += 3)
+			for (int z = (int) Mathf.Ceil(-surface_dimensions.z * 5); z < (int) Mathf.Floor(surface_dimensions.z * 5); z += 3) {
+				if (Random.Range(0f, 1f) < this.frequence) {
+                    int selector = Random.Range(0, 4);
+                    GameObject modele = null;
+
+                    Vector3 position = new Vector3(x + Random.Range(-0.1f, 0.1f), 40, z + Random.Range(-0.1f, 0.1f));
             
                     switch (selector)
                     {
                         case 0:
-                            GameObject obstacle = GameObject.Instantiate(arbre1);
-                            obstacle.transform.position = surface_t.position + new Vector3(x, 0, z);
-                            obstacle.transform.localScale = new Vector3(1f, 1f- noiseSize, 1f);
-                            obstacle.transform.position += new Vector3((obstacle.transform.position.x<0)?0.5f + noise : 0.5f-noise, 20, (obstacle.transform.position.z < 0)?0.5f + noise: 0.5f-noise);
+                            modele = arbre1;
                             break;
                         case 1:
-                            GameObject obstacle2 = GameObject.Instantiate(arbre2);
-                            obstacle2.transform.position = surface_t.position + new Vector3(x, 0, z);
-                            obstacle2.transform.localScale = new Vector3(1f, 1f+ noiseSize, 1f);
-                            obstacle2.transform.position += new Vector3((obstacle2.transform.position.x < 0) ? 0.5f + noise : -0.5f - noise, 20, (obstacle2.transform.position.z < 0) ? 0.5f + noise : -0.5f - noise);
+                            modele = arbre2;
                             break;
                         case 2:
-                            GameObject obstacle3 = GameObject.Instantiate(arbre3);
-                            obstacle3.transform.position = surface_t.position + new Vector3(x, 0, z);
-                            obstacle3.transform.localScale = new Vector3(1f, 1f- noiseSize, 1f);
-                            obstacle3.transform.position += new Vector3((obstacle3.transform.position.x < 0) ? 0.5f + noise : -0.5f - noise, 20, (obstacle3.transform.position.z < 0) ? 0.5f + noise : -0.5f - noise);
-                            break;
-                        case 3:
-                            GameObject obstacle4 = GameObject.Instantiate(arbre4);
-                            obstacle4.transform.position = surface_t.position + new Vector3(x, 0, z);
-                            obstacle4.transform.localScale = new Vector3(1f, 1f+ noiseSize, 1f  );
-                            obstacle4.transform.position += new Vector3((obstacle4.transform.position.x<0)?0.5f + noise : -0.5f-noise, 20, (obstacle4.transform.position.z < 0)?0.5f + noise: -0.5f-noise);
+                            modele = arbre3;
                             break;
                         default:
-                         
+                            modele = arbre4;
                             break;
                     }
                     
-					
+                    GameObject arbre = GameObject.Instantiate(modele, position + surface_t.position, Quaternion.identity);
+                    arbre.transform.localScale = new Vector3(1f, 1f - UnityEngine.Random.Range(-0.2f, 0.2f), 1f);
 				}
 			}
 	}
