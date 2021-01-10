@@ -16,13 +16,13 @@ public class TerrainType
 public class TileGeneration : MonoBehaviour
 {
     [SerializeField]
-    private float mapScale;
+    private float distorsionTerrain = 2;
 
     [SerializeField]
     private TerrainType[] terrainTypes;
 
     [SerializeField]
-    private float heightMultiplier;
+    private float heightMultiplier = 5;
 
     private void UpdateMeshVertices(float[,] heightMap)
     {
@@ -41,13 +41,14 @@ public class TileGeneration : MonoBehaviour
 
                 Vector3 vertex = meshVertices[vertexIndex];
                 // change the vertex Y coordinate, proportional to the height value
-                meshVertices[vertexIndex] = new Vector3(vertex.x, height * this.heightMultiplier, vertex.z);
+                meshVertices[vertexIndex] = new Vector3(vertex.x, height, vertex.z);
 
                 vertexIndex++;
             }
         }
 
         // update the vertices in the mesh and update its properties
+        GetComponent<MeshFilter>().mesh.Clear();
         GetComponent<MeshFilter>().mesh.vertices = meshVertices;
         GetComponent<MeshFilter>().mesh.RecalculateBounds();
         GetComponent<MeshFilter>().mesh.RecalculateNormals();
@@ -68,7 +69,7 @@ public class TileGeneration : MonoBehaviour
         int tileWidth = tileDepth;
 
         // calculate the offsets based on the tile position
-        float[,] heightMap = GetComponent<NoiseMapGeneration>().GenerateNoiseMap(tileDepth, tileWidth, this.mapScale);
+        float[,] heightMap = GetComponent<NoiseMapGeneration>().GenerateNoiseMap(tileDepth, tileWidth, this.distorsionTerrain, this.heightMultiplier);
 
         // generate a heightMap using noise
         Texture2D tileTexture = BuildTexture(heightMap);
