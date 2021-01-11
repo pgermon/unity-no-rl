@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         {
       
             anim.Play("Walk");
-            body.transform.position -= transform.forward * Time.deltaTime * movementSpeed/2;
+            body.MovePosition(transform.position - transform.forward * Time.deltaTime * movementSpeed/2);
 
         }
         else if (Input.GetKeyUp(KeyCode.S))

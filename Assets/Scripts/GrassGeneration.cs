@@ -34,7 +34,7 @@ public class GrassGeneration : MonoBehaviour {
                             float rndOffsetX = UnityEngine.Random.Range(-0.5f, 0.5f) * 4;
                             float rndOffsetZ = UnityEngine.Random.Range(-0.5f, 0.5f) * 4;
                             Vector3 grassPosition = new Vector3((xIndex - tileWidthInVertices/2)*distanceBetweenVertices + rndOffsetX, 
-                                                                 meshVertices[vertexIndex].y * 2, 
+                                                                 meshVertices[vertexIndex].y, 
                                                                  (zIndex - tileDepthInVertices/2)*distanceBetweenVertices + rndOffsetZ);
                             GameObject grass = Instantiate (this.grassPrefab, grassPosition, Quaternion.identity) as GameObject;
                             grass.transform.localScale = new Vector3(2f, 2f, 2f); 
