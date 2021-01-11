@@ -2,22 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(NoiseMapGeneration))]
+[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshCollider))]
+
 public class TileGeneration : MonoBehaviour {
 
     [SerializeField]
     private VisualizationMode visualizationMode;
-
-	[SerializeField]
-	NoiseMapGeneration noiseMapGeneration;
-
-	[SerializeField]
-	private MeshRenderer tileRenderer;
-
-	[SerializeField]
-	private MeshFilter meshFilter;
-
-	[SerializeField]
-	private MeshCollider meshCollider;
 
 	[SerializeField]
 	private float levelScale;
@@ -59,15 +52,15 @@ public class TileGeneration : MonoBehaviour {
 	private Color waterColor;
 
     /*[SerializeField]
-	private float centerVertexZ, maxDistanceZ;*/
+	private float centerVertexZ, maxDistanceZ;
 
-	/*void Start() {
+	void Start() {
 		GenerateTile (centerVertexZ, maxDistanceZ);
 	}*/
 
 	public TileData GenerateTile(float centerVertexZ, float maxDistanceZ) {
 		// calculate tile depth and width based on the mesh vertices
-		Vector3[] meshVertices = this.meshFilter.mesh.vertices;
+		Vector3[] meshVertices = GetComponent<MeshFilter>().mesh.vertices;
 		int tileDepth = (int)Mathf.Sqrt (meshVertices.Length);
 		int tileWidth = tileDepth;
 
@@ -76,17 +69,17 @@ public class TileGeneration : MonoBehaviour {
 		float offsetZ = -this.gameObject.transform.position.z / this.gameObject.transform.localScale.z;
 
 		// generate a heightMap using noise
-		float[,] heightMap = this.noiseMapGeneration.GeneratePerlinNoiseMap (tileDepth, tileWidth, this.levelScale, offsetX, offsetZ, heightWaves);
+		float[,] heightMap = GetComponent<NoiseMapGeneration>().GeneratePerlinNoiseMap (tileDepth, tileWidth, this.levelScale, offsetX, offsetZ, heightWaves);
 
         // calculate vertex offset based on the Tile position and the distance between vertices
-        Vector3 tileDimensions = this.meshFilter.mesh.bounds.size;
+        Vector3 tileDimensions = GetComponent<MeshFilter>().mesh.bounds.size;
         float distanceBetweenVertices = tileDimensions.z / (float)tileDepth;
         float vertexOffsetZ = this.gameObject.transform.position.z / distanceBetweenVertices;
         
         // generate a heatMap using uniform noise
-        float[,] uniformHeatMap = this.noiseMapGeneration.GenerateUniformNoiseMap (tileDepth, tileWidth, centerVertexZ, maxDistanceZ, vertexOffsetZ);
+        float[,] uniformHeatMap = GetComponent<NoiseMapGeneration>().GenerateUniformNoiseMap (tileDepth, tileWidth, centerVertexZ, maxDistanceZ, vertexOffsetZ);
         // generate a heatMap using Perlin Noise
-        float[,] randomHeatMap = this.noiseMapGeneration.GeneratePerlinNoiseMap (tileDepth, tileWidth, this.levelScale, offsetX, offsetZ, this.heatWaves);
+        float[,] randomHeatMap = GetComponent<NoiseMapGeneration>().GeneratePerlinNoiseMap (tileDepth, tileWidth, this.levelScale, offsetX, offsetZ, this.heatWaves);
         float[,] heatMap = new float[tileDepth, tileWidth];
 
         for (int zIndex = 0; zIndex < tileDepth; zIndex++) {
@@ -99,7 +92,7 @@ public class TileGeneration : MonoBehaviour {
         }
 
         // generate a moistureMap using Perlin Noise
-        float[,] moistureMap = this.noiseMapGeneration.GeneratePerlinNoiseMap (tileDepth, tileWidth, this.levelScale, offsetX, offsetZ, this.moistureWaves);
+        float[,] moistureMap = GetComponent<NoiseMapGeneration>().GeneratePerlinNoiseMap (tileDepth, tileWidth, this.levelScale, offsetX, offsetZ, this.moistureWaves);
         for (int zIndex = 0; zIndex < tileDepth; zIndex++) {
             for (int xIndex = 0; xIndex < tileWidth; xIndex++) {
                 // makes higher regions dryer, by reducing the height value from the heat map
@@ -126,19 +119,19 @@ public class TileGeneration : MonoBehaviour {
         switch (this.visualizationMode) {
             case VisualizationMode.Height:
                 // assign material texture to be the heightTexture
-                this.tileRenderer.material.mainTexture = heightTexture;
+                GetComponent<MeshRenderer>().material.mainTexture = heightTexture;
                 break;
             case VisualizationMode.Heat:
                 // assign material texture to be the heatTexture
-                this.tileRenderer.material.mainTexture = heatTexture;
+                GetComponent<MeshRenderer>().material.mainTexture = heatTexture;
                 break;
             case VisualizationMode.Moisture:
                 // assign material texture to be the moistureTexture
-                this.tileRenderer.material.mainTexture = moistureTexture;
+                GetComponent<MeshRenderer>().material.mainTexture = moistureTexture;
                 break;
             case VisualizationMode.Biome:
                 // assign material texture to be the biomeTexture
-                this.tileRenderer.material.mainTexture = biomeTexture;
+                GetComponent<MeshRenderer>().material.mainTexture = biomeTexture;
                 break;
         }
 
@@ -147,7 +140,7 @@ public class TileGeneration : MonoBehaviour {
 
         TileData tileData = new TileData (heightMap, heatMap, moistureMap, 
 			chosenHeightTerrainTypes, chosenHeatTerrainTypes, chosenMoistureTerrainTypes, chosenBiomes, 
-			this.meshFilter.mesh/*, (Texture2D)this.tileRenderer.material.mainTexture*/);
+			GetComponent<MeshFilter>().mesh/*, (Texture2D)GetComponent<MeshRenderer>().material.mainTexture*/);
 
 		return tileData;
 	}
@@ -196,7 +189,7 @@ public class TileGeneration : MonoBehaviour {
 		int tileDepth = heightMap.GetLength (0);
 		int tileWidth = heightMap.GetLength (1);
 
-		Vector3[] meshVertices = this.meshFilter.mesh.vertices;
+		Vector3[] meshVertices = GetComponent<MeshFilter>().mesh.vertices;
 
 		// iterate through all the heightMap coordinates, updating the vertex index
 		int vertexIndex = 0;
@@ -213,11 +206,11 @@ public class TileGeneration : MonoBehaviour {
 		}
 
 		// update the vertices in the mesh and update its properties
-		this.meshFilter.mesh.vertices = meshVertices;
-		this.meshFilter.mesh.RecalculateBounds ();
-		this.meshFilter.mesh.RecalculateNormals ();
-		// update the mesh collider
-		this.meshCollider.sharedMesh = this.meshFilter.mesh;
+		GetComponent<MeshFilter>().mesh.vertices = meshVertices;
+        GetComponent<MeshFilter>().mesh.RecalculateBounds();
+        GetComponent<MeshFilter>().mesh.RecalculateNormals();
+        // update the mesh collider
+        GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().mesh;
 	}
 
     private Texture2D BuildBiomeTexture(TerrainType[,] heightTerrainTypes, TerrainType[,] heatTerrainTypes, TerrainType[,] moistureTerrainTypes, Biome[,] chosenBiomes) {
