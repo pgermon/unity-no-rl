@@ -27,14 +27,14 @@ public class GrassGeneration : MonoBehaviour {
 				TerrainType terrainType = tileData.chosenHeightTerrainTypes [tileCoordinate.coordinateZIndex, tileCoordinate.coordinateXIndex];
 
 				// grass can only be placed on lowland and mountain
-				if (terrainType.name == "lowland" || terrainType.name == "mountain") {
+				if (terrainType.name == "lowland") {
 
-                    if(UnityEngine.Random.Range(0.0f, 1.0f) > 0.3){
-                        for(int i = 0; i < 4; i++){
-                            float rndOffsetX = UnityEngine.Random.Range(-0.5f, 0.5f) * 4;
-                            float rndOffsetZ = UnityEngine.Random.Range(-0.5f, 0.5f) * 4;
+                    if(UnityEngine.Random.Range(0.0f, 1.0f) > 0.2){
+                        for(int i = 0; i < 10; i++){
+                            float rndOffsetX = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
+                            float rndOffsetZ = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
                             Vector3 grassPosition = new Vector3((xIndex - tileWidthInVertices/2)*distanceBetweenVertices + rndOffsetX, 
-                                                                 meshVertices[vertexIndex].y, 
+                                                                 meshVertices[vertexIndex].y + 5, 
                                                                  (zIndex - tileDepthInVertices/2)*distanceBetweenVertices + rndOffsetZ);
                             GameObject grass = Instantiate (this.grassPrefab, grassPosition, Quaternion.identity) as GameObject;
                             grass.transform.localScale = new Vector3(2f, 2f, 2f); 

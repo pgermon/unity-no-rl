@@ -67,7 +67,11 @@ public class TreeGeneration : MonoBehaviour {
 
 					// if the current tree noise value is the maximum one, place a tree in this location
 					if (treeValue == maxValue) {
-						Vector3 treePosition = new Vector3((xIndex - tileWidthInVertices/2)*distanceBetweenVertices, meshVertices[vertexIndex].y, (zIndex - tileDepthInVertices/2)*distanceBetweenVertices);
+						float rndOffsetX = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
+                        float rndOffsetZ = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
+						Vector3 treePosition = new Vector3((xIndex - tileWidthInVertices / 2) * distanceBetweenVertices + rndOffsetX, 
+															meshVertices[vertexIndex].y + 5, 
+															(zIndex - tileDepthInVertices / 2) * distanceBetweenVertices + rndOffsetZ);
 						
 						int treeType = terrainType.index;
 						if(terrainType.index == 1 || terrainType.index == 2){

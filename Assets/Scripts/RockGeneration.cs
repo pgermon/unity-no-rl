@@ -29,16 +29,24 @@ public class RockGeneration : MonoBehaviour {
 				// rocks cannot only be placed on water
 				if (terrainType.name != "water") {
 
-                    if(UnityEngine.Random.Range(0.0f, 1.0f) > 0.9){
+                    float rndThreshold = 0.9f;
+                    if(terrainType.name == "mountain"){
+                        rndThreshold = 0.6f;
+                    }
+
+                    if(UnityEngine.Random.Range(0.0f, 1.0f) > rndThreshold){
                         
                         int rockType = UnityEngine.Random.Range(0, 2);
-                        float rndOffsetX = UnityEngine.Random.Range(-0.5f, 0.5f) * 4;
-                        float rndOffsetZ = UnityEngine.Random.Range(-0.5f, 0.5f) * 4;
+                        float hMultiplier = 1f;
+                        if(rockType == 1){
+                            hMultiplier = 4.0f/5.0f;
+                        }
+                        float rndOffsetX = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
+                        float rndOffsetZ = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
                         Vector3 rockPosition = new Vector3((xIndex - tileWidthInVertices/2)*distanceBetweenVertices + rndOffsetX, 
-                                                                meshVertices[vertexIndex].y - 1, 
+                                                                meshVertices[vertexIndex].y * hMultiplier, 
                                                                 (zIndex - tileDepthInVertices/2)*distanceBetweenVertices + rndOffsetZ);
                         GameObject rock = Instantiate (this.rockPrefabs[rockType], rockPosition, Quaternion.identity) as GameObject;
-                        //rock.transform.localScale = new Vector3(2f, 2f, 2f); 
                     }
 				}
 			}
