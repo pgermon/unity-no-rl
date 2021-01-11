@@ -6,17 +6,17 @@ public class TreeScript : MonoBehaviour
 {
 
 
-    private void OnTriggerEnter(Collider coll)
-    {
-        //Debug.Log(coll.gameObject.name);
-        if (coll.gameObject.tag != "Ground" && coll.gameObject.name != "Player-TRex")
-        {
-            Destroy(this.gameObject);
-        }
+    //private void OnTriggerEnter(Collider coll)
+    //{
+    //    //Debug.Log(coll.gameObject.name);
+    //    if (coll.gameObject.tag != "Ground" && coll.gameObject.name != "Player-TRex")
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
 
      
 
-    }
+    //}
     // Start is called before the first frame update
     void Start()
     {

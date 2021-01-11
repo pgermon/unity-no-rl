@@ -7,10 +7,11 @@ public class PlayerController : MonoBehaviour
 
     Animator anim;
     Vector3 rot = Vector3.zero;
-    float rotSpeed = 40f;
+    float rotSpeed = 80f;
     float movementSpeed = 10f;
     Vector3 size = new Vector3(0.2f, 0.2f, 0.2f);
     public Camera mycam;
+    private Rigidbody body;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         gameObject.transform.eulerAngles = rot;
         gameObject.transform.localScale = size;
-        
+        body = gameObject.GetComponent<Rigidbody>();
 
     }
 
@@ -44,7 +45,8 @@ public class PlayerController : MonoBehaviour
         {
   
             anim.Play("Run");
-            this.transform.position += transform.forward * Time.deltaTime * movementSpeed;
+             body.MovePosition(transform.position + transform.forward * Time.deltaTime * movementSpeed);
+            //body.transform.position += transform.forward * Time.deltaTime * movementSpeed;
 
         }
         else if (Input.GetKeyUp(KeyCode.Z))
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour
         {
       
             anim.Play("Walk");
-            this.transform.position -= transform.forward * Time.deltaTime * movementSpeed/2;
+            body.transform.position -= transform.forward * Time.deltaTime * movementSpeed/2;
 
         }
         else if (Input.GetKeyUp(KeyCode.S))
