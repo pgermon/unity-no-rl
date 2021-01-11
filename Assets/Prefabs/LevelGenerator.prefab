@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4812695324117527656}
   - component: {fileID: 8249735666548409658}
   - component: {fileID: 4001941743195536491}
+  - component: {fileID: 424913933472875716}
   m_Layer: 0
   m_Name: LevelGenerator
   m_TagString: Untagged
@@ -64,8 +65,6 @@ MonoBehaviour:
     type: 3}
   centerVertexZ: 275
   maxDistanceZ: 275
-  treeGeneration: {fileID: 8249735666548409658}
-  grassGeneration: {fileID: 4001941743195536491}
 --- !u!114 &8249735666548409658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,18 +111,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b759f45c46029408c802b7925460d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noiseMapGeneration: {fileID: -2577001778943653722}
-  waves:
-  - seed: 9873
-    frequency: 1
-    amplitude: 1
-  - seed: 2379
-    frequency: 2
-    amplitude: 2
-  - seed: 1928
-    frequency: 4
-    amplitude: 4
-  levelScale: 5
-  neighborRadius: 0.05
   grassPrefab: {fileID: 3637134996410867462, guid: 9c6178fe943216540b276b975dafae16,
     type: 3}
+--- !u!114 &424913933472875716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812695324117527663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e5b6af1df28f44e9a9f1795e9a3347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockPrefabs:
+  - {fileID: 8672003455025440434, guid: aa0ba387f794005419a74fdfff3da4df, type: 3}
+  - {fileID: 3133429536943949068, guid: 25cb56d59f80f614b9da0e9a36c48a05, type: 3}

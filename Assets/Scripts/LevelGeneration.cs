@@ -13,12 +13,6 @@ public class LevelGeneration : MonoBehaviour {
 	[SerializeField]
 	private float centerVertexZ, maxDistanceZ;
 
-	[SerializeField]
-	private TreeGeneration treeGeneration;
-
-	[SerializeField]
-	private GrassGeneration grassGeneration;
-
 	/*[SerializeField]
 	private RiverGeneration riverGeneration;*/
 
@@ -59,10 +53,14 @@ public class LevelGeneration : MonoBehaviour {
 		}
 
 		// generate trees for the level
-		treeGeneration.GenerateTrees (this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
+		GetComponent<TreeGeneration>().GenerateTrees (this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
 
 		//generates grass for the level
-		grassGeneration.GenerateGrass(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
+		GetComponent<GrassGeneration>().GenerateGrass(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
+		
+		//generates rocks for the level
+		GetComponent<RockGeneration>().GenerateRocks(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
+		
 		// generate rivers for the level
 		//riverGeneration.GenerateRivers(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, levelData);
 	}

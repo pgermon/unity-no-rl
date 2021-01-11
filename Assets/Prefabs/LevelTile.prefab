@@ -122,10 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualizationMode: 0
-  noiseMapGeneration: {fileID: 0}
-  tileRenderer: {fileID: 8995418540001193450}
-  meshFilter: {fileID: 8995418540001193451}
-  meshCollider: {fileID: 8995418540001193453}
   levelScale: 5
   heightMultiplier: 100
   heightTerrainTypes:
