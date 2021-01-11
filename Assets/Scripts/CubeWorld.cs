@@ -5,7 +5,7 @@ public class CubeWorld : MonoBehaviour
 {
 	[Header("Obstacles")]
 	/** Terrain où générer des obstacles. */
-	[SerializeField] public GameObject surface;
+	//[SerializeField] public GameObject surface;
 	/** Pilier */
 	[SerializeField] public GameObject arbre1;
     [SerializeField] public GameObject arbre2;
@@ -17,7 +17,8 @@ public class CubeWorld : MonoBehaviour
     void Start()
 	{
 		// GameObject surface_go = Instantiate(surface, new Vector3(0f, 0f, 0f), Quaternion.identity);
-		Transform surface_t = surface.transform;
+		//Transform surface_t = surface.transform;
+        Transform surface_t = this.gameObject.transform;
 		Vector3 surface_dimensions = surface_t.lossyScale;
 
 		Perlin2DMap perlin = new Perlin2DMap(0.1f, 0.4f, 4f);
@@ -28,7 +29,7 @@ public class CubeWorld : MonoBehaviour
                 float height = (float) Math.Floor(perlin.at(x, z));
 				if (height >= 1f ) {
                     int selector = UnityEngine.Random.Range(0, 4);
-                    Debug.Log(selector);
+                    //Debug.Log(selector);
                     switch (selector)
                     {
                         case 0:

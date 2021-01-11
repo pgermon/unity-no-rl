@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4812695324117527663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4812695324117527657}
+  - component: {fileID: -2577001778943653722}
+  - component: {fileID: 4812695324117527656}
+  - component: {fileID: 8249735666548409658}
+  - component: {fileID: 4001941743195536491}
+  m_Layer: 0
+  m_Name: LevelGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4812695324117527657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812695324117527663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2577001778943653722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812695324117527663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dc62874af90f24ca36325df4d276ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4812695324117527656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812695324117527663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361264f22f3d1144ea093381d869383e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelWidthInTiles: 5
+  levelDepthInTiles: 5
+  tilePrefab: {fileID: 8995418540001193452, guid: 69176842c5ffa434cb3b663bb3418035,
+    type: 3}
+  centerVertexZ: 275
+  maxDistanceZ: 275
+  treeGeneration: {fileID: 8249735666548409658}
+  grassGeneration: {fileID: 4001941743195536491}
+--- !u!114 &8249735666548409658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812695324117527663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da9b72dc809da24e86032b710fcd29d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseMapGeneration: {fileID: -2577001778943653722}
+  waves:
+  - seed: 9287
+    frequency: 1
+    amplitude: 1
+  - seed: 2786
+    frequency: 2
+    amplitude: 2
+  - seed: 9832
+    frequency: 4
+    amplitude: 4
+  levelScale: 5
+  neighborRadius:
+  - 0.5
+  - 0.1
+  - 0.2
+  - 0.5
+  treePrefab:
+  - {fileID: 188006, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
+  - {fileID: 137650, guid: 826b6a0b570e8460990010fa615b5a2a, type: 3}
+  - {fileID: 192044, guid: 19682540d8a014522a319b1cf788aee2, type: 3}
+  - {fileID: 8758888183437167707, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07, type: 3}
+--- !u!114 &4001941743195536491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812695324117527663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b759f45c46029408c802b7925460d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseMapGeneration: {fileID: -2577001778943653722}
+  waves:
+  - seed: 9873
+    frequency: 1
+    amplitude: 1
+  - seed: 2379
+    frequency: 2
+    amplitude: 2
+  - seed: 1928
+    frequency: 4
+    amplitude: 4
+  levelScale: 5
+  neighborRadius: 0.05
+  grassPrefab: {fileID: 3637134996410867462, guid: 9c6178fe943216540b276b975dafae16,
+    type: 3}
