@@ -590,6 +590,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3637134996410867462, guid: 9c6178fe943216540b276b975dafae16,
         type: 3}
+    - target: {fileID: 4001941743195536491, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: grassPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 5707813131339405077, guid: b995a96a7ca36d04b851e46870b5aadf,
+        type: 3}
+    - target: {fileID: 4001941743195536491, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: grassPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 3637134996410867462, guid: 9c6178fe943216540b276b975dafae16,
+        type: 3}
+    - target: {fileID: 4001941743195536491, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: grassPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 1810836374240917309, guid: 962996e23ffcbc44d92fb20cd03940cd,
+        type: 3}
     - target: {fileID: 4812695324117527657, guid: ee455bd96d7bef946b43e7c54648cb05,
         type: 3}
       propertyPath: m_RootOrder
@@ -654,6 +672,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249735666548409658, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: waves.Array.data[1].amplitude
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249735666548409658, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: waves.Array.data[1].frequency
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee455bd96d7bef946b43e7c54648cb05, type: 3}
