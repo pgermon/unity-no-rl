@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 8758888183434908315}
   - component: {fileID: -5387800523701309337}
   - component: {fileID: -1549158292273738680}
+  - component: {fileID: 686967700811522611}
   m_Layer: 8
   m_Name: LPW_Tree_A1_6.5m_01
   m_TagString: Untagged
@@ -172,3 +173,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 6, z: 1}
   m_Center: {x: 0, y: 3, z: 0}
+--- !u!208 &686967700811522611
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758888183437167707}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.416, y: 3.3930001, z: 1.434}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.018000001, y: 3.0930002, z: 0}
+  m_TimeToStationary: 0.5

@@ -46,11 +46,11 @@ public class TreeGeneration : MonoBehaviour {
 				// check if it is a water terrain. Trees cannot be placed over the water
 				if (terrainType.name != "water") {
 					float treeValue = treeMap [zIndex, xIndex];
+                    float noiseSize = Random.Range(0.2f, 3f);
+                    //int terrainTypeIndex = terrainType.index;
 
-					//int terrainTypeIndex = terrainType.index;
-
-					// compares the current tree noise value to the neighbor ones
-					int neighborZBegin = (int)Mathf.Max (0, zIndex - this.neighborRadius[terrainType.index]);
+                    // compares the current tree noise value to the neighbor ones
+                    int neighborZBegin = (int)Mathf.Max (0, zIndex - this.neighborRadius[terrainType.index]);
 					int neighborZEnd = (int)Mathf.Min (levelDepth-1, zIndex + this.neighborRadius[terrainType.index]);
 					int neighborXBegin = (int)Mathf.Max (0, xIndex - this.neighborRadius[terrainType.index]);
 					int neighborXEnd = (int)Mathf.Min (levelWidth-1, xIndex + this.neighborRadius[terrainType.index]);
@@ -79,6 +79,7 @@ public class TreeGeneration : MonoBehaviour {
 						}
 						
 						GameObject tree = Instantiate (this.treePrefab[treeType], treePosition, Quaternion.identity) as GameObject;
+                        tree.transform.localScale = new Vector3(noiseSize, noiseSize, noiseSize);
 					}
 				}
 			}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3133429536945888204}
   - component: {fileID: 3465009234792124660}
   - component: {fileID: 3509787862837265356}
+  - component: {fileID: -1478886816819157428}
   m_Layer: 10
   m_Name: LPW_Rock_Wall_A1_01
   m_TagString: Untagged
@@ -110,3 +111,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.285948, y: 4.9475455, z: 4.291795}
   m_Center: {x: 0.18723917, y: 2.4323804, z: -0.0541023}
+--- !u!208 &-1478886816819157428
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3133429536943949068}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.143, y: 2.4740002, z: 2.1460001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.187, y: 2.4320002, z: -0.054}
+  m_TimeToStationary: 0.5

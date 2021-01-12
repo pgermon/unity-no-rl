@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrassGeneration : MonoBehaviour {
 
 	[SerializeField]
-	private GameObject grassPrefab;
+	private GameObject[] grassPrefab;
 
 	public void GenerateGrass(int levelDepth, int levelWidth, float distanceBetweenVertices, LevelData levelData, int tileDepthInVertices, int tileWidthInVertices) {
 
@@ -14,8 +14,10 @@ public class GrassGeneration : MonoBehaviour {
 
 		for (int zIndex = 0; zIndex < levelDepth; zIndex++) {
 			for (int xIndex = 0; xIndex < levelWidth; xIndex++) {
-				// convert from Level Coordinate System to Tile Coordinate System and retrieve the corresponding TileData
-				TileCoordinate tileCoordinate = levelData.ConvertToTileCoordinate (zIndex, xIndex);
+                int selector = Random.Range(0, 3);
+                float noiseSize = Random.Range(0.8f, 4f);
+                // convert from Level Coordinate System to Tile Coordinate System and retrieve the corresponding TileData
+                TileCoordinate tileCoordinate = levelData.ConvertToTileCoordinate (zIndex, xIndex);
 				TileData tileData = levelData.tilesData [tileCoordinate.tileZIndex, tileCoordinate.tileXIndex];
 				int tileWidth = tileData.heightMap.GetLength (1);
 
@@ -34,10 +36,10 @@ public class GrassGeneration : MonoBehaviour {
                             float rndOffsetX = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
                             float rndOffsetZ = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
                             Vector3 grassPosition = new Vector3((xIndex - tileWidthInVertices/2)*distanceBetweenVertices + rndOffsetX, 
-                                                                 meshVertices[vertexIndex].y + 5, 
+                                                                 meshVertices[vertexIndex].y-0.8f, 
                                                                  (zIndex - tileDepthInVertices/2)*distanceBetweenVertices + rndOffsetZ);
-                            GameObject grass = Instantiate (this.grassPrefab, grassPosition, Quaternion.identity) as GameObject;
-                            grass.transform.localScale = new Vector3(2f, 2f, 2f); 
+                            GameObject grass = Instantiate (this.grassPrefab[selector], grassPosition, Quaternion.identity) as GameObject;
+                            grass.transform.localScale = new Vector3(noiseSize, noiseSize, noiseSize); 
                         }
                     }
 				}

@@ -18,7 +18,8 @@ public class RockGeneration : MonoBehaviour {
 				TileCoordinate tileCoordinate = levelData.ConvertToTileCoordinate (zIndex, xIndex);
 				TileData tileData = levelData.tilesData [tileCoordinate.tileZIndex, tileCoordinate.tileXIndex];
 				int tileWidth = tileData.heightMap.GetLength (1);
-
+                float noiseSize = Random.Range(0.2f, 2f);
+                int noiseRotation = Random.Range(0, 360);
 				// calculate the mesh vertex index
 				Vector3[] meshVertices = tileData.mesh.vertices;
 				int vertexIndex = tileCoordinate.coordinateZIndex * tileWidth + tileCoordinate.coordinateXIndex;
@@ -46,7 +47,8 @@ public class RockGeneration : MonoBehaviour {
                         Vector3 rockPosition = new Vector3((xIndex - tileWidthInVertices/2)*distanceBetweenVertices + rndOffsetX, 
                                                                 meshVertices[vertexIndex].y * hMultiplier, 
                                                                 (zIndex - tileDepthInVertices/2)*distanceBetweenVertices + rndOffsetZ);
-                        GameObject rock = Instantiate (this.rockPrefabs[rockType], rockPosition, Quaternion.identity) as GameObject;
+                        GameObject rock = Instantiate (this.rockPrefabs[rockType], rockPosition, Quaternion.Euler(0, noiseRotation, 0)) as GameObject;
+                        rock.transform.localScale = new Vector3(noiseSize, noiseSize, noiseSize);
                     }
 				}
 			}
