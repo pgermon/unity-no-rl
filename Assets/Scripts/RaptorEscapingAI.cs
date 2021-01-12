@@ -9,6 +9,7 @@ public class RaptorEscapingAI : MonoBehaviour, DinosaurInterface
     Animator anim;
     public GameObject threat;
     NavMeshAgent agent;
+    Vector3 lastPos;
 
     public void runTo(Vector3 position) 
     {
@@ -37,12 +38,29 @@ public class RaptorEscapingAI : MonoBehaviour, DinosaurInterface
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        lastPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        runFrom();
+        if (Vector3.Distance(agent.velocity,new Vector3(0f,0f,0f))<0.1)
+            anim.Play("Base Layer.Armature|Velociraptor_Idle");
+        else
+            anim.Play("Base Layer.Armature|Velociraptor_Run");
+        if (Vector3.Distance(transform.position, threat.transform.position)<25f)
+            runFrom();
+        else
+        {
+            float rd = Random.value;
+            if (rd < 0.02) 
+            {
+                Vector3 targetDir = Quaternion.AngleAxis(Random.Range(-30.0f, 30.0f), transform.up) * transform.forward;
+                targetDir = transform.position + targetDir.normalized * 25;
+                agent.SetDestination(targetDir);
+            }
+        }
+        lastPos = transform.position;
     }
 
     void OnTriggerEnter(Collider other)
