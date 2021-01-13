@@ -1,21 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GrassGeneration : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject[] grassPrefab;
+	
+	[Tooltip("Densité en herbe (u/m2)")]
+	public float densite = 0.02f;
 
-	public void GenerateGrass(int levelDepth, int levelWidth, float distanceBetweenVertices, LevelData levelData, int tileDepthInVertices, int tileWidthInVertices) {
+	///<summary>Génère de l'herbe sur l'entièreté du terrain</summary>
+	///<param name="levelLength">Longueur totale du terrain</param>
+	///<param name="levelWidth">Largeur totale du terrain</param>
+	///<param name="distanceBetweenVertices">distance entre deux sommets du mesh</param>
+	///<param name="levelData">données du terrain</param>
+	///<param name="tileLengthInVertices">longueur d'un secteur en nombre de sommets de mesh</param>
+	///<param name="tileWidthInVertices">longueur d'un secteur en nombre de sommets de mesh</param>
+	public void GenerateGrass(int levelLength, int levelWidth, float distanceBetweenVertices, LevelData levelData, int tileLengthInVertices, int tileWidthInVertices) {
+		if (densite <= 0) return;
+		float aire = distanceBetweenVertices * distanceBetweenVertices;
 
 		float levelSizeX = levelWidth * distanceBetweenVertices;
-		float levelSizeZ = levelDepth * distanceBetweenVertices;
+		float levelSizeZ = levelLength * distanceBetweenVertices;
 
-		for (int zIndex = 0; zIndex < levelDepth; zIndex++) {
+		for (int zIndex = 0; zIndex < levelLength; zIndex++) {
 			for (int xIndex = 0; xIndex < levelWidth; xIndex++) {
-                int selector = Random.Range(0, 3);
-                float noiseSize = Random.Range(0.8f, 4f);
                 // convert from Level Coordinate System to Tile Coordinate System and retrieve the corresponding TileData
                 TileCoordinate tileCoordinate = levelData.ConvertToTileCoordinate (zIndex, xIndex);
 				TileData tileData = levelData.tilesData [tileCoordinate.tileZIndex, tileCoordinate.tileXIndex];
@@ -30,18 +38,24 @@ public class GrassGeneration : MonoBehaviour {
 
 				// grass can only be placed on lowland and mountain
 				if (terrainType.name == "lowland") {
+					
+					Vector3 realPos = new Vector3(
+						(xIndex - tileWidthInVertices/2) * distanceBetweenVertices,
+						meshVertices[vertexIndex].y + 5,
+						(zIndex - tileLengthInVertices/2) * distanceBetweenVertices);
+					float generation = Mathf.Floor(aire * this.densite);
+					generation += (Random.Range(0f, 1f) < generation % 1) ? 1 : 0;
 
-                    if(UnityEngine.Random.Range(0.0f, 1.0f) > 0.2){
-                        for(int i = 0; i < 10; i++){
-                            float rndOffsetX = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
-                            float rndOffsetZ = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
-                            Vector3 grassPosition = new Vector3((xIndex - tileWidthInVertices/2)*distanceBetweenVertices + rndOffsetX, 
-                                                                 meshVertices[vertexIndex].y + 5, 
-                                                                 (zIndex - tileDepthInVertices/2)*distanceBetweenVertices + rndOffsetZ);
-                            GameObject grass = Instantiate (this.grassPrefab[selector], grassPosition, Quaternion.identity) as GameObject;
-                            grass.transform.localScale = new Vector3(noiseSize, noiseSize, noiseSize); 
-                        }
-                    }
+					for(int i = 0; i < generation; i++){
+                		int selector = Random.Range(0, this.grassPrefab.Length);
+                		float noiseSize = Random.Range(0.8f, 2f);
+						Vector3 grassPosition = new Vector3(Random.Range(-0.5f, 0.5f) * distanceBetweenVertices, 0, 
+							Random.Range(-0.5f, 0.5f) * distanceBetweenVertices);
+						grassPosition += realPos;
+
+						GameObject grass = GameObject.Instantiate (this.grassPrefab[selector], grassPosition, Quaternion.identity);
+						grass.transform.localScale = new Vector3(noiseSize, noiseSize, noiseSize); 
+					}
 				}
 			}
 		}
