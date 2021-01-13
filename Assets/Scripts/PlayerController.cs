@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : DinosaurAbstract
 {
 
-    Animator anim;
     Vector3 rot = Vector3.zero;
     float rotSpeed = 80f;
     float movementSpeed = 10f;
@@ -13,11 +13,32 @@ public class PlayerController : MonoBehaviour
     public Camera mycam;
     private Rigidbody body;
 
+    public override void die()
+    {
+        this.anim.Play("Die");
+        Destroy(this.gameObject, 2.0f);
+        enabled = false;
+    }
+
+    public override void runTo(Vector3 position)
+    {
+    }
+
+
+    public override void attack()
+    {
+        this.is_attacking = true;
+    }
+
+    public override void growUp()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
 
-        anim = gameObject.GetComponent<Animator>();
+        this.anim = gameObject.GetComponent<Animator>();
         gameObject.transform.eulerAngles = rot;
         gameObject.transform.localScale = size;
         body = gameObject.GetComponent<Rigidbody>();
@@ -25,8 +46,10 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         CheckKey();
         gameObject.transform.eulerAngles = rot;
         transform.LookAt(mycam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y*2, Input.mousePosition.x)));
@@ -37,21 +60,21 @@ public class PlayerController : MonoBehaviour
     void CheckKey()
     {
         // Walk
-        if (anim.IsInTransition(0))
+        if (this.anim.IsInTransition(0))
         {
-            anim.Play("Idle");
+            this.anim.Play("Idle");
         }
         if (Input.GetKey(KeyCode.Z))
         {
   
-            anim.Play("Run");
+            this.anim.Play("Run");
              body.MovePosition(transform.position + transform.forward * Time.deltaTime * movementSpeed);
             //body.transform.position += transform.forward * Time.deltaTime * movementSpeed;
 
         }
         else if (Input.GetKeyUp(KeyCode.Z))
         {
-            anim.Play("Idle");
+            this.anim.Play("Idle");
         }
         if (Input.GetKey(KeyCode.Q))
         {
@@ -65,20 +88,21 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
       
-            anim.Play("Walk");
+            this.anim.Play("Walk");
             body.MovePosition(transform.position - transform.forward * Time.deltaTime * movementSpeed/2);
 
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            anim.Play("Idle");
+            this.anim.Play("Idle");
         }
         if (Input.GetKey(KeyCode.Space))
         {
     
-            if (anim.IsInTransition(0) || (this.anim.GetCurrentAnimatorStateInfo(0).IsName("Idle")))
+            if (this.anim.IsInTransition(0) || (this.anim.GetCurrentAnimatorStateInfo(0).IsName("Idle")))
             {
-                anim.Play("Attack");
+                this.anim.Play("Attack");
+                this.attack();
             }
             
         }
@@ -88,8 +112,12 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.localScale += new Vector3(0.001f, 0.001f, 0.001f);
 
         }
+    }
 
-
+    void OnTriggerEnter(Collider other){
+        if(/*this.is_attacking &&*/ Array.IndexOf(this.prey, other.gameObject) > -1){
+            other.gameObject.GetComponent<DinosaurAbstract>().die();
+        }
     }
 
 

@@ -2,37 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TRexController : MonoBehaviour, DinosaurInterface
+public class TRexController : DinosaurAbstract
 {
-    public float speed;
-    Animator anim;
 
-    public void die()
+    public override void die()
     {
-        anim.Play("Base Layer.Armature|TRex_Death");
-        Destroy(this);
+        anim.Play("Die");
+        Destroy(this.gameObject, 2.0f);
+        enabled = false;
     }
 
-    public void runTo(Vector3 position)
+    public override void runTo(Vector3 position)
     {
-        float x = 1;
     }
 
-    public void setSpeed(float new_speed)
-    {
-        this.speed = new_speed;
-        anim.speed = new_speed;
-    }
 
     //Calls growUp is the target dies
-    public void attack(DinosaurInterface target)
+    public override void attack()
     {
-        float x = 1;
     }
 
-    public void growUp()
+    public override void growUp()
     {
-        float size = 1;
     }
 
     void Start()
@@ -41,9 +32,8 @@ public class TRexController : MonoBehaviour, DinosaurInterface
     }
 
 
-    void Update()
+    protected override void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-            die();
+        base.Update();
     }
 }
