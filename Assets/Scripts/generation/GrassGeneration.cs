@@ -12,7 +12,7 @@ public class GrassGeneration : GenerationTile {
 		return this.densite <= 0;
 	}
 
-	public override void generationSubTile(Vector3 realPos, float distanceBetweenVertices, TerrainType terrainType) {
+	protected override void generationSubTile(Vector3 realPos, float distanceBetweenVertices, TerrainType terrainType) {
 
 		// grass can only be placed on lowland and mountain
 		if (terrainType.name == "lowland") {
@@ -22,8 +22,8 @@ public class GrassGeneration : GenerationTile {
 			for(int i = 0; i < generation; i++){
 				int selector = Random.Range(0, this.grassPrefab.Length);
 				float noiseSize = Random.Range(0.8f, 2f);
-				Vector3 grassPosition = new Vector3(Random.Range(-0.5f, 0.5f) * distanceBetweenVertices, 0, 
-					Random.Range(-0.5f, 0.5f) * distanceBetweenVertices);
+				Vector3 grassPosition = new Vector3(Random.Range(0f, 1f) * distanceBetweenVertices, 0, 
+					Random.Range(0f, 1f) * distanceBetweenVertices);
 				grassPosition += realPos;
 
 				GameObject grass = GameObject.Instantiate (this.grassPrefab[selector], grassPosition, Quaternion.identity);

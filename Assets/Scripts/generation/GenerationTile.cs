@@ -44,5 +44,5 @@ public abstract class GenerationTile : MonoBehaviour {
 		return false;
 	}
 
-	public abstract void generationSubTile(Vector3 realPos, float distanceBetweenVertices, TerrainType terrainType);
+	protected abstract void generationSubTile(Vector3 realPos, float distanceBetweenVertices, TerrainType terrainType);
 }
