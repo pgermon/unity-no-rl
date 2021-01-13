@@ -9,7 +9,7 @@ public class RaptorAI : DinosaurAbstract
     //public GameObject threat;
     NavMeshAgent agent;
     Vector3 lastPos;
-     public ParticleSystem[] blood;
+    protected ParticleSystem[] blood;
 
     public override void runTo(Vector3 position) 
     {
@@ -39,18 +39,21 @@ public class RaptorAI : DinosaurAbstract
         this.anim.Play("Base Layer.Idle");
         agent = GetComponent<NavMeshAgent>();
         lastPos = transform.position;
-
+        blood = GetComponentsInChildren<ParticleSystem>();
         foreach (var stain in blood)
         {
             stain.Stop();
         }
+      
     }
 
     // Update is called once per frame
     protected override void Update()
     {
+        
         base.Update();
 
+        this.speed *= this.health;
         if(blood.Length == 6){
             if (this.health<0.8)
             {
