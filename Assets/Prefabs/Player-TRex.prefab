@@ -997,7 +997,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   predators: []
-  prey: []
+  prey:
+  - {fileID: 6345217691005890362, guid: 31e9c3efc70a65446af34d1b9e82fab9, type: 3}
   mycam: {fileID: 7832242564601413846}
 --- !u!1 &7171964186547451142
 GameObject:

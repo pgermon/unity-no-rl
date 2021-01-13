@@ -21,9 +21,36 @@ public abstract class DinosaurAbstract : MonoBehaviour
 
     /* Dinosaur methods */
     public abstract void runTo(Vector3 position);
-    public abstract void attack();
-    public abstract void growUp();
-    public abstract void die();
+
+    public virtual void growUp(float g){
+        this.gameObject.transform.localScale += new Vector3(g, g, g);
+    }
+
+    public virtual void attack(){
+        this.anim.Play("Base Layer.Attack");
+    }
+
+    public virtual void die(){
+        this.anim.Play("Base Layer.Die");
+        Destroy(this.gameObject, 2.0f);
+        enabled = false;
+    }
+
+    protected virtual void Update(){
+        this.health -= 0.0001f;
+
+        if(this.health <= 0){
+            this.die();
+        }
+
+        if(!this.is_attacking && this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack")){
+            this.is_attacking = true;
+        }
+
+        if(this.is_attacking && !this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack")){
+            this.is_attacking = false;
+        }
+    }
 
 
     /* GETTERS AND SETTERS */
@@ -39,6 +66,9 @@ public abstract class DinosaurAbstract : MonoBehaviour
 
     public virtual void increaseHealth(float i){
         this.health += i;
+        if(this.health > 1f){
+            this.health = 1f;
+        }
     }
 
     // Speed
@@ -49,13 +79,5 @@ public abstract class DinosaurAbstract : MonoBehaviour
     public virtual void setSpeed(float new_speed){
         this.speed = new_speed;
         this.anim.speed = new_speed;
-    }
-
-    protected virtual void Update(){
-        this.health -= 0.0001f;
-
-        if(this.health <= 0){
-            this.die();
-        }
     }
 }

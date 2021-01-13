@@ -23,22 +23,11 @@ public class RaptorEscapingAI : DinosaurAbstract
         agent.SetDestination(newPos);
     }
 
-    public override void die()
-    {
-        this.anim.Play("Die");
-        Destroy(this.gameObject, 2.0f);
-        enabled = false;
-    }
-
-    //Calls growUp is the target dies
-    public override void attack(){}
-    public override void growUp(){}
-
     // Start is called before the first frame update
     void Start()
     {
         this.anim = GetComponent<Animator>();
-        this.anim.Play("Idle");
+        this.anim.Play("Base Layer.Idle");
         agent = GetComponent<NavMeshAgent>();
         lastPos = transform.position;
     }
@@ -49,10 +38,10 @@ public class RaptorEscapingAI : DinosaurAbstract
         base.Update();
 
         if (Vector3.Distance(agent.velocity, new Vector3(0f,0f,0f))<0.1)
-            this.anim.Play("Idle");
+            this.anim.Play("Base Layer.Idle");
         else
-            this.anim.Play("Run");
-        if (Vector3.Distance(transform.position, threat.transform.position)<25f)
+            this.anim.Play("Base Layer.Run");
+        /*if (Vector3.Distance(transform.position, threat.transform.position)<25f)
             runFrom();
         else
         {
@@ -63,7 +52,7 @@ public class RaptorEscapingAI : DinosaurAbstract
                 targetDir = transform.position + targetDir.normalized * 25;
                 agent.SetDestination(targetDir);
             }
-        }
+        }*/
         lastPos = transform.position;
     }
 

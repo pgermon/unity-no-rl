@@ -763,7 +763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f6f0eb63792fe4ba4d3fe230909693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  health: 1
+  predators: []
+  prey: []
   threat: {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674, type: 3}
 --- !u!195 &1271975280590707013
 NavMeshAgent:

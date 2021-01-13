@@ -13,26 +13,11 @@ public class PlayerController : DinosaurAbstract
     public Camera mycam;
     private Rigidbody body;
 
-    public override void die()
-    {
-        this.anim.Play("Die");
-        Destroy(this.gameObject, 2.0f);
-        enabled = false;
-    }
 
     public override void runTo(Vector3 position)
     {
     }
 
-
-    public override void attack()
-    {
-        this.is_attacking = true;
-    }
-
-    public override void growUp()
-    {
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -62,19 +47,19 @@ public class PlayerController : DinosaurAbstract
         // Walk
         if (this.anim.IsInTransition(0))
         {
-            this.anim.Play("Idle");
+            this.anim.Play("Base Layer.Idle");
         }
         if (Input.GetKey(KeyCode.Z))
         {
   
-            this.anim.Play("Run");
+            this.anim.Play("Base Layer.Run");
              body.MovePosition(transform.position + transform.forward * Time.deltaTime * movementSpeed);
             //body.transform.position += transform.forward * Time.deltaTime * movementSpeed;
 
         }
         else if (Input.GetKeyUp(KeyCode.Z))
         {
-            this.anim.Play("Idle");
+            this.anim.Play("Base Layer.Idle");
         }
         if (Input.GetKey(KeyCode.Q))
         {
@@ -88,20 +73,19 @@ public class PlayerController : DinosaurAbstract
         if (Input.GetKey(KeyCode.S))
         {
       
-            this.anim.Play("Walk");
+            this.anim.Play("Base Layer.Walk");
             body.MovePosition(transform.position - transform.forward * Time.deltaTime * movementSpeed/2);
 
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            this.anim.Play("Idle");
+            this.anim.Play("Base Layer.Idle");
         }
         if (Input.GetKey(KeyCode.Space))
         {
     
             if (this.anim.IsInTransition(0) || (this.anim.GetCurrentAnimatorStateInfo(0).IsName("Idle")))
             {
-                this.anim.Play("Attack");
                 this.attack();
             }
             
@@ -115,9 +99,14 @@ public class PlayerController : DinosaurAbstract
     }
 
     void OnTriggerEnter(Collider other){
-        if(/*this.is_attacking &&*/ Array.IndexOf(this.prey, other.gameObject) > -1){
-            other.gameObject.GetComponent<DinosaurAbstract>().die();
+        if(this.is_attacking && Array.IndexOf(this.prey, other.gameObject) > -1){
+            this.is_attacking = false;
+            other.gameObject.GetComponent<DinosaurAbstract>().increaseHealth(-0.1f);
+            if(other.gameObject.GetComponent<DinosaurAbstract>().getHealth() <= 0){
+                this.growUp(0.05f);
+            }
         }
+        
     }
 
 
