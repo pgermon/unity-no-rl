@@ -32,7 +32,7 @@ public abstract class GenerationTile : MonoBehaviour {
 
 				Vector3 realPos = new Vector3(
 					(xIndex - tileWidthInVertices/2) * distanceBetweenVertices,
-					meshVertices[vertexIndex].y + 5,
+					meshVertices[vertexIndex].y,
 					(zIndex - tileLengthInVertices/2) * distanceBetweenVertices);
 
 				this.generationSubTile(realPos, distanceBetweenVertices, terrainType);

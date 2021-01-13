@@ -10,8 +10,9 @@ public class TRexController : DinosaurAbstract
     {
     }
 
-    void Start()
-    {
+    protected override void Start()
+    {   
+        base.Start();
         anim = GetComponent<Animator>();
     }
 

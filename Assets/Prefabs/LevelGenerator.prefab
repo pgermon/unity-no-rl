@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelWidthInTiles: 5
-  levelDepthInTiles: 5
+  levelLengthInTiles: 5
   tilePrefab: {fileID: 8995418540001193452, guid: 69176842c5ffa434cb3b663bb3418035,
     type: 3}
   centerVertexZ: 275
@@ -119,6 +119,7 @@ MonoBehaviour:
   - {fileID: 5707813131339405077, guid: b995a96a7ca36d04b851e46870b5aadf, type: 3}
   - {fileID: 3637134996410867462, guid: 9c6178fe943216540b276b975dafae16, type: 3}
   - {fileID: 1810836374240917309, guid: 962996e23ffcbc44d92fb20cd03940cd, type: 3}
+  densite: 0.02
 --- !u!114 &424913933472875716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +135,8 @@ MonoBehaviour:
   rockPrefabs:
   - {fileID: 8672003455025440434, guid: aa0ba387f794005419a74fdfff3da4df, type: 3}
   - {fileID: 3133429536943949068, guid: 25cb56d59f80f614b9da0e9a36c48a05, type: 3}
+  normalSpawn: 0.9
+  mountainSpawn: 0.6
 --- !u!65 &513549473
 BoxCollider:
   m_ObjectHideFlags: 0

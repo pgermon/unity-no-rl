@@ -20,9 +20,9 @@ public class PlayerController : DinosaurAbstract
 
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-
+        base.Start();
         this.anim = gameObject.GetComponent<Animator>();
         gameObject.transform.eulerAngles = rot;
         gameObject.transform.localScale = size;

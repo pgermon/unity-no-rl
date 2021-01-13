@@ -17,9 +17,10 @@ public class RaptorAI : DinosaurAbstract
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        //Debug.Log(this.gameObject.name.Split(' ')[0]);
+        base.Start();
+
         this.anim = GetComponent<Animator>();
         this.anim.Play("Base Layer.Idle");
         agent = GetComponent<NavMeshAgent>();
@@ -71,8 +72,11 @@ public class RaptorAI : DinosaurAbstract
             /* Run from predators */
             bool run = false;
             foreach(GameObject predator in this.predators){
-                if (Vector3.Distance(this.transform.position, predator.transform.position) < 25f){
-                    Debug.Log("Running from predator");
+                if(predator == null){
+                    this.predators.Remove(predator);
+                }
+                else if (Vector3.Distance(this.transform.position, predator.transform.position) < 25f){
+                    //Debug.Log("Running from predator");
                     run = true;
                     runFrom(predator);
                 }
@@ -82,8 +86,11 @@ public class RaptorAI : DinosaurAbstract
                 /* Chase prey */
                 bool chase = false;
                 foreach (GameObject prey in this.preys){
-                    if(Vector3.Distance(this.transform.position, prey.transform.position) < 10f){
-                        Debug.Log("Attacking prey / is_attacking = " + this.is_attacking);
+                    if(prey == null){
+                        this.predators.Remove(prey);
+                    }
+                    else if(Vector3.Distance(this.transform.position, prey.transform.position) < 10f){
+                        //Debug.Log("Attacking prey / is_attacking = " + this.is_attacking);
                         chase = true;
                         if(!this.is_attacking){
                             attack();
@@ -91,7 +98,7 @@ public class RaptorAI : DinosaurAbstract
                         chasePrey(prey);
                     }
                     else if(Vector3.Distance(this.transform.position, prey.transform.position) < 25f){
-                        Debug.Log("Chasing prey");
+                        //Debug.Log("Chasing prey");
                         chase = true;
                         chasePrey(prey);
                     }
@@ -101,7 +108,7 @@ public class RaptorAI : DinosaurAbstract
                     float rd = Random.value;
                     if (agent.enabled && rd < 0.02) 
                     {
-                        Debug.Log("random direction");
+                        //Debug.Log("random direction");
                         Vector3 targetDir = Quaternion.AngleAxis(Random.Range(-30.0f, 30.0f), transform.up) * transform.forward;
                         targetDir = transform.position + targetDir.normalized * 25;
                         agent.SetDestination(targetDir);
