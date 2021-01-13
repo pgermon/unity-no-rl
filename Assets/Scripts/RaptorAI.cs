@@ -35,6 +35,7 @@ public class RaptorAI : DinosaurAbstract
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("ok");
         this.anim = GetComponent<Animator>();
         this.anim.Play("Base Layer.Idle");
         agent = GetComponent<NavMeshAgent>();

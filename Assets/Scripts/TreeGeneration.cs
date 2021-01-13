@@ -46,7 +46,7 @@ public class TreeGeneration : MonoBehaviour {
 				// check if it is a water terrain. Trees cannot be placed over the water
 				if (terrainType.name != "water") {
 					float treeValue = treeMap [zIndex, xIndex];
-                    float noiseSize = Random.Range(0.2f, 3f);
+                    float noiseSize = Random.Range(0.8f, 5f);
                     //int terrainTypeIndex = terrainType.index;
 
                     // compares the current tree noise value to the neighbor ones

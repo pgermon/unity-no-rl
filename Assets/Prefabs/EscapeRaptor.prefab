@@ -29375,14 +29375,7 @@ MonoBehaviour:
   health: 1
   predators:
   - {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674, type: 3}
-  prey: []
-  blood:
-  - {fileID: 756037130}
-  - {fileID: 742084912}
-  - {fileID: 964975513}
-  - {fileID: 884240057}
-  - {fileID: 1437226444}
-  - {fileID: 1665086702}
+  preys: []
 --- !u!195 &1271975280590707013
 NavMeshAgent:
   m_ObjectHideFlags: 0
