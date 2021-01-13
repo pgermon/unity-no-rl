@@ -8,6 +8,7 @@ public class TreeGeneration : MonoBehaviour {
 	private NoiseMapGeneration noiseMapGeneration;
 
 	[SerializeField]
+	[Tooltip("Octaves du bruit de Perlin")]
 	private Wave[] waves;
 
 	[SerializeField]
@@ -19,7 +20,7 @@ public class TreeGeneration : MonoBehaviour {
 	[SerializeField]
 	private GameObject[] treePrefab;
 
-	public void GenerateTrees(int levelDepth, int levelWidth, float distanceBetweenVertices, LevelData levelData, int tileDepthInVertices, int tileWidthInVertices) {
+	public void GenerateTrees(int levelDepth, int levelWidth, float distanceBetweenVertices, LevelData levelData, int tileDepthInVertices, int tileLengthInVertices) {
 		// generate a tree noise map using Perlin Noise
 		float[,] treeMap = this.noiseMapGeneration.GeneratePerlinNoiseMap (levelDepth, levelWidth, this.levelScale, 0, 0, this.waves);
 
@@ -43,10 +44,15 @@ public class TreeGeneration : MonoBehaviour {
 				// get the biome of this coordinate
 				//Biome biome = tileData.chosenBiomes[tileCoordinate.coordinateZIndex, tileCoordinate.coordinateXIndex];
 
+				Vector3 realPos = new Vector3(
+					(xIndex - tileLengthInVertices/2) * distanceBetweenVertices,
+					meshVertices[vertexIndex].y + 5,
+					(zIndex - tileLengthInVertices/2) * distanceBetweenVertices);
+
 				// check if it is a water terrain. Trees cannot be placed over the water
 				if (terrainType.name != "water") {
 					float treeValue = treeMap [zIndex, xIndex];
-                    float noiseSize = Random.Range(0.2f, 3f);
+                    float noiseSize = Random.Range(0.8f, 5f);
                     //int terrainTypeIndex = terrainType.index;
 
                     // compares the current tree noise value to the neighbor ones
@@ -67,15 +73,13 @@ public class TreeGeneration : MonoBehaviour {
 
 					// if the current tree noise value is the maximum one, place a tree in this location
 					if (treeValue == maxValue) {
-						float rndOffsetX = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
-                        float rndOffsetZ = UnityEngine.Random.Range(-1.0f, 1.0f) * 4;
-						Vector3 treePosition = new Vector3((xIndex - tileWidthInVertices / 2) * distanceBetweenVertices + rndOffsetX, 
-															meshVertices[vertexIndex].y + 5, 
-															(zIndex - tileDepthInVertices / 2) * distanceBetweenVertices + rndOffsetZ);
+						Vector3 treePosition = new Vector3(Random.Range(0f, 1f) * distanceBetweenVertices, 0, 
+							Random.Range(0f, 1f) * distanceBetweenVertices);
+						treePosition += realPos;
 						
 						int treeType = terrainType.index;
 						if(terrainType.index == 1 || terrainType.index == 2){
-							treeType = UnityEngine.Random.Range(1, 4);
+							treeType = UnityEngine.Random.Range(1, this.treePrefab.Length);
 						}
 						
 						GameObject tree = Instantiate (this.treePrefab[treeType], treePosition, Quaternion.identity) as GameObject;
