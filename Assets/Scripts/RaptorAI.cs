@@ -7,7 +7,6 @@ public class RaptorAI : DinosaurAbstract
 {
     
     //public GameObject threat;
-    NavMeshAgent agent;
     Vector3 lastPos;
     protected ParticleSystem[] blood;
 
@@ -17,24 +16,10 @@ public class RaptorAI : DinosaurAbstract
         agent.SetDestination(dest);*/
     }
 
-    public void runFrom(GameObject predator)
-    {
-        if(agent.enabled){
-            Vector3 dirToThreat = transform.position - predator.transform.position;
-            Vector3 newPos = transform.position + dirToThreat;
-            agent.SetDestination(newPos);
-        }
-    }
-
-    public void chasePrey(GameObject prey){
-        if(agent.enabled){
-            agent.SetDestination(prey.transform.position);
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log(this.gameObject.name.Split(' ')[0]);
         this.anim = GetComponent<Animator>();
         this.anim.Play("Base Layer.Idle");
         agent = GetComponent<NavMeshAgent>();
@@ -80,47 +65,51 @@ public class RaptorAI : DinosaurAbstract
             else{
                 this.anim.Play("Base Layer.Run");
             }
-        }
-
-
-        /* Run from predators */
-        bool run = false;
-        foreach(GameObject predator in this.predators){
-            if (Vector3.Distance(this.transform.position, predator.transform.position) < 25f){
-                //Debug.Log("Running from predator");
-                run = true;
-                runFrom(predator);
-            }
-        }
-
-        /* Chase prey */
-        bool chase = false;
-        foreach (GameObject prey in this.preys){
-            if(Vector3.Distance(this.transform.position, prey.transform.position) < 10f){
-                Debug.Log("Attacking prey / is_attacking = " + this.is_attacking);
-                chase = true;
-                if(!this.is_attacking){
-                    attack();
-                }
-                chasePrey(prey);
-            }
-            else if(Vector3.Distance(this.transform.position, prey.transform.position) < 25f){
-                Debug.Log("Chasing prey");
-                chase = true;
-                chasePrey(prey);
-            }
-        }
         
-        if(!run && !chase){
-            float rd = Random.value;
-            if (agent.enabled && rd < 0.02) 
-            {
-                //Debug.Log("random direction");
-                Vector3 targetDir = Quaternion.AngleAxis(Random.Range(-30.0f, 30.0f), transform.up) * transform.forward;
-                targetDir = transform.position + targetDir.normalized * 25;
-                agent.SetDestination(targetDir);
+
+
+            /* Run from predators */
+            bool run = false;
+            foreach(GameObject predator in this.predators){
+                if (Vector3.Distance(this.transform.position, predator.transform.position) < 25f){
+                    Debug.Log("Running from predator");
+                    run = true;
+                    runFrom(predator);
+                }
+            }
+
+            if(!run){
+                /* Chase prey */
+                bool chase = false;
+                foreach (GameObject prey in this.preys){
+                    if(Vector3.Distance(this.transform.position, prey.transform.position) < 10f){
+                        Debug.Log("Attacking prey / is_attacking = " + this.is_attacking);
+                        chase = true;
+                        if(!this.is_attacking){
+                            attack();
+                        }
+                        chasePrey(prey);
+                    }
+                    else if(Vector3.Distance(this.transform.position, prey.transform.position) < 25f){
+                        Debug.Log("Chasing prey");
+                        chase = true;
+                        chasePrey(prey);
+                    }
+                }
+
+                if(!chase){
+                    float rd = Random.value;
+                    if (agent.enabled && rd < 0.02) 
+                    {
+                        Debug.Log("random direction");
+                        Vector3 targetDir = Quaternion.AngleAxis(Random.Range(-30.0f, 30.0f), transform.up) * transform.forward;
+                        targetDir = transform.position + targetDir.normalized * 25;
+                        agent.SetDestination(targetDir);
+                    }
+                }
             }
         }
+         
         lastPos = transform.position;
     }
 }
