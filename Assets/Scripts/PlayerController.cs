@@ -103,7 +103,7 @@ public class PlayerController : DinosaurAbstract
             this.is_attacking = false;
             other.gameObject.GetComponent<DinosaurAbstract>().increaseHealth(-0.1f);
             if(other.gameObject.GetComponent<DinosaurAbstract>().getHealth() <= 0){
-                this.growUp(0.05f);
+                this.growUp(0.01f);
             }
         }
         
