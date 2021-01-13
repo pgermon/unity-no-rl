@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PlayerController : DinosaurAbstract
 {
@@ -104,6 +105,7 @@ public class PlayerController : DinosaurAbstract
             other.gameObject.GetComponent<DinosaurAbstract>().increaseHealth(-0.1f);
             if(other.gameObject.GetComponent<DinosaurAbstract>().getHealth() <= 0){
                 this.growUp(0.05f);
+                this.increaseHealth(0.5f);
             }
         }
         

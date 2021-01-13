@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelGeneration : MonoBehaviour {
 
@@ -13,8 +14,8 @@ public class LevelGeneration : MonoBehaviour {
 	[SerializeField]
 	private float centerVertexZ, maxDistanceZ;
 
-	/*[SerializeField]
-	private RiverGeneration riverGeneration;*/
+	[SerializeField]
+	private NavMeshSurface surface;
 
 	void Start() {
 		GenerateMap ();
@@ -63,6 +64,8 @@ public class LevelGeneration : MonoBehaviour {
 		
 		// generate rivers for the level
 		//riverGeneration.GenerateRivers(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, levelData);
+	
+		surface.BuildNavMesh();
 	}
 }
 

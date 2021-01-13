@@ -764,9 +764,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  predators: []
+  predators:
+  - {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674, type: 3}
   prey: []
-  threat: {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674, type: 3}
 --- !u!195 &1271975280590707013
 NavMeshAgent:
   m_ObjectHideFlags: 0
