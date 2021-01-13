@@ -32,7 +32,7 @@ public abstract class DinosaurAbstract : MonoBehaviour
 
     public virtual void die(){
         this.anim.Play("Base Layer.Die");
-        Destroy(this.gameObject, 2.0f);
+        Destroy(this.gameObject, 5.0f);
         enabled = false;
     }
 
