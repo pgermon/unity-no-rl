@@ -75,6 +75,7 @@ public class TreeGeneration : MonoBehaviour {
 					if (treeValue == maxValue) {
 						Vector3 treePosition = new Vector3(Random.Range(0f, 1f) * distanceBetweenVertices, 0, 
 							Random.Range(0f, 1f) * distanceBetweenVertices);
+						treePosition += realPos;
 						
 						int treeType = terrainType.index;
 						if(terrainType.index == 1 || terrainType.index == 2){

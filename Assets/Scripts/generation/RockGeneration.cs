@@ -28,6 +28,7 @@ public class RockGeneration : GenerationTile {
 
 				Vector3 rockPosition = new Vector3(Random.Range(0f, 1f) * distanceBetweenVertices, 0, 
 					Random.Range(0f, 1f) * distanceBetweenVertices);
+				rockPosition += realPos;
 				GameObject rock = Instantiate (this.rockPrefabs[rockType], rockPosition, Quaternion.Euler(0, noiseRotation, 0)) as GameObject;
 				rock.transform.localScale = new Vector3(noiseSize, noiseSize, noiseSize);
 			}
