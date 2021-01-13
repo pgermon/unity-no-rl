@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class PlayerController : DinosaurAbstract
 {
@@ -98,18 +97,4 @@ public class PlayerController : DinosaurAbstract
 
         }
     }
-
-    void OnTriggerEnter(Collider other){
-        if(this.is_attacking && Array.IndexOf(this.prey, other.gameObject) > -1){
-            this.is_attacking = false;
-            other.gameObject.GetComponent<DinosaurAbstract>().increaseHealth(-0.1f);
-            if(other.gameObject.GetComponent<DinosaurAbstract>().getHealth() <= 0){
-                this.growUp(0.05f);
-                this.increaseHealth(0.5f);
-            }
-        }
-        
-    }
-
-
 }
