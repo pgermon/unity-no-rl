@@ -773,10 +773,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5590430361433327419}
+  - component: {fileID: -791900598884790193}
   - component: {fileID: 3193175918860538960}
   - component: {fileID: -5308553056939825144}
   - component: {fileID: -7437063373451694019}
-  - component: {fileID: -791900598884790193}
   - component: {fileID: 8928395810631216414}
   - component: {fileID: -4338299539717972665}
   m_Layer: 12
@@ -802,6 +802,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-791900598884790193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5106767962723491201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f6f0eb63792fe4ba4d3fe230909693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  predators:
+  - {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674, type: 3}
+  preys: []
 --- !u!95 &3193175918860538960
 Animator:
   serializedVersion: 3
@@ -850,22 +866,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.8230753, y: 8.8479, z: 13.2359915}
   m_Center: {x: -0.2518921, y: 4.9647636, z: -0.5670581}
---- !u!114 &-791900598884790193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5106767962723491201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f6f0eb63792fe4ba4d3fe230909693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  predators:
-  - {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674, type: 3}
-  prey: []
 --- !u!195 &8928395810631216414
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -29283,10 +29283,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6000322421450503552}
+  - component: {fileID: 1271975280590707010}
   - component: {fileID: 6111336379125572377}
   - component: {fileID: 1271975280590707015}
   - component: {fileID: 6700295536801890630}
-  - component: {fileID: 1271975280590707010}
   - component: {fileID: 1271975280590707013}
   - component: {fileID: 1599497615530177963}
   m_Layer: 12
@@ -29312,6 +29312,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1271975280590707010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345217691005890362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f6f0eb63792fe4ba4d3fe230909693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  predators:
+  - {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674, type: 3}
+  preys:
+  - {fileID: 5654692967456846267, guid: 3bbe1d2857504134484b2dbe9611d2bf, type: 3}
 --- !u!95 &6111336379125572377
 Animator:
   serializedVersion: 3
@@ -29360,29 +29377,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4624405, y: 20.325043, z: 10.211819}
   m_Center: {x: 0.10458374, y: 10.902184, z: -1.8386803}
---- !u!114 &1271975280590707010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6345217691005890362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f6f0eb63792fe4ba4d3fe230909693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  predators:
-  - {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674, type: 3}
-  prey: []
-  blood:
-  - {fileID: 756037130}
-  - {fileID: 742084912}
-  - {fileID: 964975513}
-  - {fileID: 884240057}
-  - {fileID: 1437226444}
-  - {fileID: 1665086702}
 --- !u!195 &1271975280590707013
 NavMeshAgent:
   m_ObjectHideFlags: 0

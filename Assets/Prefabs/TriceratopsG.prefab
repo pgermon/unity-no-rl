@@ -598,11 +598,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5718524208759497733}
+  - component: {fileID: 5489633434364665307}
   - component: {fileID: -1091696315102319336}
   - component: {fileID: 1458189138284353552}
   - component: {fileID: -318443290766059807}
   - component: {fileID: 3573208477371454424}
-  - component: {fileID: 5489633434364665307}
   - component: {fileID: 87057884965516476}
   m_Layer: 12
   m_Name: TriceratopsG
@@ -627,6 +627,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5489633434364665307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906557259525701311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f6f0eb63792fe4ba4d3fe230909693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  predators:
+  - {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674, type: 3}
+  preys: []
 --- !u!95 &-1091696315102319336
 Animator:
   serializedVersion: 3
@@ -688,21 +704,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.567087, y: 15.592152, z: 12.329922}
   m_Center: {x: 0.4276533, y: 8.211092, z: 0.17397308}
---- !u!114 &5489633434364665307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4906557259525701311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f6f0eb63792fe4ba4d3fe230909693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  predators: []
-  prey: []
 --- !u!195 &87057884965516476
 NavMeshAgent:
   m_ObjectHideFlags: 0
