@@ -10,15 +10,18 @@ public abstract class DinosaurAbstract : MonoBehaviour
     protected float health = 1.0f;
     protected float speed;
     protected Animator anim;
+    protected UnityEngine.AI.NavMeshAgent agent;
 
     /* Anim states */
     protected bool is_attacking = false;
 
     [SerializeField]
-    protected GameObject[] predators;
+    protected List<string> predators_names;
+    protected List<GameObject> predators;
 
     [SerializeField]
-    protected GameObject[] preys;
+    protected List<string> preys_names;
+    protected List<GameObject> preys;
 
     /* Dinosaur methods */
     public abstract void runTo(Vector3 position);
@@ -33,8 +36,28 @@ public abstract class DinosaurAbstract : MonoBehaviour
 
     public virtual void die(){
         this.anim.Play("Base Layer.Die");
-        Destroy(this.gameObject, 5.0f);
+        Destroy(this.gameObject, 3.0f);
         enabled = false;
+    }
+
+    public virtual void runFrom(GameObject predator)
+    {
+        if(agent.enabled){
+            Vector3 dirToThreat = transform.position - predator.transform.position;
+            Vector3 newPos = transform.position + dirToThreat;
+            agent.SetDestination(newPos);
+        }
+    }
+
+    public virtual void chasePrey(GameObject prey){
+        if(agent.enabled){
+            agent.SetDestination(prey.transform.position);
+        }
+    }
+
+    protected virtual void Start(){
+        this.predators = new List<GameObject>();
+        this.preys = new List<GameObject>();
     }
 
     protected virtual void Update(){
@@ -54,14 +77,36 @@ public abstract class DinosaurAbstract : MonoBehaviour
     }
 
 
-    void OnTriggerEnter(Collider other){
+    // Called by the DetectionHandler script when the detection collider is triggered
+    public void OnDetection(Collider other){
+
+        if(!this.predators.Contains(other.gameObject)){
+
+            // if other's name is in the list of predators it is added to the predators
+            if(this.predators_names.Contains(other.gameObject.name.Split(' ')[0])){
+                this.predators.Add(other.gameObject);
+                Debug.Log(other.gameObject.name.Split(' ')[0] + " added to predators of " + this.gameObject.name);
+            }
+
+            // if other's name is in the list of preys it is added to the preys
+            else if(this.preys_names.Contains(other.gameObject.name.Split(' ')[0])){
+                this.preys.Add(other.gameObject);
+                Debug.Log(other.gameObject.name.Split(' ')[0] + " added to preys of " + this.gameObject.name);
+            }
+        }
+    }
+
+    // Called by the HeadCollisionHandler script when the head collider is triggered
+    public void OnHeadCollision(Collider other){
+
         // if the dino is currently attacking and other is part of its prey array, the dino deals damage to the other
-        if(this.is_attacking && Array.IndexOf(this.preys, other.gameObject) > -1){
+        if(this.is_attacking && this.preys.Contains(other.gameObject)){
             this.is_attacking = false;
-            other.gameObject.GetComponent<DinosaurAbstract>().increaseHealth(-0.1f);
+            other.gameObject.GetComponent<DinosaurAbstract>().decreaseHealth(0.1f, this.gameObject);
 
             // if the dino kills other, it grows up and regens its health
             if(other.gameObject.GetComponent<DinosaurAbstract>().getHealth() <= 0){
+                this.preys.Remove(other.gameObject);
                 this.growUp(0.05f);
                 this.increaseHealth(0.5f);
             }
@@ -85,6 +130,11 @@ public abstract class DinosaurAbstract : MonoBehaviour
         if(this.health > 1f){
             this.health = 1f;
         }
+    }
+
+    public virtual void decreaseHealth(float i, GameObject enemy){
+        this.health -= i;
+        this.runFrom(enemy);
     }
 
     // Speed
