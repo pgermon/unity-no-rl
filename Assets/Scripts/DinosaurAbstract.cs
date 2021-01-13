@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ public abstract class DinosaurAbstract : MonoBehaviour
     protected GameObject[] predators;
 
     [SerializeField]
-    protected GameObject[] prey;
+    protected GameObject[] preys;
 
     /* Dinosaur methods */
     public abstract void runTo(Vector3 position);
@@ -32,7 +33,7 @@ public abstract class DinosaurAbstract : MonoBehaviour
 
     public virtual void die(){
         this.anim.Play("Base Layer.Die");
-        Destroy(this.gameObject, 2.0f);
+        Destroy(this.gameObject, 5.0f);
         enabled = false;
     }
 
@@ -49,6 +50,21 @@ public abstract class DinosaurAbstract : MonoBehaviour
 
         if(this.is_attacking && !this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack")){
             this.is_attacking = false;
+        }
+    }
+
+
+    void OnTriggerEnter(Collider other){
+        // if the dino is currently attacking and other is part of its prey array, the dino deals damage to the other
+        if(this.is_attacking && Array.IndexOf(this.preys, other.gameObject) > -1){
+            this.is_attacking = false;
+            other.gameObject.GetComponent<DinosaurAbstract>().increaseHealth(-0.1f);
+
+            // if the dino kills other, it grows up and regens its health
+            if(other.gameObject.GetComponent<DinosaurAbstract>().getHealth() <= 0){
+                this.growUp(0.05f);
+                this.increaseHealth(0.5f);
+            }
         }
     }
 

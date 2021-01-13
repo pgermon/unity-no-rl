@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshFilter))]
@@ -15,8 +16,8 @@ public class LevelGeneration : MonoBehaviour {
 	[SerializeField]
 	private float centerVertexZ = 0, maxDistanceZ = 0;
 
-	/*[SerializeField]
-	private RiverGeneration riverGeneration;*/
+	[SerializeField]
+	private NavMeshSurface surface;
 
 	void Start() {
 		if (this.levelLengthInTiles <= 0 || this.levelLengthInTiles <= 0) {
@@ -69,6 +70,8 @@ public class LevelGeneration : MonoBehaviour {
 		
 		// generate rivers for the level
 		//riverGeneration.GenerateRivers(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, levelData);
+	
+		surface.BuildNavMesh();
 	}
 }
 

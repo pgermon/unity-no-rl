@@ -999,6 +999,7 @@ MonoBehaviour:
   predators: []
   prey:
   - {fileID: 6345217691005890362, guid: 31e9c3efc70a65446af34d1b9e82fab9, type: 3}
+  - {fileID: 5106767962723491201, guid: ab2e6df2d8c99fb4dbd4c1542cd14390, type: 3}
   mycam: {fileID: 7832242564601413846}
 --- !u!1 &7171964186547451142
 GameObject:
