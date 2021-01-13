@@ -62,10 +62,10 @@ public class LevelGeneration : MonoBehaviour {
 		GetComponent<TreeGeneration>().GenerateTrees (this.levelLengthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
 
 		//generates grass for the level
-		GetComponent<GrassGeneration>().GenerateGrass(this.levelLengthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
+		GetComponent<GrassGeneration>().PopulateLevel(this.levelLengthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
 		
 		//generates rocks for the level
-		GetComponent<RockGeneration>().GenerateRocks(this.levelLengthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
+		GetComponent<RockGeneration>().PopulateLevel(this.levelLengthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
 		
 		// generate rivers for the level
 		//riverGeneration.GenerateRivers(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, levelData);
