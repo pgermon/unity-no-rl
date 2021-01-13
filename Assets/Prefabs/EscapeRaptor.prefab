@@ -700,7 +700,7 @@ Animator:
   m_GameObject: {fileID: 6345217691005890362}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb749a22a3ee536439754e547aac293f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 85174c06bad8b6e4bb8073411c563ff3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -763,7 +763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f6f0eb63792fe4ba4d3fe230909693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  health: 1
+  predators: []
+  prey: []
   threat: {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674, type: 3}
 --- !u!195 &1271975280590707013
 NavMeshAgent:
