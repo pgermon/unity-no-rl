@@ -188,6 +188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Velociraptor
       objectReference: {fileID: 0}
+    - target: {fileID: 6345217691005890362, guid: 6d8d7b73c39efe446b830ed12b72bd04,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d8d7b73c39efe446b830ed12b72bd04, type: 3}
 --- !u!1 &499392288
@@ -275,6 +280,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player-TRex
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949299193271712533, guid: b1fbf48e8dff4ad40b51460162235674,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7726785393419231663, guid: b1fbf48e8dff4ad40b51460162235674,
         type: 3}
@@ -578,6 +588,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParasaurolophusG
       objectReference: {fileID: 0}
+    - target: {fileID: 5654692967456846267, guid: 3bbe1d2857504134484b2dbe9611d2bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bbe1d2857504134484b2dbe9611d2bf, type: 3}
 --- !u!1 &1034864234 stripped
@@ -728,6 +743,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 4812695324117527663, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee455bd96d7bef946b43e7c54648cb05, type: 3}
 --- !u!1001 &3506756558418865662
@@ -741,6 +761,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StegosaurusG
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106767962723491201, guid: ab2e6df2d8c99fb4dbd4c1542cd14390,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5590430361433327419, guid: ab2e6df2d8c99fb4dbd4c1542cd14390,
         type: 3}
@@ -831,6 +856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TriceratopsG
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906557259525701311, guid: 749e8c18b6dfe9041870405cd9a96c1e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5489633434364665307, guid: 749e8c18b6dfe9041870405cd9a96c1e,
         type: 3}

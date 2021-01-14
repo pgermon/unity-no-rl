@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +19,26 @@ public class LevelGeneration : MonoBehaviour {
 
 	[SerializeField]
 	private NavMeshSurface surface;
+
+	// Get a 2D subarray from the 2D array values
+	public float[,] SubArray(float[,] values, int row_min, int row_max, int col_min, int col_max)
+	{
+		int num_rows = row_max - row_min + 1;
+		int num_cols = col_max - col_min + 1;
+		float[,] result = new float[num_rows, num_cols];
+
+		int total_cols = values.GetLength(1);
+		int from_index = (row_min - values.GetLowerBound(0)) * total_cols + (col_min - values.GetLowerBound(1)) + values.GetLowerBound(0);
+		int to_index = 0;
+		for (int row = 0; row < num_rows; row++)
+		{
+			Array.Copy(values, from_index, result, to_index, num_cols);
+			from_index += total_cols;
+			to_index += num_cols;
+		}
+
+		return result;
+	}
 
 	void Start() {
 		if (this.levelLengthInTiles <= 0 || this.levelLengthInTiles <= 0) {
@@ -44,6 +65,8 @@ public class LevelGeneration : MonoBehaviour {
 		// build an empty LevelData object, to be filled with the tiles to be generated
 		LevelData levelData = new LevelData (tileDepthInVertices, tileWidthInVertices, this.levelLengthInTiles, this.levelWidthInTiles);
 
+		float[,] fallOffMap = FallOffGenerator.GenerateFallOffMap(tileDepthInVertices * this.levelLengthInTiles);
+
 		// for each Tile, instantiate a Tile in the correct position
 		for (int xTileIndex = 0; xTileIndex < levelWidthInTiles; xTileIndex++) {
 			for (int zTileIndex = 0; zTileIndex < levelLengthInTiles; zTileIndex++) {
@@ -53,8 +76,14 @@ public class LevelGeneration : MonoBehaviour {
 												   this.gameObject.transform.position.z + zTileIndex * tileLength);
 				// instantiate a new Tile
 				GameObject tile = Instantiate (tilePrefab, tilePosition, Quaternion.identity) as GameObject;
+
+				// Get the subarray of fallOffMap corresponding to the current tile
+				float[,] fallOffTile = SubArray(fallOffMap,
+				 								(levelLengthInTiles - zTileIndex - 1) * tileDepthInVertices, (levelLengthInTiles - zTileIndex) * tileDepthInVertices - 1,
+												(levelWidthInTiles - xTileIndex - 1) * tileWidthInVertices, (levelWidthInTiles - xTileIndex) * tileWidthInVertices - 1);
+
 				// generate the Tile texture and save it in the levelData
-				TileData tileData = tile.GetComponent<TileGeneration> ().GenerateTile (centerVertexZ, maxDistanceZ);
+				TileData tileData = tile.GetComponent<TileGeneration> ().GenerateTile (centerVertexZ, maxDistanceZ, fallOffTile);
 				levelData.AddTileData (tileData, zTileIndex, xTileIndex);
 			}
 		}

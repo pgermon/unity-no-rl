@@ -13,6 +13,9 @@ public class TileGeneration : MonoBehaviour {
     private VisualizationMode visualizationMode;
 
 	[SerializeField]
+	private bool useFallOff = false;
+
+	[SerializeField]
 	private float levelScale;
 
     [SerializeField]
@@ -58,7 +61,7 @@ public class TileGeneration : MonoBehaviour {
 		GenerateTile (centerVertexZ, maxDistanceZ);
 	}*/
 
-	public TileData GenerateTile(float centerVertexZ, float maxDistanceZ) {
+	public TileData GenerateTile(float centerVertexZ, float maxDistanceZ, float[,] fallOffTile) {
 		// calculate tile depth and width based on the mesh vertices
 		Vector3[] meshVertices = GetComponent<MeshFilter>().mesh.vertices;
 		int tileDepth = (int)Mathf.Sqrt (meshVertices.Length);
@@ -70,6 +73,15 @@ public class TileGeneration : MonoBehaviour {
 
 		// generate a heightMap using noise
 		float[,] heightMap = GetComponent<NoiseMapGeneration>().GeneratePerlinNoiseMap (tileDepth, tileWidth, this.levelScale, offsetX, offsetZ, heightWaves);
+
+		if(useFallOff){
+			for (int zIndex = 0; zIndex < tileDepth; zIndex++) {
+				for (int xIndex = 0; xIndex < tileWidth; xIndex++) {
+					//heightMap[xIndex, zIndex] = Mathf.Clamp01(heightMap[xIndex, zIndex] - fallOffTile[xIndex, zIndex]);
+					heightMap[xIndex, zIndex] -= fallOffTile[xIndex, zIndex];
+				}
+			}
+		}
 
         // calculate vertex offset based on the Tile position and the distance between vertices
         Vector3 tileDimensions = GetComponent<MeshFilter>().mesh.bounds.size;
@@ -99,6 +111,10 @@ public class TileGeneration : MonoBehaviour {
                 moistureMap [zIndex, xIndex] -= this.moistureCurve.Evaluate(heightMap [zIndex, xIndex]) * heightMap [zIndex, xIndex];
             }
         }
+
+		// build a Texture2D from the fallOffTile map
+		TerrainType[,] chosenFallOffTerrainTypes = new TerrainType[tileDepth, tileWidth];
+		Texture2D fallOffTexture = BuildTexture (fallOffTile, this.heightTerrainTypes, chosenFallOffTerrainTypes);
 
 		// build a Texture2D from the height map
 		TerrainType[,] chosenHeightTerrainTypes = new TerrainType[tileDepth, tileWidth];
@@ -132,6 +148,10 @@ public class TileGeneration : MonoBehaviour {
             case VisualizationMode.Biome:
                 // assign material texture to be the biomeTexture
                 GetComponent<MeshRenderer>().material.mainTexture = biomeTexture;
+                break;
+			case VisualizationMode.FallOff:
+                // assign material texture to be the biomeTexture
+                GetComponent<MeshRenderer>().material.mainTexture = fallOffTexture;
                 break;
         }
 
@@ -274,7 +294,7 @@ public class BiomeRow {
 	public Biome[] biomes;
 }
 
-enum VisualizationMode {Height, Heat, Moisture, Biome}
+enum VisualizationMode {Height, Heat, Moisture, Biome, FallOff}
 
 // class to store all data for a single tile
 public class TileData {
