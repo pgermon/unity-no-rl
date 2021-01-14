@@ -25,6 +25,7 @@ public class NoiseMapGeneration : MonoBehaviour {
 				noise /= normalization;
 
 				noiseMap [zIndex, xIndex] = noise;
+				//noiseMap[zIndex, xIndex] = Mathf.PerlinNoise (sampleX, sampleZ);
 			}
 		}
 

@@ -113,8 +113,10 @@ public class TileGeneration : MonoBehaviour {
         }
 
 		// build a Texture2D from the fallOffTile map
-		TerrainType[,] chosenFallOffTerrainTypes = new TerrainType[tileDepth, tileWidth];
-		Texture2D fallOffTexture = BuildTexture (fallOffTile, this.heightTerrainTypes, chosenFallOffTerrainTypes);
+		Texture2D fallOffTexture = BuildTextureLerp(fallOffTile);
+
+		// build a Texture2D from the PerlinNoise map
+		Texture2D perlinNoiseTexture = BuildTextureLerp(heightMap);
 
 		// build a Texture2D from the height map
 		TerrainType[,] chosenHeightTerrainTypes = new TerrainType[tileDepth, tileWidth];
@@ -152,6 +154,10 @@ public class TileGeneration : MonoBehaviour {
 			case VisualizationMode.FallOff:
                 // assign material texture to be the biomeTexture
                 GetComponent<MeshRenderer>().material.mainTexture = fallOffTexture;
+                break;
+			case VisualizationMode.PerlinNoise:
+                // assign material texture to be the biomeTexture
+                GetComponent<MeshRenderer>().material.mainTexture = perlinNoiseTexture;
                 break;
         }
 
@@ -191,6 +197,26 @@ public class TileGeneration : MonoBehaviour {
 		tileTexture.SetPixels (colorMap);
 		tileTexture.Apply ();
 
+		return tileTexture;
+	}
+
+	private Texture2D BuildTextureLerp(float[,] heightMap){
+		int tileDepth = heightMap.GetLength (0);
+		int tileWidth = heightMap.GetLength (1);
+		Color[] colorMap = new Color[tileDepth * tileWidth];
+		for (int zIndex = 0; zIndex < tileDepth; zIndex++) {
+			for (int xIndex = 0; xIndex < tileWidth; xIndex++) {
+				// transform the 2D map index is an Array index
+				int colorIndex = zIndex * tileWidth + xIndex;
+				float height = heightMap [zIndex, xIndex];
+				colorMap[colorIndex] = Color.Lerp(Color.white, Color.black, heightMap[xIndex, zIndex]);
+			}
+		}
+
+		Texture2D tileTexture = new Texture2D (tileWidth, tileDepth);
+		tileTexture.wrapMode = TextureWrapMode.Clamp;
+		tileTexture.SetPixels (colorMap);
+		tileTexture.Apply ();
 		return tileTexture;
 	}
 
@@ -294,7 +320,7 @@ public class BiomeRow {
 	public Biome[] biomes;
 }
 
-enum VisualizationMode {Height, Heat, Moisture, Biome, FallOff}
+enum VisualizationMode {Height, Heat, Moisture, Biome, FallOff, PerlinNoise}
 
 // class to store all data for a single tile
 public class TileData {

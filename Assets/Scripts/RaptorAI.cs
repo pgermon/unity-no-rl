@@ -75,7 +75,7 @@ public class RaptorAI : DinosaurAbstract
                 if(predator == null){
                     this.predators.Remove(predator);
                 }
-                else if (Vector3.Distance(this.transform.position, predator.transform.position) < 25f){
+                else if (!run && Vector3.Distance(this.transform.position, predator.transform.position) < 25f){
                     //Debug.Log("Running from predator");
                     run = true;
                     runFrom(predator);

@@ -124,7 +124,7 @@ MonoBehaviour:
   visualizationMode: 0
   useFallOff: 1
   levelScale: 5
-  heightMultiplier: 150
+  heightMultiplier: 200
   heightTerrainTypes:
   - name: water
     threshold: 0.25
@@ -254,7 +254,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   heightWaves:
-  - seed: 1234
+  - seed: 8726
     frequency: 1
     amplitude: 1
   - seed: 5678
