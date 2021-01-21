@@ -15108,7 +15108,7 @@ GameObject:
   - component: {fileID: 8928395810631216414}
   - component: {fileID: 510273934120483938}
   m_Layer: 12
-  m_Name: StegosaurusG
+  m_Name: StegosaurusBB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25076,6 +25076,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 100, y: 20, z: 100}
   m_Center: {x: 0, y: 10, z: 0}
+--- !u!114 &1491137314896788302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970617003615898449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cd3984cc16535940a0b91c00ba56dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dino: {fileID: 510273934120483938}
 --- !u!1 &7216198468892105928
 GameObject:
   m_ObjectHideFlags: 0
@@ -30278,6 +30291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8412685242842390679, guid: acdb1cc8596ec234f88dcea8a8567483, type: 3}
+    - {fileID: 4322998733076819660, guid: acdb1cc8596ec234f88dcea8a8567483, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: acdb1cc8596ec234f88dcea8a8567483, type: 3}
 --- !u!1 &6970617003615898449 stripped
 GameObject:

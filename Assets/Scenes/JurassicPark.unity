@@ -449,22 +449,22 @@ PrefabInstance:
     - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
         type: 3}
       propertyPath: MAX_TRIC
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
         type: 3}
       propertyPath: MAX_PARAS
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
         type: 3}
       propertyPath: MAX_STEGO
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
         type: 3}
       propertyPath: MAX_RAPTORS
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee455bd96d7bef946b43e7c54648cb05, type: 3}
