@@ -8,12 +8,7 @@ public class DinosaursBBSpawner : MonoBehaviour
     private GameObject player, raptor, para, stego, tric;
 
     [SerializeField]
-    private int MAX_RAPTORS, MAX_PARAS, MAX_STEGO, MAX_TRIC = 1;
-
-    private int raptors_count = 0;
-    private int paras_count = 0;
-    private int stego_count = 0;
-    private int tric_count = 0;
+    private int MAX_RAPTORS, MAX_PARAS, MAX_STEGOS, MAX_TRICS = 1;
 
     public void SpawnDinos(int levelLength, int levelWidth, float distanceBetweenVertices, LevelData levelData, int tileLengthInVertices, int tileWidthInVertices)
     {
@@ -25,28 +20,24 @@ public class DinosaursBBSpawner : MonoBehaviour
            GameObject go_raptor = Instantiate(raptor, 
                     GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices), 
                     Quaternion.identity);
-           raptors_count++;
        }
 
        for(int i = 0; i < MAX_PARAS; i++){
            GameObject go_para = Instantiate(para, 
                     GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices), 
                     Quaternion.identity);
-           paras_count++;
        }
-        for (int i = 0; i < MAX_STEGO; i++)
+        for (int i = 0; i < MAX_STEGOS; i++)
         {
             GameObject go_stego = Instantiate(stego,
                      GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices),
                      Quaternion.identity);
-            paras_count++;
         }
-        for (int i = 0; i < MAX_TRIC; i++)
+        for (int i = 0; i < MAX_TRICS; i++)
         {
             GameObject go_tric = Instantiate(tric,
                      GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices),
                      Quaternion.identity);
-            paras_count++;
         }
 
     }
