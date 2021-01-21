@@ -25,6 +25,8 @@ public class DinosaurBB : MonoBehaviour
     protected List<GameObject> preys;
     protected GameObject currentPrey = null;
 
+    protected List<GameObject> herd;
+
     protected ParticleSystem[] blood;
 
 
@@ -67,6 +69,7 @@ public class DinosaurBB : MonoBehaviour
 
         this.predators = new List<GameObject>();
         this.preys = new List<GameObject>();
+        this.herd = new List<GameObject>();
 
         this.anim = this.gameObject.GetComponent<Animator>();
         if(this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>() != null){
@@ -122,8 +125,13 @@ public class DinosaurBB : MonoBehaviour
 
         if(this.predators != null && this.preys != null){
 
+            if(this.gameObject.name == other.gameObject.name && !this.herd.Contains(other.gameObject)){
+                this.herd.Add(other.gameObject);
+                Debug.Log(other.gameObject.name + " set as herd-mate of " + this.gameObject.name);
+            }
+
             // Case a new predator is detected
-            if(this.predators_names.Contains(other.gameObject.name.Split('(')[0])){
+            else if(this.predators_names.Contains(other.gameObject.name.Split('(')[0])){
 
                 // the detected predator is added to the list of predators if it is not already in it
                 if(!this.predators.Contains(other.gameObject)){
