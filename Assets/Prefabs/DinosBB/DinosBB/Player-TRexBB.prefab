@@ -895,8 +895,6 @@ MonoBehaviour:
   preys_names:
   - VelociraptorBB
   - ParasaurolophusBB
-  - TriceratopsBB
-  - StegosaurusBB
   mycam: {fileID: 3481571275271561352}
 --- !u!54 &3481571274003808252
 Rigidbody:
@@ -906,7 +904,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4364110572189293387}
   serializedVersion: 2
-  m_Mass: 20
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1

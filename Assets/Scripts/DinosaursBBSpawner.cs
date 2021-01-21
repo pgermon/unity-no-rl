@@ -5,13 +5,15 @@ using UnityEngine;
 public class DinosaursBBSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject player, raptor, para;
+    private GameObject player, raptor, para, stego, tric;
 
     [SerializeField]
-    private int MAX_RAPTORS, MAX_PARAS = 1;
+    private int MAX_RAPTORS, MAX_PARAS, MAX_STEGO, MAX_TRIC = 1;
 
     private int raptors_count = 0;
     private int paras_count = 0;
+    private int stego_count = 0;
+    private int tric_count = 0;
 
     public void SpawnDinos(int levelLength, int levelWidth, float distanceBetweenVertices, LevelData levelData, int tileLengthInVertices, int tileWidthInVertices)
     {
@@ -32,6 +34,20 @@ public class DinosaursBBSpawner : MonoBehaviour
                     Quaternion.identity);
            paras_count++;
        }
+        for (int i = 0; i < MAX_STEGO; i++)
+        {
+            GameObject go_stego = Instantiate(stego,
+                     GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices),
+                     Quaternion.identity);
+            paras_count++;
+        }
+        for (int i = 0; i < MAX_TRIC; i++)
+        {
+            GameObject go_tric = Instantiate(tric,
+                     GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices),
+                     Quaternion.identity);
+            paras_count++;
+        }
 
     }
 

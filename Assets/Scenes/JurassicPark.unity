@@ -434,5 +434,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: tric
+      value: 
+      objectReference: {fileID: 5106767962723491201, guid: 0e0af9069b7b98a4e88dd97f9a5378b3,
+        type: 3}
+    - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: stego
+      value: 
+      objectReference: {fileID: 4906557259525701311, guid: f8f22c045b571b04b9f515656ad2ca43,
+        type: 3}
+    - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: MAX_TRIC
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: MAX_PARAS
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: MAX_STEGO
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: MAX_RAPTORS
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee455bd96d7bef946b43e7c54648cb05, type: 3}
