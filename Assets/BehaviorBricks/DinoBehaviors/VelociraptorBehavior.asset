@@ -135,7 +135,7 @@ MonoBehaviour:
     <outputValues>\r\n          <entry name=\"wanderPosition\" type=\"UnityEngine.Vector3\"
     isBlackboard=\"True\" blackboard=\"\" />\r\n        </outputValues>\r\n     
     </outputParams>\r\n      <localParams />\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode
-    id=\"38\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsTargetClose\">\r\n     
+    id=\"38\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsTargetClose\">\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"prey\" />\r\n          <entry name=\"closeDistance\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"chaseDistance\" />\r\n       
@@ -148,7 +148,7 @@ MonoBehaviour:
     />\r\n          <entry name=\"dinoAnimator\" type=\"UnityEngine.Animator\" isBlackboard=\"True\"
     blackboard=\"dinoAnimator\" />\r\n        </inputValues>\r\n      </inputParams>\r\n     
     <outputParams />\r\n      <localParams />\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode
-    id=\"40\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n     
+    id=\"40\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"39\">\r\n      <_guid>3c2e1dd88e0c2e24da76f8ab4d4908d5</_guid>\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"wanderArea\"
@@ -218,118 +218,118 @@ MonoBehaviour:
     />\r\n          <SubbehaviorNode id=\"46\" />\r\n          <ConditionEvalNode
     id=\"47\" />\r\n          <SubbehaviorNode id=\"51\" />\r\n        </nodes>\r\n     
     </_nodes>\r\n    </BehaviorTree>\r\n    <RepeatDecorator id=\"1\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"40.77313 17.20651\" name=\"Repeat\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"408.7731 -18.79349\" name=\"Repeat\"
     description=\"Repeats the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"1\" />\r\n       
     </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n    <SequenceNode id=\"43\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"25.68439
-    137.9653\" name=\"Sequence\" description=\"Executes all its children in sequence
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"393.6844
+    101.9653\" name=\"Sequence\" description=\"Executes all its children in sequence
     until all of them are successful\" cardinality=\"-1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"1\" />\r\n         
     <RepeatDecorator id=\"1\" />\r\n        </data>\r\n      </_data>\r\n    </SequenceNode>\r\n   
     <ActionNode id=\"53\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"True\"
-    position=\"-203.2337 279.6059\" name=\"Behaviors/DinoActions/GetCurrentPredator\"
+    position=\"164.7663 243.6059\" name=\"Behaviors/DinoActions/GetCurrentPredator\"
     description=\"Gets the current predator of the DinosaurBB and sets predatorBool
     accordingly\" cardinality=\"0\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ActionNode id=\"53\" />\r\n          <SequenceNode
     id=\"43\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   
     <ActionNode id=\"54\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"81.76721 281.6058\" name=\"Behaviors/DinoActions/GetCurrentPrey\"
+    position=\"449.7672 245.6058\" name=\"Behaviors/DinoActions/GetCurrentPrey\"
     description=\"Returns the current prey of the DinosaurBB\" cardinality=\"0\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
     id=\"54\" />\r\n          <SequenceNode id=\"43\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n    <PrioritySelectorNode id=\"31\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"299.5681
-    277.344\" name=\"Priority Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\r\n         
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"667.5681
+    241.344\" name=\"Priority Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <PrioritySelectorNode id=\"31\" />\r\n         
     <SequenceNode id=\"43\" />\r\n        </data>\r\n      </_data>\r\n    </PrioritySelectorNode>\r\n   
     <ConditionEvalNode id=\"32\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"97.90222 628.1079\" name=\"Basic/CheckBool\" description=\"Eval\"
+    selected=\"False\" position=\"465.9022 592.1079\" name=\"Basic/CheckBool\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ConditionEvalNode id=\"32\" />\r\n          <PrioritySelectorNode id=\"31\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <PrioritySelectorNode
     id=\"24\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"-55.59961 467.6068\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
+    position=\"312.4004 431.6068\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"24\" />\r\n        </data>\r\n     
     </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"58\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"422.8905
-    559.2285\" name=\"Basic/CheckBool\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"790.8905
+    523.2285\" name=\"Basic/CheckBool\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"58\" />\r\n         
     <PrioritySelectorNode id=\"31\" />\r\n        </data>\r\n      </_data>\r\n   
     </ConditionEvalNode>\r\n    <PrioritySelectorNode id=\"34\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"337.9817 479.5011\" name=\"Priority
+    <data breakpoint=\"0\" selected=\"False\" position=\"705.9817 443.5011\" name=\"Priority
     Selector\" description=\"\" cardinality=\"1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <PrioritySelectorNode id=\"34\" />\r\n       
     </data>\r\n      </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
     id=\"56\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"810.6035 667.0984\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
+    position=\"1178.604 631.0984\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
     id=\"56\" />\r\n          <PrioritySelectorNode id=\"31\" />\r\n        </data>\r\n     
     </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode id=\"51\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"652.5045
-    484.7411\" name=\"DinoWander\" description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n         
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"1020.505
+    448.7411\" name=\"DinoWander\" description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode id=\"51\" />\r\n       
     </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode
     id=\"25\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"-52.93298 1255.174\" name=\"Perception/IsTargetClose\" description=\"Eval\"
+    position=\"315.067 1219.174\" name=\"Perception/IsTargetClose\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"24\" />\r\n         
     <ConditionEvalNode id=\"25\" />\r\n          <PrioritySelectorNode id=\"24\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode
     id=\"23\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"-332.9329 677.1792\" name=\"DefenseStrategy\" description=\"\" cardinality=\"-1\"
+    position=\"35.06711 641.1792\" name=\"DefenseStrategy\" description=\"\" cardinality=\"-1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"23\" />\r\n        </data>\r\n     
     </_data>\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode id=\"33\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"183.5686
-    1037.01\" name=\"Basic/CheckBool\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"551.5686
+    1001.01\" name=\"Basic/CheckBool\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"24\" />\r\n          <ConditionEvalNode id=\"33\" />\r\n         
     <PrioritySelectorNode id=\"24\" />\r\n        </data>\r\n      </_data>\r\n   
     </ConditionEvalNode>\r\n    <PrioritySelectorNode id=\"28\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"-65.93311 684.5137\" name=\"Priority
+    <data breakpoint=\"0\" selected=\"False\" position=\"302.0669 648.5137\" name=\"Priority
     Selector\" description=\"\" cardinality=\"1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"28\" />\r\n        </data>\r\n      </_data>\r\n    </PrioritySelectorNode>\r\n   
     <ConditionEvalNode id=\"47\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"1080.849 1572.126\" name=\"AlwaysTrue\" description=\"Eval\"
+    selected=\"False\" position=\"1448.849 1536.126\" name=\"AlwaysTrue\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"24\" />\r\n         
     <ConditionEvalNode id=\"47\" />\r\n          <PrioritySelectorNode id=\"24\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode
     id=\"46\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"190.8518 680.1311\" name=\"DinoWander\" description=\"\" cardinality=\"-1\"
+    position=\"558.8518 644.1311\" name=\"DinoWander\" description=\"\" cardinality=\"-1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode
     id=\"46\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n   
     <ConditionEvalNode id=\"38\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"1265.232 1194.674\" name=\"Perception/IsTargetClose\"
+    selected=\"False\" position=\"1633.232 1158.674\" name=\"Perception/IsTargetClose\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ConditionEvalNode id=\"38\" />\r\n          <PrioritySelectorNode
     id=\"34\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"37\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"367.2341 676.6797\" name=\"AttackStrategy\" description=\"\"
+    selected=\"False\" position=\"735.2341 640.6797\" name=\"AttackStrategy\" description=\"\"
     cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <SubbehaviorNode id=\"37\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n   
     <ConditionEvalNode id=\"40\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"1668.904 1248.674\" name=\"AlwaysTrue\" description=\"Eval\"
+    selected=\"False\" position=\"2036.904 1212.674\" name=\"AlwaysTrue\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ConditionEvalNode id=\"40\" />\r\n          <PrioritySelectorNode id=\"34\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode
     id=\"39\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"606.9005 662.6797\" name=\"DinoWander\" description=\"\" cardinality=\"-1\"
+    position=\"974.9005 626.6797\" name=\"DinoWander\" description=\"\" cardinality=\"-1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode
     id=\"39\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n   
     <ConditionEvalNode id=\"29\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"280.2717 1518.777\" name=\"Perception/IsTargetClose\"
+    selected=\"False\" position=\"648.2717 1482.777\" name=\"Perception/IsTargetClose\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"28\" />\r\n          <ConditionEvalNode id=\"29\" />\r\n          <PrioritySelectorNode
     id=\"28\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"5\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"-180.3305 885.98\" name=\"AttackStrategy\" description=\"\"
+    selected=\"False\" position=\"187.6695 849.98\" name=\"AttackStrategy\" description=\"\"
     cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <SubbehaviorNode id=\"5\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n   
     <ConditionEvalNode id=\"30\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"382.316 1793.859\" name=\"AlwaysTrue\" description=\"Eval\"
+    selected=\"False\" position=\"750.316 1757.859\" name=\"AlwaysTrue\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"28\" />\r\n         
     <ConditionEvalNode id=\"30\" />\r\n          <PrioritySelectorNode id=\"28\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode
     id=\"7\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"88.02618 893.347\" name=\"DinoWander\" description=\"\" cardinality=\"-1\"
+    position=\"456.0262 857.347\" name=\"DinoWander\" description=\"\" cardinality=\"-1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode
     id=\"7\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n 
     </editorInfo>\r\n  <runtimeInfo>\r\n    <BehaviorTree id=\"24\" nextId=\"1\">\r\n     

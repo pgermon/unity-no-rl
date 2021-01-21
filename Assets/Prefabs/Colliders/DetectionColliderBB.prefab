@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6748498425458801216}
   - component: {fileID: 4194183521800577992}
-  - component: {fileID: 5852093394406647424}
+  - component: {fileID: 610371222292494110}
   m_Layer: 0
   m_Name: DetectionColliderBB
   m_TagString: Untagged
@@ -45,16 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dino: {fileID: 0}
---- !u!135 &5852093394406647424
-SphereCollider:
+--- !u!65 &610371222292494110
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3745383054198218146}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

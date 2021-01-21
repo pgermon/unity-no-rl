@@ -64,6 +64,7 @@ public class DinosaurBB : MonoBehaviour
     }
 
     protected virtual void Start(){
+
         this.predators = new List<GameObject>();
         this.preys = new List<GameObject>();
 
@@ -71,7 +72,6 @@ public class DinosaurBB : MonoBehaviour
         if(this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>() != null){
             this.agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         }
-        
 
         blood = this.gameObject.GetComponentsInChildren<ParticleSystem>();
         foreach (var stain in blood)
