@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : DinosaurAbstract
+public class PlayerControllerBB : DinosaurBB
 {
 
     Vector3 rot = Vector3.zero;
@@ -13,17 +13,11 @@ public class PlayerController : DinosaurAbstract
     public Camera mycam;
     private Rigidbody body;
 
-
-    public override void runTo(Vector3 position)
-    {
-    }
-
-
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        this.anim = gameObject.GetComponent<Animator>();
+
         gameObject.transform.eulerAngles = rot;
         gameObject.transform.localScale = size;
         body = gameObject.GetComponent<Rigidbody>();
@@ -38,8 +32,6 @@ public class PlayerController : DinosaurAbstract
         CheckKey();
         gameObject.transform.eulerAngles = rot;
         transform.LookAt(mycam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y*2, Input.mousePosition.x)));
-
-
     }
 
     void CheckKey()

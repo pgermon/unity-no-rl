@@ -88,19 +88,19 @@ public class LevelGeneration : MonoBehaviour {
 			}
 		}
 
-		// generate trees for the level
+		// generates trees for the level
 		GetComponent<TreeGeneration>().GenerateTrees (this.levelLengthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
 
-		//generates grass for the level
+		// generates grass for the level
 		GetComponent<GrassGeneration>().PopulateLevel(this.levelLengthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
 		
 		//generates rocks for the level
 		GetComponent<RockGeneration>().PopulateLevel(this.levelLengthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
-		
-		// generate rivers for the level
-		//riverGeneration.GenerateRivers(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, levelData);
 	
 		surface.BuildNavMesh();
+
+		// spawns the player and dinosaurs on the level
+		GetComponent<DinosaursBBSpawner>().SpawnDinos(this.levelLengthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData, tileDepthInVertices, tileWidthInVertices);
 	}
 }
 

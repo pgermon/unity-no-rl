@@ -143,7 +143,7 @@ MonoBehaviour:
     color: {r: 0.26415092, g: 0.19985758, b: 0.16696331, a: 0}
     index: 2
   - name: snow
-    threshold: 1
+    threshold: 0.85
     color: {r: 1, g: 1, b: 1, a: 0}
     index: 4
   heatTerrainTypes:

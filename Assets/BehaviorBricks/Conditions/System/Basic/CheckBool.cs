@@ -1,5 +1,6 @@
 ﻿using Pada1.BBCore.Framework;
 using Pada1.BBCore;
+using UnityEngine;
 
 namespace BBCore.Conditions
 {
@@ -26,6 +27,8 @@ namespace BBCore.Conditions
         /// <returns>the value of compare first boolean with the second boolean.</returns>
 		public override bool Check()
 		{
+            //Debug.Log("valueA = " + valueA);
+            //Debug.Log("valueB = " + valueB);
 			return valueA == valueB;
 		}
     }

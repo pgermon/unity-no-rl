@@ -77,8 +77,7 @@ public class TileGeneration : MonoBehaviour {
 		if(useFallOff){
 			for (int zIndex = 0; zIndex < tileDepth; zIndex++) {
 				for (int xIndex = 0; xIndex < tileWidth; xIndex++) {
-					//heightMap[xIndex, zIndex] = Mathf.Clamp01(heightMap[xIndex, zIndex] - fallOffTile[xIndex, zIndex]);
-					heightMap[xIndex, zIndex] -= fallOffTile[xIndex, zIndex];
+					heightMap[xIndex, zIndex] = Mathf.Clamp01(heightMap[xIndex, zIndex] - fallOffTile[xIndex, zIndex]);
 				}
 			}
 		}
