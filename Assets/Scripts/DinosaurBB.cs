@@ -43,6 +43,7 @@ public class DinosaurBB : MonoBehaviour
     /* Dinosaur methods */
     public virtual void attack(GameObject prey){
 
+        this.is_attacking = true;
         if(prey != null){
             this.transform.LookAt(prey.transform);
         }
@@ -130,12 +131,12 @@ public class DinosaurBB : MonoBehaviour
             }
         }
 
-        bool is_anim_attack = this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack");
+        /*bool is_anim_attack = this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack");
         if(!this.is_attacking && is_anim_attack){
             this.is_attacking = true;
-        }
+        }*/
 
-        if(this.is_attacking && !is_anim_attack){
+        if(this.is_attacking && anim.GetAnimatorTransitionInfo(0).IsName("Attack -> Idle")){
             this.is_attacking = false;
         }
 

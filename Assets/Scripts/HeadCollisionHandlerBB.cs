@@ -8,12 +8,15 @@ public class HeadCollisionHandlerBB : MonoBehaviour
     private DinosaurBB dino;
     public Rigidbody body;
 
+    //private Collider dino_attacked;
+
 
     void OnTriggerEnter(Collider other){
-        if (dino.getIsAttacking() && other.gameObject.layer == LayerMask.NameToLayer("Dino"))
+        if (/*dino_attacked == null &&*/ dino.getIsAttacking() && other.gameObject.layer == LayerMask.NameToLayer("Dino"))
         {
+            //dino_attacked = other;
             dino.OnSuccessfulAttack(other);
-            //body.isKinematic = true;
+            body.isKinematic = true;
             //Debug.Log("Touched DINO");
         }
     
@@ -21,7 +24,10 @@ public class HeadCollisionHandlerBB : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-
-        //body.isKinematic = false;
+        /*if(dino_attacked == other){
+            dino_attacked = null;
+        }*/
+        
+        body.isKinematic = false;
     }
 }
