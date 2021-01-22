@@ -29937,8 +29937,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 5, z: 11.691976}
-  m_Center: {x: 0.0000039877555, y: 2.5, z: -0.84598213}
+  m_Size: {x: 2.5, y: 5, z: 10}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!65 &3819869996334052926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29950,8 +29950,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 5, z: 11.952386}
-  m_Center: {x: 0.0000016047356, y: 2.5, z: -0.71101886}
+  m_Size: {x: 2.5, y: 5, z: 10}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!195 &3645276706950126288
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -30053,7 +30053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dino: {fileID: 5589941358382046870}
-  body: {fileID: 0}
+  body: {fileID: 3645276706950126290}
 --- !u!65 &2747790616941763140
 BoxCollider:
   m_ObjectHideFlags: 0

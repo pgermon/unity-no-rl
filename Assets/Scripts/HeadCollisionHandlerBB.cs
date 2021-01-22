@@ -14,7 +14,7 @@ public class HeadCollisionHandlerBB : MonoBehaviour
         {
             dino.OnHeadCollision(other);
             body.isKinematic = true;
-            Debug.Log("Touched DINO");
+            //Debug.Log("Touched DINO");
         }
     
 

@@ -15267,8 +15267,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.8230753, y: 8.8479, z: 13.2359915}
-  m_Center: {x: -0.2518921, y: 4.9647636, z: -0.5670581}
+  m_Size: {x: 4.5, y: 10, z: 13}
+  m_Center: {x: 0, y: 5, z: -2}
 --- !u!65 &-4338299539717972665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15280,8 +15280,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.4943132, y: 8.190054, z: 13.401724}
-  m_Center: {x: -0.09967995, y: 4.510043, z: -0.7837839}
+  m_Size: {x: 4.5, y: 10, z: 13}
+  m_Center: {x: 0, y: 5, z: -2}
 --- !u!195 &8928395810631216414
 NavMeshAgent:
   m_ObjectHideFlags: 0
