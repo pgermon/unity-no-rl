@@ -8,6 +8,14 @@ public class DetectionHandlerBB : MonoBehaviour
     private DinosaurBB dino;
 
     void OnTriggerEnter(Collider other){
-        dino.OnDetection(other);
+        if(other.gameObject.layer == 12){
+            dino.OnEnterDetection(other);
+        }
+    }
+
+    void OnTriggerExit(Collider other){
+        if(other.gameObject.layer == 12){
+            dino.OnExitDetection(other);
+        }
     }
 }

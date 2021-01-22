@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 using Pada1.BBCore;           // Code attributes
 using Pada1.BBCore.Tasks;     // TaskStatus
@@ -12,14 +13,11 @@ using BBUnity.Actions;
 
 public class DinoRun : GOAction 
 {
-    [InParam("animator")]
-    public Animator anim;  
-
     [InParam("predator")]
     public GameObject predator;
 
-    [InParam("area")]
-    public GameObject area;
+    [InParam("runSpeed")]
+    public float runSpeed;
 
     [OutParam("runToPosition")]
     public Vector3 position;
@@ -28,11 +26,10 @@ public class DinoRun : GOAction
 
         Debug.Log(gameObject.name + " running from " + predator.gameObject.name);
         Vector3 runDirection = gameObject.transform.position - predator.gameObject.transform.position;
-        //float distance = runDirection.magnitude;
-
         position = gameObject.transform.position + runDirection;
 
-        //anim.Play("Base Layer.Run");
+        gameObject.GetComponent<NavMeshAgent>().speed = runSpeed;
+
         return TaskStatus.COMPLETED;
     }
 }

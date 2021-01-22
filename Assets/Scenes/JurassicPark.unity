@@ -454,7 +454,7 @@ PrefabInstance:
     - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
         type: 3}
       propertyPath: MAX_PARAS
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
         type: 3}
@@ -463,8 +463,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
         type: 3}
+      propertyPath: MAX_TRICS
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
+      propertyPath: MAX_STEGOS
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029399599910110356, guid: ee455bd96d7bef946b43e7c54648cb05,
+        type: 3}
       propertyPath: MAX_RAPTORS
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee455bd96d7bef946b43e7c54648cb05, type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 using Pada1.BBCore;           // Code attributes
 using Pada1.BBCore.Tasks;     // TaskStatus
@@ -12,13 +13,18 @@ using BBUnity.Actions;
 
 public class GetRandomPosAround : GOAction
 {
+    [InParam("wanderSpeed")]
+    public float wanderSpeed;
+
     [OutParam("randomPosition")]
     public Vector3 randomPosition;
 
     public override TaskStatus OnUpdate(){
         
-        Vector3 randomDir = Quaternion.AngleAxis(Random.Range(-45.0f, 45.0f), gameObject.transform.up) * gameObject.transform.forward;
+        Vector3 randomDir = Quaternion.AngleAxis(Random.Range(-180f, 180f), gameObject.transform.up) * gameObject.transform.forward;
         randomPosition = gameObject.transform.position + randomDir.normalized * 20;
+
+        gameObject.GetComponent<NavMeshAgent>().speed = wanderSpeed;
 
         return TaskStatus.COMPLETED;
     }

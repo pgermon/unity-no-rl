@@ -8,6 +8,8 @@ public class DinosaurBB : MonoBehaviour
     /* Dinosaur properties */
     [SerializeField]
     protected float health = 1.0f;
+
+    [SerializeField]
     protected float speed;
     protected Animator anim;
     protected UnityEngine.AI.NavMeshAgent agent;
@@ -18,11 +20,17 @@ public class DinosaurBB : MonoBehaviour
     [SerializeField]
     protected List<string> predators_names;
     protected List<GameObject> predators;
+    protected List<GameObject> predators_in_range;
+
+    [SerializeField]
     protected GameObject currentPredator = null;
 
     [SerializeField]
     protected List<string> preys_names;
     protected List<GameObject> preys;
+    protected List<GameObject> preys_in_range;
+
+    [SerializeField]
     protected GameObject currentPrey = null;
 
     protected List<GameObject> herd;
@@ -68,7 +76,11 @@ public class DinosaurBB : MonoBehaviour
     protected virtual void Start(){
 
         this.predators = new List<GameObject>();
+        this.predators_in_range = new List<GameObject>();
+
         this.preys = new List<GameObject>();
+        this.preys_in_range = new List<GameObject>();
+
         this.herd = new List<GameObject>();
 
         this.anim = this.gameObject.GetComponent<Animator>();
@@ -85,12 +97,43 @@ public class DinosaurBB : MonoBehaviour
 
     protected virtual void Update(){
         //this.health -= 0.0001f;
+        //this.speed *= this.health;
 
         if(this.health <= 0){
             this.die();
         }
 
-        this.speed *= this.health;
+        // Sets the currentPredator as the closest among the predators in range
+        if(currentPredator != null){
+
+            float current_predator_dist = Vector3.Distance(this.gameObject.transform.position, this.currentPredator.gameObject.transform.position);
+            
+            for(int i = 0; i < this.predators_in_range.Count; i++){
+                float dist = Vector3.Distance(this.gameObject.transform.position, predators_in_range[i].gameObject.transform.position);
+                
+                if(dist < current_predator_dist){
+                    this.currentPredator = predators_in_range[i].gameObject;
+                    current_predator_dist = dist;
+                }
+            }
+        }
+
+        // Sets the currentPrey as the closest among the preys in range
+        if(currentPrey != null){
+
+            float current_prey_dist = Vector3.Distance(this.gameObject.transform.position, this.currentPrey.gameObject.transform.position);
+            
+            for(int i = 0; i < this.preys_in_range.Count; i++){
+                float dist = Vector3.Distance(this.gameObject.transform.position, preys_in_range[i].gameObject.transform.position);
+                
+                if(dist < current_prey_dist){
+                    this.currentPrey = preys_in_range[i].gameObject;
+                    current_prey_dist = dist;
+                }
+            }
+        }        
+
+        
         if(blood.Length == 6){
             if (this.health<0.8)
             {
@@ -110,8 +153,12 @@ public class DinosaurBB : MonoBehaviour
         }
 
         if(this.agent != null && !this.is_attacking){
-            if (Vector3.Distance(agent.velocity, new Vector3(0f, 0f, 0f)) < 0.1){
+            speed = Vector3.Distance(agent.velocity, new Vector3(0f, 0f, 0f));
+            if (speed < 0.1){
                 this.anim.Play("Base Layer.Idle");
+            }
+            else if(speed < 6){
+                this.anim.Play("Base Layer.Walk");
             }
             else{
                 this.anim.Play("Base Layer.Run");
@@ -120,11 +167,12 @@ public class DinosaurBB : MonoBehaviour
     }
 
 
-    // Called by the DetectionHandlerBB script when the detection collider is triggered
-    public void OnDetection(Collider other){
+    // Called by the DetectionHandlerBB script when another dinosaur enters the detection range collider
+    public void OnEnterDetection(Collider other){
 
         if(this.predators != null && this.preys != null){
 
+            // Case a dino of the same species is detected
             if(this.gameObject.name == other.gameObject.name && !this.herd.Contains(other.gameObject)){
                 this.herd.Add(other.gameObject);
                 Debug.Log(other.gameObject.name + " set as herd-mate of " + this.gameObject.name);
@@ -137,6 +185,10 @@ public class DinosaurBB : MonoBehaviour
                 if(!this.predators.Contains(other.gameObject)){
                     this.predators.Add(other.gameObject);
                     Debug.Log(other.gameObject.name + " set as predator of " + this.gameObject.name);
+                }
+                // else it is added to the list of predators in range
+                else{
+                    this.predators_in_range.Add(other.gameObject);
                 }
 
                 // the detected predator is set as current predator if there is not already one
@@ -162,6 +214,10 @@ public class DinosaurBB : MonoBehaviour
                     this.preys.Add(other.gameObject);
                     Debug.Log(other.gameObject.name + " set as prey of " + this.gameObject.name);
                 }
+                // else it is added to the list of preys in range
+                else{
+                    this.preys_in_range.Add(other.gameObject);
+                }
 
                 // the detected prey is set as current prey if there is not already one
                 if(this.currentPrey == null){
@@ -178,6 +234,18 @@ public class DinosaurBB : MonoBehaviour
                 }
             }
         }
+    }
+
+    // Called by the DetectionHandlerBB script when another dinosaur exits the detection range collider
+    public void OnExitDetection(Collider other){
+
+        // If another dino leaves the detection range, it is removed from the corresponding list
+        if(this.predators_names.Contains(other.gameObject.name.Split('(')[0])){
+            this.predators_in_range.Remove(other.gameObject);
+        }
+        else if(this.preys_names.Contains(other.gameObject.name.Split('(')[0])){
+            this.preys_in_range.Remove(other.gameObject);
+        } 
     }
 
 
