@@ -22,7 +22,7 @@ public class GetRandomPosAround : GOAction
     public override TaskStatus OnUpdate(){
         
         Vector3 randomDir = Quaternion.AngleAxis(Random.Range(-180f, 180f), gameObject.transform.up) * gameObject.transform.forward;
-        randomPosition = gameObject.transform.position + randomDir.normalized * 20;
+        randomPosition = gameObject.transform.position + randomDir.normalized * Random.Range(5, 15);
 
         gameObject.GetComponent<NavMeshAgent>().speed = wanderSpeed;
 

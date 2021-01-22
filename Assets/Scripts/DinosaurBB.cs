@@ -16,6 +16,8 @@ public class DinosaurBB : MonoBehaviour
 
     /* Anim states */
     protected bool is_attacking = false;
+    protected bool is_walking = false;
+    protected bool is_running = false;
 
     [SerializeField]
     protected List<string> predators_names;
@@ -39,9 +41,12 @@ public class DinosaurBB : MonoBehaviour
 
 
     /* Dinosaur methods */
-    public virtual void attack(){
+    public virtual void attack(GameObject prey){
+
+        if(prey != null){
+            this.transform.LookAt(prey.transform);
+        }
         this.anim.Play("Base Layer.Attack");
-        this.is_attacking = true;
     }
 
     public virtual void growUp(float g){
@@ -103,36 +108,8 @@ public class DinosaurBB : MonoBehaviour
             this.die();
         }
 
-        // Sets the currentPredator as the closest among the predators in range
-        if(currentPredator != null){
-
-            float current_predator_dist = Vector3.Distance(this.gameObject.transform.position, this.currentPredator.gameObject.transform.position);
-            
-            for(int i = 0; i < this.predators_in_range.Count; i++){
-                float dist = Vector3.Distance(this.gameObject.transform.position, predators_in_range[i].gameObject.transform.position);
-                
-                if(dist < current_predator_dist){
-                    this.currentPredator = predators_in_range[i].gameObject;
-                    current_predator_dist = dist;
-                }
-            }
-        }
-
-        // Sets the currentPrey as the closest among the preys in range
-        if(currentPrey != null){
-
-            float current_prey_dist = Vector3.Distance(this.gameObject.transform.position, this.currentPrey.gameObject.transform.position);
-            
-            for(int i = 0; i < this.preys_in_range.Count; i++){
-                float dist = Vector3.Distance(this.gameObject.transform.position, preys_in_range[i].gameObject.transform.position);
-                
-                if(dist < current_prey_dist){
-                    this.currentPrey = preys_in_range[i].gameObject;
-                    current_prey_dist = dist;
-                }
-            }
-        }        
-
+        selectCurrentPredator();
+        selectCurrentPrey();
         
         if(blood.Length == 6){
             if (this.health<0.8)
@@ -152,6 +129,21 @@ public class DinosaurBB : MonoBehaviour
             }
         }
 
+        if(!this.is_attacking && this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack")){
+            this.is_attacking = true;
+        }
+
+        if(this.is_attacking && !this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack")){
+            this.is_attacking = false;
+        }
+        /*
+        if(this.is_walking && !this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk")){
+            this.is_walking = false;
+        }
+        if(this.is_running && !this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run")){
+            this.is_running = false;
+        }*/
+
         if(this.agent != null && !this.is_attacking){
             speed = Vector3.Distance(agent.velocity, new Vector3(0f, 0f, 0f));
             if (speed < 0.1){
@@ -159,9 +151,11 @@ public class DinosaurBB : MonoBehaviour
             }
             else if(speed < 6){
                 this.anim.Play("Base Layer.Walk");
+                this.is_walking = true;
             }
             else{
                 this.anim.Play("Base Layer.Run");
+                this.is_running = true;
             }
         }
     }
@@ -262,6 +256,7 @@ public class DinosaurBB : MonoBehaviour
             if(other.gameObject.GetComponent<DinosaurBB>().getHealth() <= 0){
                 other.gameObject.GetComponent<DinosaurBB>().die();
                 this.preys.Remove(other.gameObject);
+                this.preys_in_range.Remove(other.gameObject);
                 this.growUp(0.05f);
                 this.increaseHealth(0.5f);
 
@@ -275,20 +270,27 @@ public class DinosaurBB : MonoBehaviour
     // Message sent by another dinosaur when it dies
     public void OnMessageDie(GameObject other){
 
-        Debug.Log("OnMessageDie received by " + this.gameObject.name + " from " + other.gameObject.name);
+        string other_name = other.gameObject.name.Split('(')[0];
+        Debug.Log("OnMessageDie received by " + this.gameObject.name + " from " + other_name);
 
-        if(this.predators.Contains(other.gameObject)){
+        // if the message sender is a predator, it is removed from the corresponding lists
+        if(this.predators_names.Contains(other_name)){
             this.predators.Remove(other.gameObject);
-        }
-        else if(this.preys.Contains(other.gameObject)){
-            this.preys.Remove(other.gameObject);
+            this.predators_in_range.Remove(other.gameObject);
+
+            if(this.currentPredator == other.gameObject){
+                this.currentPredator = null;
+            }
         }
 
-        if(this.currentPredator == other.gameObject){
-            this.currentPredator = null;
-        }
-        else if(this.currentPrey == other.gameObject){
-            this.currentPrey = null;
+        // if the message sender is a prey, it is removed from the corresponding lists
+        else if(this.preys_names.Contains(other_name)){
+            this.preys.Remove(other.gameObject);
+            this.preys_in_range.Remove(other.gameObject);
+
+            if(this.currentPrey == other.gameObject){
+                this.currentPrey = null;
+            }
         }
     }
 
@@ -340,8 +342,53 @@ public class DinosaurBB : MonoBehaviour
         return this.currentPredator;
     }
 
+    // Sets the currentPredator as the closest among the predators in range
+    public virtual void selectCurrentPredator(){
+        
+        float current_predator_dist = Mathf.Infinity;
+
+        if(currentPredator != null){
+            current_predator_dist = Vector3.Distance(this.gameObject.transform.position, this.currentPredator.gameObject.transform.position);
+        }
+
+        for(int i = 0; i < this.predators_in_range.Count; i++){
+
+            if(predators_in_range[i] != null){
+
+                float dist = Vector3.Distance(this.gameObject.transform.position, predators_in_range[i].gameObject.transform.position);
+                if(dist < current_predator_dist){
+                    this.currentPredator = predators_in_range[i].gameObject;
+                    current_predator_dist = dist;
+                }
+            } 
+        }
+    }
+
+
     public virtual GameObject getCurrentPrey(){
         return this.currentPrey;
+    }
+
+    // Sets the currentPrey as the closest among the preys in range
+    public virtual void selectCurrentPrey(){
+        
+        float current_prey_dist = Mathf.Infinity;
+
+        if(currentPrey != null){
+            current_prey_dist = Vector3.Distance(this.gameObject.transform.position, this.currentPrey.gameObject.transform.position);
+        }
+        
+        for(int i = 0; i < this.preys_in_range.Count; i++){
+
+            if(preys_in_range[i] != null){
+
+                float dist = Vector3.Distance(this.gameObject.transform.position, preys_in_range[i].gameObject.transform.position);
+                if(dist < current_prey_dist){
+                    this.currentPrey = preys_in_range[i].gameObject;
+                    current_prey_dist = dist;
+                }
+            }
+        }
     }
     
 }

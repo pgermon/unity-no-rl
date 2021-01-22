@@ -12,9 +12,11 @@ using BBUnity.Actions;
 
 public class DinoAttack : GOAction
 {  
+    [InParam("prey")]
+    public GameObject prey;
 
     public override TaskStatus OnUpdate(){
-        gameObject.GetComponent<DinosaurBB>().attack();
+        gameObject.GetComponent<DinosaurBB>().attack(prey);
         return TaskStatus.COMPLETED;
     }
 }

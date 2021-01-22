@@ -891,13 +891,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  speed: 0
   predators_names: []
+  currentPredator: {fileID: 0}
   preys_names:
   - VelociraptorBB
   - ParasaurolophusBB
   - TriceratopsBB
   - StegosaurusBB
-  mycam: {fileID: 3481571275271561352}
+  currentPrey: {fileID: 0}
+  cam: {fileID: 3481571275271561352}
+  mouseLook:
+    XSensitivity: 25
+    YSensitivity: 5
+    clampVerticalRotation: 1
+    MinimumX: -90
+    MaximumX: 90
+    smooth: 1
+    smoothTime: 5
+    lockCursor: 0
 --- !u!54 &3481571274003808252
 Rigidbody:
   m_ObjectHideFlags: 0

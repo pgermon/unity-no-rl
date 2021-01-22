@@ -10,14 +10,16 @@ public class PlayerControllerBB : DinosaurBB
     float rotSpeed = 80f;
     float movementSpeed = 10f;
     Vector3 size = new Vector3(0.3f, 0.3f, 0.3f);
-    public Camera mycam;
+    public Camera cam;
     private Rigidbody body;
+    public MouseLook mouseLook = new MouseLook();
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
 
+        mouseLook.Init (this.transform, cam.transform);
         gameObject.transform.eulerAngles = rot;
         gameObject.transform.localScale = size;
         body = gameObject.GetComponent<Rigidbody>();
@@ -29,9 +31,29 @@ public class PlayerControllerBB : DinosaurBB
     {
         base.Update();
 
+        RotateView();
         CheckKey();
-        gameObject.transform.eulerAngles = rot;
-        transform.LookAt(mycam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y*2, Input.mousePosition.x)));
+
+        this.gameObject.transform.eulerAngles = rot;
+        //transform.LookAt(cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y*2, Input.mousePosition.x)));
+    }
+
+    private void RotateView()
+    {
+        //avoids the mouse looking if the game is effectively paused
+        if (Mathf.Abs(Time.timeScale) < float.Epsilon) return;
+
+        // get the rotation before it's changed
+        float oldYRotation = transform.eulerAngles.y;
+
+        mouseLook.LookRotation (transform, cam.transform);
+
+        /*if (m_IsGrounded || advancedSettings.airControl)
+        {*/
+            // Rotate the rigidbody velocity to match the new direction that the character is looking
+            Quaternion velRotation = Quaternion.AngleAxis(transform.eulerAngles.y - oldYRotation, Vector3.up);
+            body.velocity = velRotation*body.velocity;
+        //}
     }
 
     void CheckKey()
@@ -45,7 +67,7 @@ public class PlayerControllerBB : DinosaurBB
         {
   
             this.anim.Play("Base Layer.Run");
-             body.MovePosition(transform.position + transform.forward * Time.deltaTime * movementSpeed);
+            body.MovePosition(transform.position + transform.forward * Time.deltaTime * movementSpeed);
             //body.transform.position += transform.forward * Time.deltaTime * movementSpeed;
 
         }
@@ -78,7 +100,7 @@ public class PlayerControllerBB : DinosaurBB
     
             if (this.anim.IsInTransition(0) || (this.anim.GetCurrentAnimatorStateInfo(0).IsName("Idle")))
             {
-                this.attack();
+                this.attack(null);
             }
             
         }
