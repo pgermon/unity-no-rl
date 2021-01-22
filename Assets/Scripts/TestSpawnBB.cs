@@ -7,6 +7,7 @@ public class TestSpawnBB : MonoBehaviour
 
     public GameObject raptor;
     public GameObject para;
+    public GameObject tric;
     public GameObject area;
     public GameObject player;
 
@@ -17,6 +18,9 @@ public class TestSpawnBB : MonoBehaviour
 
     public int MAX_PARAS = 1;
     private int paras_count = 0;
+
+    public int MAX_TRICS = 1;
+    private int trics_count = 0;
 
     void Start()
     {
@@ -35,7 +39,7 @@ public class TestSpawnBB : MonoBehaviour
         {
             GameObject go_para = Instantiate(para, GetRandomPosition(), Quaternion.identity) as GameObject;
             BehaviorExecutor para_executor = go_para.GetComponent<BehaviorExecutor>();
-            para_executor.SetBehaviorParam("wanderArea", area);
+            //para_executor.SetBehaviorParam("wanderArea", area);
             paras_count++;
         }
         
@@ -43,8 +47,14 @@ public class TestSpawnBB : MonoBehaviour
         {
             GameObject go_raptor = Instantiate(raptor, GetRandomPosition(), Quaternion.identity) as GameObject;
             BehaviorExecutor raptor_executor = go_raptor.GetComponent<BehaviorExecutor>();
-            raptor_executor.SetBehaviorParam("wanderArea", area);
+            //raptor_executor.SetBehaviorParam("wanderArea", area);
             raptors_count++;
+        }
+        else if(trics_count < MAX_TRICS){
+            GameObject go_tric = Instantiate(tric, GetRandomPosition(), Quaternion.identity) as GameObject;
+            BehaviorExecutor tric_executor = go_tric.GetComponent<BehaviorExecutor>();
+            //tric_executor.SetBehaviorParam("wanderArea", area);
+            trics_count++;
         }
         else{    
             CancelInvoke();
