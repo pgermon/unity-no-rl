@@ -15118,7 +15118,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4906557259525701311}
   serializedVersion: 2
-  m_Mass: 2000
+  m_Mass: 500
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -30256,6 +30256,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.z
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 610371222292494110, guid: 451235dd8f79b2b468df0cacfbb7a18e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 610371222292494110, guid: 451235dd8f79b2b468df0cacfbb7a18e,
         type: 3}

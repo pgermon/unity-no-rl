@@ -10,10 +10,10 @@ public class HeadCollisionHandlerBB : MonoBehaviour
 
 
     void OnTriggerEnter(Collider other){
-        if (other.gameObject.layer == LayerMask.NameToLayer("Dino"))
+        if (dino.getIsAttacking() && other.gameObject.layer == LayerMask.NameToLayer("Dino"))
         {
-            dino.OnHeadCollision(other);
-            body.isKinematic = true;
+            dino.OnSuccessfulAttack(other);
+            //body.isKinematic = true;
             //Debug.Log("Touched DINO");
         }
     
@@ -22,6 +22,6 @@ public class HeadCollisionHandlerBB : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
 
-        body.isKinematic = false;
+        //body.isKinematic = false;
     }
 }

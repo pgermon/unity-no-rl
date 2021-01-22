@@ -130,20 +130,15 @@ public class DinosaurBB : MonoBehaviour
             }
         }
 
-        if(!this.is_attacking && this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack")){
+        bool is_anim_attack = this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack");
+        if(!this.is_attacking && is_anim_attack){
             this.is_attacking = true;
         }
 
-        if(this.is_attacking && !this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack")){
+        if(this.is_attacking && !is_anim_attack){
             this.is_attacking = false;
         }
-        /*
-        if(this.is_walking && !this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk")){
-            this.is_walking = false;
-        }
-        if(this.is_running && !this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run")){
-            this.is_running = false;
-        }*/
+
 
         if(this.agent != null && !this.is_attacking){
             speed = Vector3.Distance(agent.velocity, new Vector3(0f, 0f, 0f));
@@ -244,11 +239,11 @@ public class DinosaurBB : MonoBehaviour
     }
 
 
-    // Called by the HeadCollisionHandlerBB script when the head collider is triggered
-    public void OnHeadCollision(Collider other){
+    // Called by the HeadCollisionHandlerBB script when the head collider is triggered during an attack
+    public void OnSuccessfulAttack(Collider other){
 
-        // if the dino is currently attacking and other is part of its list of preys, the dino deals damage to the other
-        if(this.is_attacking && this.preys.Contains(other.gameObject)){
+        // if the other dino is part of its list of preys, the dino deals damage to the other
+        if(this.preys.Contains(other.gameObject)){
             Debug.Log(this.gameObject.name + " attacks " + other.gameObject.name);
             this.is_attacking = false;
             other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.1f, this.gameObject);
