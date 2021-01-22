@@ -29822,10 +29822,16 @@ MonoBehaviour:
     - 15
     - 20
     - 8
+    - 10
+    - 10
+    - 5
     floatParamsNames:
     - runDistance
     - chaseDistance
     - attackDistance
+    - chaseSpeed
+    - runSpeed
+    - wanderSpeed
     floatParamsLostDefaultValue: 
     stringParams: []
     stringParamsNames: []
@@ -29833,12 +29839,8 @@ MonoBehaviour:
     colorParams: []
     colorParamsNames: []
     colorParamsLostDefaultValue: 
-    objectParams:
-    - {fileID: 0}
-    - {fileID: 8646837686257639564}
-    objectParamsNames:
-    - wanderArea
-    - dinoAnimator
+    objectParams: []
+    objectParamsNames: []
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []
@@ -29882,10 +29884,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  speed: 0
   predators_names:
   - Player-TRexBB
+  currentPredator: {fileID: 0}
   preys_names:
   - ParasaurolophusBB
+  currentPrey: {fileID: 0}
 --- !u!95 &8646837686257639564
 Animator:
   serializedVersion: 3
@@ -29919,7 +29924,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &9208825859641508563
 BoxCollider:
@@ -29932,8 +29937,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 5, z: 10}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Size: {x: 2.5, y: 5, z: 11.691976}
+  m_Center: {x: 0.0000039877555, y: 2.5, z: -0.84598213}
 --- !u!65 &3819869996334052926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29945,8 +29950,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 5, z: 10}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Size: {x: 2.5, y: 5, z: 11.952386}
+  m_Center: {x: 0.0000016047356, y: 2.5, z: -0.71101886}
 --- !u!195 &3645276706950126288
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -30048,6 +30053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dino: {fileID: 5589941358382046870}
+  body: {fileID: 0}
 --- !u!65 &2747790616941763140
 BoxCollider:
   m_ObjectHideFlags: 0

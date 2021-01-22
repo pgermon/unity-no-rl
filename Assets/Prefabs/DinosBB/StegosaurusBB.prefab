@@ -15218,7 +15218,9 @@ MonoBehaviour:
   predators_names:
   - Player-TRexBB
   - VelociraptorBB
+  currentPredator: {fileID: 0}
   preys_names: []
+  currentPrey: {fileID: 0}
 --- !u!95 &3193175918860538960
 Animator:
   serializedVersion: 3
@@ -15252,7 +15254,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &-7437063373451694019
 BoxCollider:

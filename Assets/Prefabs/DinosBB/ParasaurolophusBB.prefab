@@ -24978,8 +24978,12 @@ MonoBehaviour:
     boolParamsLostDefaultValue: 
     floatParams:
     - 15
+    - 5
+    - 10
     floatParamsNames:
     - runDistance
+    - wanderSpeed
+    - runSpeed
     floatParamsLostDefaultValue: 
     stringParams: []
     stringParamsNames: []
@@ -24987,12 +24991,8 @@ MonoBehaviour:
     colorParams: []
     colorParamsNames: []
     colorParamsLostDefaultValue: 
-    objectParams:
-    - {fileID: 0}
-    - {fileID: 2983009959261967279}
-    objectParamsNames:
-    - wanderArea
-    - dinoAnimator
+    objectParams: []
+    objectParamsNames: []
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []
@@ -25036,10 +25036,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  speed: 0
   predators_names:
   - Player-TRexBB
   - VelociraptorBB
+  currentPredator: {fileID: 0}
   preys_names: []
+  currentPrey: {fileID: 0}
 --- !u!54 &16683654093248174
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25054,7 +25057,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &7823759834767408624
 BoxCollider:

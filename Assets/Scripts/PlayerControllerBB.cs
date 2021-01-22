@@ -13,6 +13,7 @@ public class PlayerControllerBB : DinosaurBB
     public Camera cam;
     private Rigidbody body;
     public MouseLook mouseLook = new MouseLook();
+    //GetComponent<RigidBody>().isKinematic = true;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -25,7 +26,7 @@ public class PlayerControllerBB : DinosaurBB
         body = gameObject.GetComponent<Rigidbody>();
 
     }
-
+ 
     // Update is called once per frame
     protected override void Update()
     {

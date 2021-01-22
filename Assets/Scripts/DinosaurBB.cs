@@ -55,6 +55,7 @@ public class DinosaurBB : MonoBehaviour
 
     public virtual void die(){
         Debug.Log("die");
+        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         this.anim.Play("Base Layer.Die");
         Collider[] colliders = this.gameObject.GetComponents<BoxCollider>();
         for(int i = 0; i < colliders.Length; i++){

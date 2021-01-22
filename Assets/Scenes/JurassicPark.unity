@@ -354,6 +354,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 513549474, guid: ee455bd96d7bef946b43e7c54648cb05, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4812695324117527656, guid: ee455bd96d7bef946b43e7c54648cb05,
         type: 3}
       propertyPath: surface
