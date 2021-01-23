@@ -914,6 +914,9 @@ MonoBehaviour:
     smooth: 1
     smoothTime: 5
     lockCursor: 0
+  MaterialBoost: {fileID: -382652638819485698, guid: 13d42de4b1cca624482e26fa407a7827,
+    type: 3}
+  MaterialN: {fileID: 2100000, guid: 964b18d74f2b1c84cb76db1b037221d7, type: 2}
 --- !u!54 &3481571274003808252
 Rigidbody:
   m_ObjectHideFlags: 0
