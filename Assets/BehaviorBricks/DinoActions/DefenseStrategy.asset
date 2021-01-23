@@ -78,7 +78,7 @@ MonoBehaviour:
     until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"4\" />\r\n        </data>\r\n     
     </_data>\r\n    </SequenceNode>\r\n    <ActionNode id=\"6\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"True\" position=\"856.0188 750.0952\" name=\"Behaviors/DinoActions/Run\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"856.0188 750.0952\" name=\"Behaviors/DinoActions/Run\"
     description=\"Runs from the predator\" cardinality=\"0\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"6\" />\r\n          <SequenceNode
     id=\"4\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   

@@ -29819,18 +29819,18 @@ MonoBehaviour:
     boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
+    - 30
+    - 40
     - 15
-    - 20
+    - 15
     - 8
-    - 10
-    - 10
-    - 5
+    - 8
     floatParamsNames:
     - runDistance
     - chaseDistance
-    - attackDistance
     - chaseSpeed
     - runSpeed
+    - attackDistance
     - wanderSpeed
     floatParamsLostDefaultValue: 
     stringParams: []
@@ -29890,6 +29890,8 @@ MonoBehaviour:
   currentPredator: {fileID: 0}
   preys_names:
   - ParasaurolophusBB
+  - TriceratopsBB
+  - StegosaurusBB
   currentPrey: {fileID: 0}
 --- !u!95 &8646837686257639564
 Animator:
@@ -29937,8 +29939,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 20, z: 10}
-  m_Center: {x: 0, y: 10, z: 0}
+  m_Size: {x: 2.5, y: 5, z: 10}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!65 &3819869996334052926
 BoxCollider:
   m_ObjectHideFlags: 0

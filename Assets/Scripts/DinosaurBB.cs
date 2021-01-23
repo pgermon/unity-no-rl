@@ -45,6 +45,7 @@ public class DinosaurBB : MonoBehaviour
 
         this.is_attacking = true;
         if(prey != null){
+            Debug.Log(this.gameObject.name + " looks at " + prey.gameObject.name);
             this.transform.LookAt(prey.transform);
         }
         this.anim.Play("Base Layer.Attack");
@@ -110,26 +111,12 @@ public class DinosaurBB : MonoBehaviour
             this.die();
         }
 
+        // sets the current predator and prey, which are the closest among the ones in range
         selectCurrentPredator();
         selectCurrentPrey();
         
-        if(blood.Length == 6){
-            if (this.health<0.8)
-            {
-                blood[0].Play();
-                blood[1].Play();
-            }
-            if (this.health < 0.5)
-            {
-                blood[2].Play();
-                blood[3].Play();
-            }
-            if (this.health < 0.4)
-            {
-                blood[4].Play();
-                blood[5].Play();
-            }
-        }
+        // update bleeding according to health
+        UpdateBlood();
 
         /*bool is_anim_attack = this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack");
         if(!this.is_attacking && is_anim_attack){
@@ -153,6 +140,26 @@ public class DinosaurBB : MonoBehaviour
             else{
                 this.anim.Play("Base Layer.Run");
                 this.is_running = true;
+            }
+        }
+    }
+
+    public void UpdateBlood(){
+        if(blood.Length == 6){
+            if (this.health<0.8)
+            {
+                blood[0].Play();
+                blood[1].Play();
+            }
+            if (this.health < 0.5)
+            {
+                blood[2].Play();
+                blood[3].Play();
+            }
+            if (this.health < 0.4)
+            {
+                blood[4].Play();
+                blood[5].Play();
             }
         }
     }
@@ -247,7 +254,7 @@ public class DinosaurBB : MonoBehaviour
         if(this.preys.Contains(other.gameObject)){
             Debug.Log(this.gameObject.name + " attacks " + other.gameObject.name);
             this.is_attacking = false;
-            other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.1f, this.gameObject);
+            other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.1f);
 
             // if the dino kills other, it grows up and regens its health
             if(other.gameObject.GetComponent<DinosaurBB>().getHealth() <= 0){
@@ -261,6 +268,13 @@ public class DinosaurBB : MonoBehaviour
                     this.currentPrey = null;
                 }
             }
+        }
+
+        // if the other dino is part of its list of predators, the dino deals damage to the other
+        else if(this.predators.Contains(other.gameObject)){
+            Debug.Log(this.gameObject.name + " attacks " + other.gameObject.name);
+            this.is_attacking = false;
+            other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.1f);
         }
     }
 
@@ -320,9 +334,9 @@ public class DinosaurBB : MonoBehaviour
         }
     }
 
-    public virtual void decreaseHealth(float i, GameObject enemy){
+    public virtual void decreaseHealth(float i){
         this.health -= i;
-        //this.runFrom(enemy);
+
     }
 
     // Speed
