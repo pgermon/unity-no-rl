@@ -18,7 +18,7 @@ public class HasPrey : GOCondition
     public override bool Check(){
         prey = gameObject.GetComponent<DinosaurBB>().getCurrentPrey();
         bool ret = prey != null;
-        Debug.Log(gameObject.name.Split('(')[0] + ": prey is not null = " + ret);
+        //Debug.Log(gameObject.name.Split('(')[0] + ": prey is not null = " + ret);
         return ret;
     }
     

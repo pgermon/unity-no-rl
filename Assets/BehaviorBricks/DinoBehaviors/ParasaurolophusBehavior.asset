@@ -22,8 +22,7 @@ MonoBehaviour:
     value=\"5\" />\n          <entry name=\"runSpeed\" type=\"System.Single\" isBlackboard=\"False\"
     value=\"10\" />\n        </inputValues>\n      </inputParams>\n      <outputParams
     />\n      <localParams>\n        <localValues>\n          <entry name=\"predator\"
-    type=\"UnityEngine.GameObject\" isBlackboard=\"False\" />\n          <entry name=\"predatorBool\"
-    type=\"System.Boolean\" isBlackboard=\"False\" value=\"False\" />\n        </localValues>\n     
+    type=\"UnityEngine.GameObject\" isBlackboard=\"False\" />\n        </localValues>\n     
     </localParams>\n    </BehaviorTree>\n    <RepeatDecorator id=\"1\" loops=\"-1\"
     policy=\"ContinueWhenChildFails\">\n      <child>\n        <PrioritySelectorNode
     id=\"2\" />\n      </child>\n      <inputParams />\n      <outputParams />\n     
@@ -36,7 +35,7 @@ MonoBehaviour:
     <SubbehaviorNode id=\"5\" />\n            </child>\n          </GuardAndNode>\n       
     </elem>\n      </children>\n      <inputParams />\n      <outputParams />\n     
     <localParams />\n    </PrioritySelectorNode>\n    <ConditionEvalNode id=\"11\"
-    policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Behaviors/DinoConditions/HasPredator\">\n     
+    policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Behaviors/DinoConditions/HasPredator\">\n     
     <inputParams />\n      <outputParams>\n        <outputValues>\n          <entry
     name=\"predator\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"predator\"
     />\n        </outputValues>\n      </outputParams>\n      <localParams />\n   
@@ -48,14 +47,14 @@ MonoBehaviour:
     id=\"14\" />\n            </guard>\n            <child>\n              <SubbehaviorNode
     id=\"13\" />\n            </child>\n          </GuardAndNode>\n        </elem>\n     
     </children>\n      <inputParams />\n      <outputParams />\n      <localParams
-    />\n    </PrioritySelectorNode>\n    <ConditionEvalNode id=\"6\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\"
+    />\n    </PrioritySelectorNode>\n    <ConditionEvalNode id=\"6\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\"
     name=\"AlwaysTrue\">\n      <inputParams />\n      <outputParams />\n      <localParams
     />\n    </ConditionEvalNode>\n    <SubbehaviorNode id=\"5\">\n      <_guid>3c2e1dd88e0c2e24da76f8ab4d4908d5</_guid>\n     
     <inputParams>\n        <inputValues>\n          <entry name=\"wanderArea\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"wanderArea\" />\n          <entry name=\"wanderSpeed\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"wanderSpeed\" />\n       
     </inputValues>\n      </inputParams>\n      <outputParams />\n      <localParams
-    />\n    </SubbehaviorNode>\n    <ConditionEvalNode id=\"12\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\"
+    />\n    </SubbehaviorNode>\n    <ConditionEvalNode id=\"12\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\"
     name=\"Perception/IsTargetClose\">\n      <inputParams>\n        <inputValues>\n         
     <entry name=\"target\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\"
     blackboard=\"predator\" />\n          <entry name=\"closeDistance\" type=\"System.Single\"
@@ -70,7 +69,7 @@ MonoBehaviour:
     isBlackboard=\"True\" blackboard=\"wanderArea\" />\n          <entry name=\"runSpeed\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"runSpeed\" />\n       
     </inputValues>\n      </inputParams>\n      <outputParams />\n      <localParams
-    />\n    </SubbehaviorNode>\n    <ConditionEvalNode id=\"14\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\"
+    />\n    </SubbehaviorNode>\n    <ConditionEvalNode id=\"14\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\"
     name=\"AlwaysTrue\">\n      <inputParams />\n      <outputParams />\n      <localParams
     />\n    </ConditionEvalNode>\n    <SubbehaviorNode id=\"13\">\n      <_guid>3c2e1dd88e0c2e24da76f8ab4d4908d5</_guid>\n     
     <inputParams>\n        <inputValues>\n          <entry name=\"wanderArea\" type=\"UnityEngine.GameObject\"
@@ -105,38 +104,39 @@ MonoBehaviour:
     <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
     <ConditionEvalNode id=\"11\">\n      <_data>\n        <data breakpoint=\"0\"
     selected=\"False\" position=\"1365.246 1515.75\" name=\"Behaviors/DinoConditions/HasPredator\"
-    description=\"Eval\" cardinality=\"1\" hasParent=\"False\">\n          <BehaviorTree
-    id=\"0\" />\n          <ConditionEvalNode id=\"11\" />\n        </data>\n     
-    </_data>\n    </ConditionEvalNode>\n    <PrioritySelectorNode id=\"10\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"781.2457
-    747.7503\" name=\"Priority Selector\" description=\"\" cardinality=\"1\" hasParent=\"False\">\n         
-    <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode id=\"10\" />\n       
-    </data>\n      </_data>\n    </PrioritySelectorNode>\n    <ConditionEvalNode
-    id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"1657.051
-    1272.501\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n         
-    <BehaviorTree id=\"0\" />\n          <ConditionEvalNode id=\"6\" />\n         
-    <PrioritySelectorNode id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
-    <SubbehaviorNode id=\"5\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"1085.052 704.4991\" name=\"DinoWander\" description=\"\" cardinality=\"-1\"
-    hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
-    id=\"5\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <ConditionEvalNode
-    id=\"12\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"1274.289 1855.868\" name=\"Perception/IsTargetClose\" description=\"Eval\"
-    cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
-    <ConditionEvalNode id=\"12\" />\n          <PrioritySelectorNode id=\"10\" />\n       
-    </data>\n      </_data>\n    </ConditionEvalNode>\n    <SubbehaviorNode id=\"3\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"640.6729
-    961.1183\" name=\"DefenseStrategy\" description=\"\" cardinality=\"-1\" hasParent=\"False\">\n         
-    <BehaviorTree id=\"0\" />\n          <SubbehaviorNode id=\"3\" />\n        </data>\n     
-    </_data>\n    </SubbehaviorNode>\n    <ConditionEvalNode id=\"14\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"1668.577 1822.94\" name=\"AlwaysTrue\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
-    id=\"0\" />\n          <ConditionEvalNode id=\"14\" />\n          <PrioritySelectorNode
+    id=\"0\" />\n          <ConditionEvalNode id=\"11\" />\n          <PrioritySelectorNode
+    id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n    <PrioritySelectorNode
+    id=\"10\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"781.2457 747.7503\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
+    hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode
+    id=\"10\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
+    <ConditionEvalNode id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"1657.051 1272.501\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
+    hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <ConditionEvalNode
+    id=\"6\" />\n          <PrioritySelectorNode id=\"2\" />\n        </data>\n     
+    </_data>\n    </ConditionEvalNode>\n    <SubbehaviorNode id=\"5\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"1085.052 704.4991\" name=\"DinoWander\"
+    description=\"\" cardinality=\"-1\" hasParent=\"False\">\n          <BehaviorTree
+    id=\"0\" />\n          <SubbehaviorNode id=\"5\" />\n        </data>\n      </_data>\n   
+    </SubbehaviorNode>\n    <ConditionEvalNode id=\"12\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"1274.289 1855.868\" name=\"Perception/IsTargetClose\"
+    description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
+    id=\"0\" />\n          <ConditionEvalNode id=\"12\" />\n          <PrioritySelectorNode
     id=\"10\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
-    <SubbehaviorNode id=\"13\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"914.579 958.9406\" name=\"DinoWander\" description=\"\" cardinality=\"-1\"
+    <SubbehaviorNode id=\"3\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"640.6729 961.1183\" name=\"DefenseStrategy\" description=\"\" cardinality=\"-1\"
     hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
-    id=\"13\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n  </editorInfo>\n</BehaviorBricks>"
+    id=\"3\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <ConditionEvalNode
+    id=\"14\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"1668.577 1822.94\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
+    hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <ConditionEvalNode
+    id=\"14\" />\n          <PrioritySelectorNode id=\"10\" />\n        </data>\n     
+    </_data>\n    </ConditionEvalNode>\n    <SubbehaviorNode id=\"13\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"914.579 958.9406\" name=\"DinoWander\"
+    description=\"\" cardinality=\"-1\" hasParent=\"False\">\n          <BehaviorTree
+    id=\"0\" />\n          <SubbehaviorNode id=\"13\" />\n        </data>\n     
+    </_data>\n    </SubbehaviorNode>\n  </editorInfo>\n</BehaviorBricks>"
   zoom: 0.7
   subslist:
   - {fileID: 11400000, guid: d946c6a264dacea4ca6eb304084eff45, type: 2}

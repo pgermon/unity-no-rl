@@ -43,7 +43,7 @@ MonoBehaviour:
     <ActionNode id=\"20\" />\n            </child>\n          </GuardAndNode>\n       
     </elem>\n      </children>\n      <inputParams />\n      <outputParams />\n     
     <localParams />\n    </PrioritySelectorNode>\n    <ConditionEvalNode id=\"18\"
-    policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsTargetClose\">\n     
+    policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsTargetClose\">\n     
     <inputParams>\n        <inputValues>\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"predator\" />\n          <entry name=\"closeDistance\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"runDistance\" />\n       
@@ -52,8 +52,8 @@ MonoBehaviour:
     <elem>\n          <ActionNode id=\"19\" />\n        </elem>\n        <elem>\n         
     <ActionNode id=\"2\" />\n        </elem>\n      </children>\n      <inputParams
     />\n      <outputParams />\n      <localParams />\n    </SequenceNode>\n    <ConditionEvalNode
-    id=\"21\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\n      <inputParams
-    />\n      <outputParams />\n      <localParams />\n    </ConditionEvalNode>\n   
+    id=\"21\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\n     
+    <inputParams />\n      <outputParams />\n      <localParams />\n    </ConditionEvalNode>\n   
     <ActionNode id=\"20\" action=\"Navigation/MoveToPosition\">\n      <inputParams>\n       
     <inputValues>\n          <entry name=\"target\" type=\"UnityEngine.Vector3\"
     isBlackboard=\"True\" blackboard=\"runToPosition\" />\n        </inputValues>\n     
@@ -82,9 +82,9 @@ MonoBehaviour:
     id=\"15\" />\n          <ConditionEvalNode id=\"21\" />\n          <ConditionEvalNode
     id=\"18\" />\n          <ActionNode id=\"19\" />\n          <SequenceNode id=\"22\"
     />\n        </nodes>\n      </_nodes>\n    </BehaviorTree>\n    <SequenceNode
-    id=\"22\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"True\" position=\"563.75
-    202.5\" name=\"Sequence\" description=\"Executes all its children in sequence
-    until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\n         
+    id=\"22\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"563.75 202.5\" name=\"Sequence\" description=\"Executes all its children
+    in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\n         
     <BehaviorTree id=\"0\" />\n          <SequenceNode id=\"22\" />\n        </data>\n     
     </_data>\n    </SequenceNode>\n    <ActionNode id=\"14\">\n      <_data>\n       
     <data breakpoint=\"0\" selected=\"False\" position=\"331.9998 401.0836\" name=\"Behaviors/DinoActions/FindEscape\"

@@ -29820,10 +29820,10 @@ MonoBehaviour:
     boolParamsLostDefaultValue: 
     floatParams:
     - 30
-    - 40
+    - 20
     - 15
     - 15
-    - 8
+    - 2
     - 8
     floatParamsNames:
     - runDistance
@@ -29887,12 +29887,10 @@ MonoBehaviour:
   speed: 0
   predators_names:
   - Player-TRexBB
-  currentPredator: {fileID: 0}
   preys_names:
   - ParasaurolophusBB
   - TriceratopsBB
   - StegosaurusBB
-  currentPrey: {fileID: 0}
 --- !u!95 &8646837686257639564
 Animator:
   serializedVersion: 3
