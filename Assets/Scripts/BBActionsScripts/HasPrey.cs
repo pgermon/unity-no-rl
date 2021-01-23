@@ -8,15 +8,15 @@ using Pada1.BBCore.Framework; // BasePrimitiveAction
 using BBUnity.Conditions;
 
 [Condition("Behaviors/DinoConditions/HasPrey")]
-[Help("Returns True if the currentPrey of DinosaurBB is not null")]
-
+[Help("Search a prey and true if found")]
 public class HasPrey : GOCondition 
 {
     [OutParam("prey")]
+    [Help("The prey found")]
     public GameObject prey;
 
     public override bool Check(){
-        GameObject prey = gameObject.GetComponent<DinosaurBB>().getCurrentPrey();
+        prey = gameObject.GetComponent<DinosaurBB>().getCurrentPrey();
         bool ret = prey != null;
         Debug.Log(gameObject.name.Split('(')[0] + ": prey is not null = " + ret);
         return ret;
