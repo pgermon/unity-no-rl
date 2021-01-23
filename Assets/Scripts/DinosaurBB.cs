@@ -51,9 +51,10 @@ public class DinosaurBB : MonoBehaviour
         if(prey != null){
             Debug.Log(this.gameObject.name + " looks at " + prey.gameObject.name);
             this.transform.LookAt(prey.transform);
-            this.anim.Play("Base Layer.Attack");
             return true;
         }
+        this.anim.Play("Base Layer.Attack");
+
         return false;
     }
 
@@ -156,7 +157,7 @@ public class DinosaurBB : MonoBehaviour
     }
 
     public void UpdateBlood(){
-        if(blood.Length == 6){
+        if(blood.Length != 0){
             if (this.health<0.8)
             {
                 blood[0].Play();
