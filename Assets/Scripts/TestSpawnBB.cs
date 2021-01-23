@@ -11,55 +11,45 @@ public class TestSpawnBB : MonoBehaviour
     public GameObject area;
     public GameObject player;
 
-    private bool player_spawned = false;
-
     public int MAX_RAPTORS = 1;
-    private int raptors_count = 0;
-
     public int MAX_PARAS = 1;
-    private int paras_count = 0;
-
     public int MAX_TRICS = 1;
-    private int trics_count = 0;
 
     void Start()
     {
-        InvokeRepeating("SpawnDino", 0f, 1.0f / 1000.0f);
+        StartCoroutine("SpawnDino");
     }
 
-    void SpawnDino()
+    System.Collections.IEnumerator SpawnDino()
     {
-        if(!player_spawned){
+        if (player != null) {
             GameObject go_player = Instantiate(player, GetRandomPosition(), Quaternion.identity) as GameObject;
-            player_spawned = true;
+            yield return null;
         }
         
-
-        if(paras_count < MAX_PARAS)
+        for (int i = 0; i < MAX_PARAS; i++)
         {
             GameObject go_para = Instantiate(para, GetRandomPosition(), Quaternion.identity) as GameObject;
             BehaviorExecutor para_executor = go_para.GetComponent<BehaviorExecutor>();
             //para_executor.SetBehaviorParam("wanderArea", area);
-            paras_count++;
+            yield return null;
         }
         
-        else if(raptors_count < MAX_RAPTORS)
+        for (int i = 0; i < MAX_RAPTORS; i++)
         {
             GameObject go_raptor = Instantiate(raptor, GetRandomPosition(), Quaternion.identity) as GameObject;
             BehaviorExecutor raptor_executor = go_raptor.GetComponent<BehaviorExecutor>();
             //raptor_executor.SetBehaviorParam("wanderArea", area);
-            raptors_count++;
+            yield return null;
         }
-        else if(trics_count < MAX_TRICS){
+
+        for (int i = 0; i < MAX_TRICS; i++)
+        {
             GameObject go_tric = Instantiate(tric, GetRandomPosition(), Quaternion.identity) as GameObject;
             BehaviorExecutor tric_executor = go_tric.GetComponent<BehaviorExecutor>();
             //tric_executor.SetBehaviorParam("wanderArea", area);
-            trics_count++;
+            yield return null;
         }
-        else{    
-            CancelInvoke();
-        }
-
     }
 
     private Vector3 GetRandomPosition()

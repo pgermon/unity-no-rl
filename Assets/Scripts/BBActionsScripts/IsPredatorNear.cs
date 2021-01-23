@@ -7,13 +7,16 @@ using Pada1.BBCore.Tasks;     // TaskStatus
 using Pada1.BBCore.Framework; // BasePrimitiveAction
 using BBUnity.Conditions;
 
-[Condition("Behaviors/DinoConditions/IsPredatorNotNull")]
+[Condition("Behaviors/DinoConditions/IsPredatorNear")]
 [Help("Returns True if the currentPredator of DinosaurBB is not null")]
 
-public class IsPredatorNotNull : GOCondition 
+public class IsPredatorNear : GOCondition 
 {
+    [OutParam("predator")]
+    public GameObject current_predator;
+
     public override bool Check(){
-        GameObject current_predator = gameObject.GetComponent<DinosaurBB>().getCurrentPredator();
+        current_predator = gameObject.GetComponent<DinosaurBB>().getCurrentPredator();
         bool ret = current_predator != null;
         Debug.Log(gameObject.name.Split('(')[0] + ": predator is not null = " + ret);
         return ret;

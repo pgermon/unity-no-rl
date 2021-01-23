@@ -19,15 +19,8 @@ public class DinoRun : GOAction
     [InParam("runSpeed")]
     public float runSpeed;
 
-    [OutParam("runToPosition")]
-    public Vector3 position;
-
     public override TaskStatus OnUpdate(){
-
         Debug.Log(gameObject.name + " running from " + predator.gameObject.name);
-        Vector3 runDirection = gameObject.transform.position - predator.gameObject.transform.position;
-        position = gameObject.transform.position + runDirection;
-
         gameObject.GetComponent<NavMeshAgent>().speed = runSpeed;
 
         return TaskStatus.COMPLETED;

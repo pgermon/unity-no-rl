@@ -41,14 +41,16 @@ public class DinosaurBB : MonoBehaviour
 
 
     /* Dinosaur methods */
-    public virtual void attack(GameObject prey){
+    public virtual bool attack(GameObject prey){
 
         this.is_attacking = true;
         if(prey != null){
             Debug.Log(this.gameObject.name + " looks at " + prey.gameObject.name);
             this.transform.LookAt(prey.transform);
+            this.anim.Play("Base Layer.Attack");
+            return true;
         }
-        this.anim.Play("Base Layer.Attack");
+        return false;
     }
 
     public virtual void growUp(float g){

@@ -16,7 +16,9 @@ public class DinoAttack : GOAction
     public GameObject prey;
 
     public override TaskStatus OnUpdate(){
-        gameObject.GetComponent<DinosaurBB>().attack(prey);
-        return TaskStatus.COMPLETED;
+        // GameObject prey = gameObject.GetComponent<DinosaurBB>().getCurrentPrey();
+        if (gameObject.GetComponent<DinosaurBB>().attack(prey))
+            return TaskStatus.COMPLETED;
+        return TaskStatus.FAILED;
     }
 }

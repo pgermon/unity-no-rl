@@ -5,8 +5,9 @@ public class GrassGeneration : GenerationTile {
 	[SerializeField]
 	private GameObject[] grassPrefab;
 	
+	[SerializeField]
 	[Tooltip("Densité en herbe (u/m2)")]
-	private float densite = 0.05f;
+	private float densite = 0.02f;
 
 	public override bool ignore() {
 		return this.densite <= 0;
