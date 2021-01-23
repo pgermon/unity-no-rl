@@ -12,9 +12,9 @@ public class HasPredator : GOCondition
     
     public override bool Check(){
         current_predator = gameObject.GetComponent<DinosaurBB>().getCurrentPredator();
-        bool ret = current_predator != null;
-        Debug.Log(gameObject.name.Split('(')[0] + ": predator is not null = " + ret);
-        return ret;
+        //if (current_predator != null)
+        	//Debug.Log(gameObject.name.Split('(')[0] + ": predator is detected " + current_predator.name.Split('(')[0]);
+        return current_predator != null;
     }
     
 }
