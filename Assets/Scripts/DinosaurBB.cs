@@ -7,7 +7,11 @@ public class DinosaurBB : MonoBehaviour
 {
     /* Dinosaur properties */
     [SerializeField]
-    protected float health = 1.0f;
+    protected float max_health, health = 1.0f;
+    //protected float health;
+
+    [SerializeField]
+    protected DinoHealthBar health_bar;
 
     [SerializeField]
     protected float speed;
@@ -85,6 +89,9 @@ public class DinosaurBB : MonoBehaviour
 
     protected virtual void Start(){
 
+        this.health = this.max_health;
+        health_bar.SetMaxHealth(this.max_health);
+
         this.predators = new List<GameObject>();
         this.predators_in_range = new List<GameObject>();
 
@@ -108,6 +115,8 @@ public class DinosaurBB : MonoBehaviour
     protected virtual void Update(){
         //this.health -= 0.0001f;
         //this.speed *= this.health;
+
+        this.health_bar.SetHealth(this.health);
 
         if(this.health <= 0){
             this.die();
@@ -331,13 +340,18 @@ public class DinosaurBB : MonoBehaviour
 
     public virtual void increaseHealth(float i){
         this.health += i;
-        if(this.health > 1f){
-            this.health = 1f;
+        if(this.health > this.max_health){
+            this.health = this.max_health;
         }
+        this.health_bar.SetHealth(this.health);
     }
 
     public virtual void decreaseHealth(float i){
         this.health -= i;
+        if(this.health < 0){
+            this.health = 0;
+        }
+        this.health_bar.SetHealth(this.health);
 
     }
 
