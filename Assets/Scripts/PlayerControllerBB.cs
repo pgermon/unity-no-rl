@@ -13,7 +13,12 @@ public class PlayerControllerBB : DinosaurBB
     public Camera cam;
     private Rigidbody body;
     public MouseLook mouseLook = new MouseLook();
-    //GetComponent<RigidBody>().isKinematic = true;
+    protected float boostTime = 5f;
+    protected float coolDown = 20f;
+    protected float timeStamp, timeStamp2 = 0f;
+    private new SkinnedMeshRenderer renderer;
+    public Material MaterialBoost, MaterialN;
+    private bool boosting = false;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -24,6 +29,9 @@ public class PlayerControllerBB : DinosaurBB
         gameObject.transform.eulerAngles = rot;
         gameObject.transform.localScale = size;
         body = gameObject.GetComponent<Rigidbody>();
+        renderer = transform.GetComponentInChildren<SkinnedMeshRenderer>();
+        
+        
 
     }
  
@@ -36,6 +44,18 @@ public class PlayerControllerBB : DinosaurBB
         CheckKey();
 
         this.gameObject.transform.eulerAngles = rot;
+
+        if (boosting && Time.time >= timeStamp - coolDown + boostTime  )
+        {
+            Debug.Log(timeStamp + "  "  +  Time.time);
+            this.movementSpeed /= 2;
+            Material[] mats = renderer.materials;
+            mats[2] = MaterialN;
+            renderer.materials = mats;
+            boosting = true;
+            boosting = false;
+        }
+
         //transform.LookAt(cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y*2, Input.mousePosition.x)));
     }
 
@@ -105,10 +125,23 @@ public class PlayerControllerBB : DinosaurBB
             }
             
         }
-        if (Input.GetKey(KeyCode.O))
+        if (Input.GetKey(KeyCode.E))
         {
+            
+            //Debug.Log(timeStamp +" " + Time.time);
+            if (timeStamp <= Time.time)
+            {
+                this.movementSpeed *= 2f;
+                timeStamp = Time.time + coolDown;
+                Material[] mats = renderer.materials;
+                mats[2] = MaterialBoost;
+                renderer.materials = mats;
+                boosting = true;
+
+            }
             //test changement de taille
-            gameObject.transform.localScale += new Vector3(0.001f, 0.001f, 0.001f);
+            //gameObject.transform.localScale += new Vector3(0.001f, 0.001f, 0.001f);
+            
 
         }
     }
