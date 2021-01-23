@@ -12,8 +12,11 @@ using BBUnity.Conditions;
 
 public class IsPredatorNear : GOCondition 
 {
+    [OutParam("predator")]
+    public GameObject current_predator;
+
     public override bool Check(){
-        GameObject current_predator = gameObject.GetComponent<DinosaurBB>().getCurrentPredator();
+        current_predator = gameObject.GetComponent<DinosaurBB>().getCurrentPredator();
         bool ret = current_predator != null;
         Debug.Log(gameObject.name.Split('(')[0] + ": predator is not null = " + ret);
         return ret;
