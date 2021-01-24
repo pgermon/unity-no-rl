@@ -98,7 +98,7 @@ MonoBehaviour:
     blackboard=\"runSpeed\" />\r\n          <entry name=\"security\" type=\"System.Single\"
     isBlackboard=\"True\" blackboard=\"security\" />\r\n        </inputValues>\r\n     
     </inputParams>\r\n      <outputParams />\r\n      <localParams />\r\n    </SubbehaviorNode>\r\n   
-    <ConditionEvalNode id=\"33\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Behaviors/DinoConditions/HasPrey\">\r\n     
+    <ConditionEvalNode id=\"33\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Behaviors/DinoConditions/HasPrey\">\r\n     
     <inputParams />\r\n      <outputParams>\r\n        <outputValues>\r\n         
     <entry name=\"prey\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"prey\"
     />\r\n        </outputValues>\r\n      </outputParams>\r\n      <localParams
@@ -111,7 +111,7 @@ MonoBehaviour:
     <SubbehaviorNode id=\"7\" />\r\n            </child>\r\n          </GuardAndNode>\r\n       
     </elem>\r\n      </children>\r\n      <inputParams />\r\n      <outputParams
     />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
-    id=\"47\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n     
+    id=\"47\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"46\">\r\n      <_guid>3c2e1dd88e0c2e24da76f8ab4d4908d5</_guid>\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"wanderArea\"
@@ -148,16 +148,15 @@ MonoBehaviour:
     isBlackboard=\"True\" blackboard=\"prey\" />\r\n          <entry name=\"closeDistance\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"chaseDistance\" />\r\n       
     </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n      <localParams
-    />\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode id=\"5\">\r\n      <_guid>fa10ea1e572edc64893efa67c0734a82</_guid>\r\n     
+    />\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode id=\"5\">\r\n      <_guid>dc7cc62b4b88ad045b401effd8442fa8</_guid>\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"prey\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"prey\" />\r\n          <entry name=\"attackDistance\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"attackDistance\" />\r\n         
-    <entry name=\"chaseDistance\" type=\"System.Single\" isBlackboard=\"True\" blackboard=\"chaseDistance\"
-    />\r\n          <entry name=\"chaseSpeed\" type=\"System.Single\" isBlackboard=\"True\"
-    blackboard=\"chaseSpeed\" />\r\n        </inputValues>\r\n      </inputParams>\r\n     
-    <outputParams />\r\n      <localParams />\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode
-    id=\"60\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n     
-    <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
+    <entry name=\"chaseSpeed\" type=\"System.Single\" isBlackboard=\"True\" blackboard=\"chaseSpeed\"
+    />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n     
+    <localParams />\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode id=\"60\"
+    policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n      <inputParams
+    />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"7\">\r\n      <_guid>3c2e1dd88e0c2e24da76f8ab4d4908d5</_guid>\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"wanderArea\"
     type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"wanderArea\"
@@ -203,102 +202,102 @@ MonoBehaviour:
     id=\"58\" />\r\n          <SubbehaviorNode id=\"46\" />\r\n          <ConditionEvalNode
     id=\"47\" />\r\n          <SubbehaviorNode id=\"51\" />\r\n        </nodes>\r\n     
     </_nodes>\r\n    </BehaviorTree>\r\n    <RepeatDecorator id=\"1\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"778.434 -360.9247\" name=\"Repeat\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"730.434 -198.9247\" name=\"Repeat\"
     description=\"Repeats the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"1\" />\r\n       
     </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n    <PrioritySelectorNode
     id=\"31\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"718.657 -180.7868\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
+    position=\"670.657 -18.7868\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <PrioritySelectorNode
     id=\"31\" />\r\n          <RepeatDecorator id=\"1\" />\r\n        </data>\r\n     
     </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"32\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"521.9921
-    178.31\" name=\"Behaviors/DinoConditions/HasPredator\" description=\"Eval\" cardinality=\"1\"
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"473.9921
+    340.31\" name=\"Behaviors/DinoConditions/HasPredator\" description=\"Eval\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
     id=\"32\" />\r\n          <PrioritySelectorNode id=\"31\" />\r\n        </data>\r\n     
     </_data>\r\n    </ConditionEvalNode>\r\n    <PrioritySelectorNode id=\"24\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"368.4898
-    17.80969\" name=\"Priority Selector\" description=\"\" cardinality=\"1\" hasParent=\"False\">\r\n         
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"320.4898
+    179.8097\" name=\"Priority Selector\" description=\"\" cardinality=\"1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"24\" />\r\n        </data>\r\n      </_data>\r\n    </PrioritySelectorNode>\r\n   
     <ConditionEvalNode id=\"58\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"854.838 90.38339\" name=\"Behaviors/DinoConditions/HasPrey\"
+    selected=\"False\" position=\"806.838 252.3834\" name=\"Behaviors/DinoConditions/HasPrey\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ConditionEvalNode id=\"58\" />\r\n          <PrioritySelectorNode
     id=\"31\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
     <PrioritySelectorNode id=\"34\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"769.929 10.65649\" name=\"Priority Selector\" description=\"\"
+    selected=\"False\" position=\"721.929 172.6565\" name=\"Priority Selector\" description=\"\"
     cardinality=\"1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <PrioritySelectorNode id=\"34\" />\r\n        </data>\r\n      </_data>\r\n   
     </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"56\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"1250.882 190.8718\" name=\"AlwaysTrue\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"1202.882 352.8718\" name=\"AlwaysTrue\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ConditionEvalNode id=\"56\" />\r\n          <PrioritySelectorNode
     id=\"31\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"51\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"1092.783 8.515396\" name=\"DinoWander\" description=\"\"
+    selected=\"False\" position=\"1044.783 170.5154\" name=\"DinoWander\" description=\"\"
     cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <SubbehaviorNode id=\"51\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n   
     <ConditionEvalNode id=\"25\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"363.061 803.806\" name=\"Perception/IsTargetClose\"
+    selected=\"False\" position=\"311.061 967.806\" name=\"Perception/IsTargetClose\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"24\" />\r\n          <ConditionEvalNode id=\"25\" />\r\n          <PrioritySelectorNode
     id=\"24\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"23\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"83.06119 225.8091\" name=\"DefenseStrategy\" description=\"\"
+    selected=\"False\" position=\"31.06119 389.8091\" name=\"DefenseStrategy\" description=\"\"
     cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"23\"
     />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode
     id=\"33\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"602.6583 572.688\" name=\"Behaviors/DinoConditions/HasPrey\" description=\"Eval\"
+    position=\"554.6583 734.688\" name=\"Behaviors/DinoConditions/HasPrey\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"24\" />\r\n         
     <ConditionEvalNode id=\"33\" />\r\n          <PrioritySelectorNode id=\"24\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <PrioritySelectorNode
     id=\"28\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"353.1559 220.1914\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
+    position=\"305.1559 382.1914\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"28\" />\r\n        </data>\r\n     
     </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"47\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"1501.603
-    1112.329\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"1453.603
+    1274.329\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"24\" />\r\n          <ConditionEvalNode id=\"47\" />\r\n         
     <PrioritySelectorNode id=\"24\" />\r\n        </data>\r\n      </_data>\r\n   
     </ConditionEvalNode>\r\n    <SubbehaviorNode id=\"46\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"611.6079 220.3331\" name=\"DinoWander\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"563.6079 382.3331\" name=\"DinoWander\"
     description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <SubbehaviorNode id=\"46\" />\r\n        </data>\r\n     
     </_data>\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode id=\"38\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"1684.32
-    734.877\" name=\"Perception/IsTargetClose\" description=\"Eval\" cardinality=\"1\"
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"1636.32
+    896.877\" name=\"Perception/IsTargetClose\" description=\"Eval\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
     id=\"38\" />\r\n          <PrioritySelectorNode id=\"34\" />\r\n        </data>\r\n     
     </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode id=\"37\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"786.323
-    216.8811\" name=\"AttackStrategy\" description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n         
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"738.323
+    378.8811\" name=\"AttackStrategy\" description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode id=\"37\" />\r\n       
     </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode
     id=\"40\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"2072.281 807.448\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
+    position=\"2024.281 969.448\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
     id=\"40\" />\r\n          <PrioritySelectorNode id=\"34\" />\r\n        </data>\r\n     
     </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode id=\"39\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"1010.274
-    221.4531\" name=\"DinoWander\" description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n         
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"962.2739
+    383.4531\" name=\"DinoWander\" description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode id=\"39\" />\r\n       
     </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode
     id=\"29\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"639.695 1074.743\" name=\"Perception/IsTargetClose\" description=\"Eval\"
+    position=\"595.695 1248.743\" name=\"Perception/IsTargetClose\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"28\" />\r\n         
     <ConditionEvalNode id=\"29\" />\r\n          <PrioritySelectorNode id=\"28\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode
     id=\"5\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"True\"
-    position=\"179.0919 441.9428\" name=\"AttackStrategy\" description=\"\" cardinality=\"-1\"
-    hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode
-    id=\"5\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n   
+    position=\"135.0919 615.9428\" name=\"RaptorAttackStrategy\" description=\"\"
+    cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n         
+    <SubbehaviorNode id=\"5\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n   
     <ConditionEvalNode id=\"60\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"731.301 877.455\" name=\"AlwaysTrue\" description=\"Eval\"
+    selected=\"False\" position=\"683.301 1039.455\" name=\"AlwaysTrue\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"28\" />\r\n         
     <ConditionEvalNode id=\"60\" />\r\n          <PrioritySelectorNode id=\"28\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode
     id=\"7\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"504.9732 427.1201\" name=\"DinoWander\" description=\"\" cardinality=\"-1\"
+    position=\"456.9732 589.1201\" name=\"DinoWander\" description=\"\" cardinality=\"-1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode
     id=\"7\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n 
     </editorInfo>\r\n  <runtimeInfo>\r\n    <BehaviorTree id=\"24\" nextId=\"1\">\r\n     
@@ -319,4 +318,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fa10ea1e572edc64893efa67c0734a82, type: 2}
   - {fileID: 11400000, guid: 8adfddffa70852a45ba1b64354494e3c, type: 2}
   - {fileID: 11400000, guid: 3c2e1dd88e0c2e24da76f8ab4d4908d5, type: 2}
+  - {fileID: 11400000, guid: dc7cc62b4b88ad045b401effd8442fa8, type: 2}
   _guid: 1f117658fa0acdd4fb56218f679aa1bf

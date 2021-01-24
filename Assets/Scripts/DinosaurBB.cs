@@ -28,7 +28,7 @@ public class DinosaurBB : MonoBehaviour
     protected List<GameObject> predators;
     protected List<GameObject> predators_in_range;
 
-    //[SerializeField]
+    [SerializeField]
     protected GameObject currentPredator = null;
 
     [SerializeField]
@@ -36,7 +36,7 @@ public class DinosaurBB : MonoBehaviour
     protected List<GameObject> preys;
     protected List<GameObject> preys_in_range;
 
-    //[SerializeField]
+    [SerializeField]
     protected GameObject currentPrey = null;
 
     protected List<GameObject> herd;
@@ -304,6 +304,7 @@ public class DinosaurBB : MonoBehaviour
 
             if(this.currentPredator == other.gameObject){
                 this.currentPredator = null;
+                selectCurrentPredator();
             }
         }
 
@@ -314,6 +315,7 @@ public class DinosaurBB : MonoBehaviour
 
             if(this.currentPrey == other.gameObject){
                 this.currentPrey = null;
+                selectCurrentPrey();
             }
         }
     }

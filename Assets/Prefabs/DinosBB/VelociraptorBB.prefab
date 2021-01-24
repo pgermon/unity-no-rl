@@ -29821,10 +29821,10 @@ MonoBehaviour:
     boolParamsLostDefaultValue: 
     floatParams:
     - 30
+    - 40
+    - 15
+    - 15
     - 10
-    - 15
-    - 15
-    - 8
     - 5
     - 15
     floatParamsNames:
