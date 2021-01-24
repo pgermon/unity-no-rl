@@ -156,7 +156,7 @@ MonoBehaviour:
   area: {fileID: 1125242342}
   player: {fileID: 4364110572189293387, guid: 2c6113c64d48bac498a223ebc7cc3a02, type: 3}
   MAX_RAPTORS: 1
-  MAX_PARAS: 0
+  MAX_PARAS: 1
   MAX_TRICS: 1
 --- !u!4 &1057684677
 Transform:

@@ -48,7 +48,7 @@ MonoBehaviour:
     description=\"Executes all its children in sequence until all of them are successful\"
     cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <SequenceNode id=\"1\" />\r\n        </data>\r\n      </_data>\r\n    </SequenceNode>\r\n   
-    <ActionNode id=\"2\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"True\"
+    <ActionNode id=\"2\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
     position=\"752.1786 633.0115\" name=\"Behaviors/DinoActions/GetRandomPosAround\"
     description=\"Returns a random position in a range around the dino\" cardinality=\"0\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode

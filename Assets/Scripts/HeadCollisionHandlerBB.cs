@@ -12,14 +12,8 @@ public class HeadCollisionHandlerBB : MonoBehaviour
         if (dino.getIsAttacking() && other.gameObject.layer == LayerMask.NameToLayer("Dino"))
         {
             dino.OnSuccessfulAttack(other);
-            //body.isKinematic = true;
-
         }
     
 
-    }
-    void OnTriggerExit(Collider other)
-    {
-        //body.isKinematic = false;
     }
 }

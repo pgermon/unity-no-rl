@@ -13,14 +13,12 @@ using BBUnity.Actions;
 
 public class DinoRun : GOAction 
 {
-    [InParam("predator")]
-    public GameObject predator;
 
     [InParam("runSpeed")]
     public float runSpeed;
 
     public override TaskStatus OnUpdate(){
-        Debug.Log(gameObject.name + " running from " + predator.gameObject.name);
+       
         gameObject.GetComponent<NavMeshAgent>().speed = runSpeed;
 
         return TaskStatus.COMPLETED;

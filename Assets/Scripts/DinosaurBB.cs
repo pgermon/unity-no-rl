@@ -47,14 +47,15 @@ public class DinosaurBB : MonoBehaviour
     /* Dinosaur methods */
     public virtual bool attack(GameObject prey){
 
+        this.anim.Play("Base Layer.Attack");
+
         this.is_attacking = true;
         if(prey != null){
-            Debug.Log(this.gameObject.name + " looks at " + prey.gameObject.name);
+            Debug.Log(this.gameObject.name + " tries to attack " + prey.gameObject.name);
             this.transform.LookAt(prey.transform);
             return true;
         }
-        this.anim.Play("Base Layer.Attack");
-
+        
         return false;
     }
 
@@ -264,7 +265,7 @@ public class DinosaurBB : MonoBehaviour
 
         // if the other dino is part of its list of preys, the dino deals damage to the other
         if(this.preys.Contains(other.gameObject)){
-            Debug.Log(this.gameObject.name + " attacks " + other.gameObject.name);
+            Debug.Log(this.gameObject.name + " deals damage to " + other.gameObject.name);
             this.is_attacking = false;
             other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.1f);
 

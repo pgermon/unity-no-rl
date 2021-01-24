@@ -15024,7 +15024,7 @@ MonoBehaviour:
     boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
-    - 15
+    - 30
     - 5
     - 10
     - 8
@@ -15091,9 +15091,7 @@ MonoBehaviour:
   predators_names:
   - Player-TRexBB
   - VelociraptorBB
-  currentPredator: {fileID: 0}
   preys_names: []
-  currentPrey: {fileID: 0}
 --- !u!95 &-1091696315102319336
 Animator:
   serializedVersion: 3

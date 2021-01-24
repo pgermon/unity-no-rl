@@ -29808,7 +29808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTasksPerTick: 500
+  maxTasksPerTick: 300
   behavior: {fileID: 11400000, guid: 1f117658fa0acdd4fb56218f679aa1bf, type: 2}
   paused: 0
   restartWhenFinished: 0
@@ -29821,11 +29821,12 @@ MonoBehaviour:
     boolParamsLostDefaultValue: 
     floatParams:
     - 30
-    - 20
+    - 10
     - 15
     - 15
-    - 2
     - 8
+    - 5
+    - 15
     floatParamsNames:
     - runDistance
     - chaseDistance
@@ -29833,6 +29834,7 @@ MonoBehaviour:
     - runSpeed
     - attackDistance
     - wanderSpeed
+    - security
     floatParamsLostDefaultValue: 
     stringParams: []
     stringParamsNames: []
@@ -30290,6 +30292,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8103387971647256085}
     m_Modifications:
+    - target: {fileID: 365909330819439962, guid: 75fc86c36aa018541bd2b8fa0e479fe4,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 365909330819439962, guid: 75fc86c36aa018541bd2b8fa0e479fe4,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2489025983313069654, guid: 75fc86c36aa018541bd2b8fa0e479fe4,
         type: 3}
       propertyPath: m_Name

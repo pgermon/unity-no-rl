@@ -28,9 +28,16 @@ namespace BBUnity.Conditions
         public override bool Check()
 		{
             if(target == null){
+                Debug.Log("target null");
                 return false;
             }
             
+            if(target.gameObject.name == "TriceratopsBB(Clone)"){
+                Debug.LogWarning("distance to prey = " + (gameObject.transform.position - target.transform.position).sqrMagnitude);
+                Debug.LogWarning("closeDistance = " + closeDistance);
+                Debug.LogWarning("close distance**2 = " + closeDistance * closeDistance);
+                Debug.LogWarning("distance to target < close distance = " + ((gameObject.transform.position - target.transform.position).sqrMagnitude < closeDistance * closeDistance));
+            }
             return (gameObject.transform.position - target.transform.position).sqrMagnitude < closeDistance * closeDistance;
 		}
     }
