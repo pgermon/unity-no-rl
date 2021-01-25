@@ -80,36 +80,36 @@ MonoBehaviour:
     </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n      <localParams
     />\r\n    </ConditionEvalNode>\r\n  </runtimeInfo>\r\n  <editorInfo>\r\n    <ActionNode
     id=\"4\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"960.327 645.7979\" name=\"Navigation/MoveToGameObject\" description=\"Moves
+    position=\"478.0992 449.4168\" name=\"Navigation/MoveToGameObject\" description=\"Moves
     the game object towards a given target by using a NavMeshAgent\" cardinality=\"0\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
     id=\"4\" />\r\n          <SequenceNode id=\"25\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n    <ActionNode id=\"10\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"728.7935 652.9991\" name=\"Behaviors/DinoActions/SetDinoSpeed\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"246.5659 458.0466\" name=\"Behaviors/DinoActions/SetDinoSpeed\"
     description=\"Set the speed of the dino's NavMeshAgent component to the specified
     value\" cardinality=\"0\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\"
     />\r\n          <ActionNode id=\"10\" />\r\n          <SequenceNode id=\"25\"
     />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n    <ActionNode
-    id=\"23\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"True\"
-    position=\"621.8465 385.1658\" name=\"Behaviors/DinoActions/Attack\" description=\"Plays
+    id=\"23\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"139.6189 190.2134\" name=\"Behaviors/DinoActions/Attack\" description=\"Plays
     the attack animation\" cardinality=\"0\" hasParent=\"False\">\r\n          <BehaviorTree
     id=\"23\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   
     <SequenceNode id=\"25\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"881.597 410.8339\" name=\"Sequence\" description=\"Executes all its
+    position=\"399.3693 215.8815\" name=\"Sequence\" description=\"Executes all its
     children in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"25\" />\r\n       
     </data>\r\n      </_data>\r\n    </SequenceNode>\r\n    <PrioritySelectorNode
     id=\"38\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"695.5135 193.1665\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
+    position=\"213.2858 -1.785887\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <PrioritySelectorNode
     id=\"38\" />\r\n        </data>\r\n      </_data>\r\n    </PrioritySelectorNode>\r\n   
     <ConditionEvalNode id=\"40\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"1060.097 546.5829\" name=\"AlwaysTrue\" description=\"Eval\"
+    selected=\"False\" position=\"577.869 351.6302\" name=\"AlwaysTrue\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ConditionEvalNode id=\"40\" />\r\n          <PrioritySelectorNode id=\"38\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <ConditionEvalNode
-    id=\"41\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"800.4576 858.499\" name=\"Perception/IsTargetClose\" description=\"Eval\"
+    id=\"41\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"True\"
+    position=\"318.2299 663.5466\" name=\"Perception/IsTargetClose\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ConditionEvalNode id=\"41\" />\r\n          <PrioritySelectorNode id=\"38\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n  </editorInfo>\r\n 

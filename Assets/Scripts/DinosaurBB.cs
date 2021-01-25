@@ -8,16 +8,17 @@ public class DinosaurBB : MonoBehaviour
 {
     /* Dinosaur properties */
     [SerializeField]
-    protected float max_health, health = 1.0f;
+    protected float init_max_health, max_health, health = 1.0f;
     //protected float health;
 
     [SerializeField]
     protected DinoHealthBar health_bar;
 
-    [SerializeField]
+    protected bool is_player = false;
     protected float speed;
     protected Animator anim;
     protected UnityEngine.AI.NavMeshAgent agent;
+    protected ParticleSystem[] blood;
 
     /* Anim states */
     protected bool is_attacking = false;
@@ -42,8 +43,6 @@ public class DinosaurBB : MonoBehaviour
 
     protected List<GameObject> herd;
 
-    protected ParticleSystem[] blood;
-
 
     /* Dinosaur methods */
     public virtual bool attack(GameObject prey){
@@ -52,8 +51,12 @@ public class DinosaurBB : MonoBehaviour
 
         this.is_attacking = true;
         if(prey != null){
-            Debug.Log(this.gameObject.name + " tries to attack " + prey.gameObject.name);
-            this.transform.LookAt(prey.transform);
+            //Debug.Log(this.gameObject.name + " tries to attack " + prey.gameObject.name);
+            if(this.gameObject.name.Split('(')[0] != "StegosaurusBB"){
+                this.transform.LookAt(prey.transform);
+                Debug.Log("lookAt");
+            }
+            
             return true;
         }
         
@@ -65,10 +68,15 @@ public class DinosaurBB : MonoBehaviour
     }
 
     public virtual void die(){
-        Debug.Log("die");
+        
         this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-        this.gameObject.GetComponent<NavMeshAgent>().enabled = false;
+        
+        if(!is_player){
+            this.gameObject.GetComponent<BehaviorExecutor>().enabled = false;
+            this.agent.enabled = false;
+        }
+
         this.anim.Play("Base Layer.Die");
         Collider[] colliders = this.gameObject.GetComponents<BoxCollider>();
         for(int i = 0; i < colliders.Length; i++){
@@ -93,7 +101,8 @@ public class DinosaurBB : MonoBehaviour
     }
 
     protected virtual void Start() {
-        this.max_health = this.max_health * this.transform.localScale[0];
+
+        this.max_health = this.init_max_health * this.transform.localScale[0];
         this.health = this.max_health;
         health_bar.SetMaxHealth(this.max_health);
 
@@ -106,7 +115,7 @@ public class DinosaurBB : MonoBehaviour
         this.herd = new List<GameObject>();
 
         this.anim = this.gameObject.GetComponent<Animator>();
-        if(this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>() != null){
+        if(!is_player){
             this.agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         }
 
@@ -162,7 +171,7 @@ public class DinosaurBB : MonoBehaviour
 
     public void UpdateBlood(){
         if(blood.Length != 0){
-            if (this.health<0.8f*max_health)
+            if (this.health<0.8f * max_health)
             {
                 if (!blood[0].isPlaying)
                 {
@@ -174,7 +183,7 @@ public class DinosaurBB : MonoBehaviour
                 }
                 
             }
-            if (this.health < 0.5f*max_health)
+            if (this.health < 0.5f * max_health)
             {
                 if (!blood[2].isPlaying)
                 {
@@ -208,7 +217,7 @@ public class DinosaurBB : MonoBehaviour
             // Case a dino of the same species is detected
             if(this.gameObject.name == other.gameObject.name && !this.herd.Contains(other.gameObject)){
                 this.herd.Add(other.gameObject);
-                Debug.Log(other.gameObject.name + " set as herd-mate of " + this.gameObject.name);
+                //Debug.Log(other.gameObject.name + " set as herd-mate of " + this.gameObject.name);
             }
 
             // Case a new predator is detected
@@ -217,7 +226,8 @@ public class DinosaurBB : MonoBehaviour
                 // the detected predator is added to the list of predators if it is not already in it
                 if(!this.predators.Contains(other.gameObject)){
                     this.predators.Add(other.gameObject);
-                    Debug.Log(other.gameObject.name + " set as predator of " + this.gameObject.name);
+                    this.predators_in_range.Add(other.gameObject);
+                    //Debug.Log(other.gameObject.name + " set as predator of " + this.gameObject.name);
                 }
                 // else it is added to the list of predators in range
                 else{
@@ -245,7 +255,8 @@ public class DinosaurBB : MonoBehaviour
                 // the detected prey is added to the list of preys if it is not already in it
                 if(!this.preys.Contains(other.gameObject)){
                     this.preys.Add(other.gameObject);
-                    Debug.Log(other.gameObject.name + " set as prey of " + this.gameObject.name);
+                    this.preys_in_range.Add(other.gameObject);
+                    //Debug.Log(other.gameObject.name + " set as prey of " + this.gameObject.name);
                 }
                 // else it is added to the list of preys in range
                 else{
@@ -287,18 +298,20 @@ public class DinosaurBB : MonoBehaviour
 
         // if the other dino is part of its list of preys, the dino deals damage to the other
         if(this.preys.Contains(other.gameObject)){
-            Debug.Log(this.gameObject.name + " deals damage to " + other.gameObject.name);
+            Debug.Log(this.gameObject.name + " deals " + 0.2f * this.transform.localScale[0] + " damages to " + other.gameObject.name);
             this.is_attacking = false;
-            other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.4f*this.transform.localScale[0]);
+            other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.2f * this.transform.localScale[0]);
 
             // if the dino kills other, it grows up and regens its health
             if(other.gameObject.GetComponent<DinosaurBB>().getHealth() <= 0){
+                Debug.Log(this.gameObject.name + " killed " + other.gameObject.name);
                 other.gameObject.GetComponent<DinosaurBB>().die();
                 this.preys.Remove(other.gameObject);
                 this.preys_in_range.Remove(other.gameObject);
-                this.growUp(0.07f*other.gameObject.transform.localScale[0]);
-                this.increaseHealth(0.5f);
-                this.max_health = 1 * this.transform.localScale[0];
+
+                this.growUp(0.07f * other.gameObject.transform.localScale[0]);
+                this.max_health = this.init_max_health * this.transform.localScale[0];
+                this.increaseHealth(0.2f * other.gameObject.GetComponent<DinosaurBB>().getMaxHealth());
                 this.health_bar.SetMaxHealth(this.max_health);
 
                 if(this.currentPrey == other.gameObject){
@@ -309,9 +322,9 @@ public class DinosaurBB : MonoBehaviour
 
         // if the other dino is part of its list of predators, the dino deals damage to the other
         else if(this.predators.Contains(other.gameObject)){
-            Debug.Log(this.gameObject.name + " attacks " + other.gameObject.name);
+            Debug.Log(this.gameObject.name + " strikes back at " + other.gameObject.name);
             this.is_attacking = false;
-            other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.1f);
+            other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.1f * this.transform.localScale[0]);
         }
     }
 
@@ -319,7 +332,7 @@ public class DinosaurBB : MonoBehaviour
     public void OnMessageDie(GameObject other){
 
         string other_name = other.gameObject.name.Split('(')[0];
-        Debug.Log("OnMessageDie received by " + this.gameObject.name + " from " + other_name);
+        //Debug.Log("OnMessageDie received by " + this.gameObject.name + " from " + other_name);
 
         // if the message sender is a predator, it is removed from the corresponding lists
         if(this.predators_names.Contains(other_name)){
@@ -364,6 +377,10 @@ public class DinosaurBB : MonoBehaviour
 
     public virtual void setHealth(float h){
         this.health = h;
+    }
+
+    public virtual float getMaxHealth(){
+        return this.max_health;
     }
 
     public virtual void increaseHealth(float i){

@@ -15027,7 +15027,7 @@ MonoBehaviour:
     - 30
     - 5
     - 10
-    - 8
+    - 10
     floatParamsNames:
     - runDistance
     - wanderSpeed
@@ -15084,9 +15084,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f94818a44e0fab44b1ec86c36342a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 1
+  init_max_health: 2
+  max_health: 2
+  health: 12
   health_bar: {fileID: 1399333784876036548}
-  speed: 0
   predators_names:
   - Player-TRexBB
   - VelociraptorBB

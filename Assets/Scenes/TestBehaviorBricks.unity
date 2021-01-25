@@ -153,11 +153,13 @@ MonoBehaviour:
   raptor: {fileID: 8880769443526175919, guid: fef4dd57a50e03947800f595a91283e2, type: 3}
   para: {fileID: 7811117925895562952, guid: 65e1cef336b51d64797e48ecfd52af36, type: 3}
   tric: {fileID: 4906557259525701311, guid: f8f22c045b571b04b9f515656ad2ca43, type: 3}
+  steg: {fileID: 5106767962723491201, guid: 0e0af9069b7b98a4e88dd97f9a5378b3, type: 3}
   area: {fileID: 1125242342}
   player: {fileID: 4364110572189293387, guid: 2c6113c64d48bac498a223ebc7cc3a02, type: 3}
-  MAX_RAPTORS: 1
-  MAX_PARAS: 1
-  MAX_TRICS: 1
+  MAX_RAPTORS: 0
+  MAX_PARAS: 0
+  MAX_TRICS: 0
+  MAX_STEGS: 1
 --- !u!4 &1057684677
 Transform:
   m_ObjectHideFlags: 0

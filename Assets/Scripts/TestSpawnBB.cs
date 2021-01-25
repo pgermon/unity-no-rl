@@ -8,12 +8,14 @@ public class TestSpawnBB : MonoBehaviour
     public GameObject raptor;
     public GameObject para;
     public GameObject tric;
+    public GameObject steg;
     public GameObject area;
     public GameObject player;
 
     public int MAX_RAPTORS = 1;
     public int MAX_PARAS = 1;
     public int MAX_TRICS = 1;
+    public int MAX_STEGS = 1;
 
     void Start()
     {
@@ -48,6 +50,14 @@ public class TestSpawnBB : MonoBehaviour
             GameObject go_tric = Instantiate(tric, GetRandomPosition(), Quaternion.identity) as GameObject;
             BehaviorExecutor tric_executor = go_tric.GetComponent<BehaviorExecutor>();
             //tric_executor.SetBehaviorParam("wanderArea", area);
+            yield return null;
+        }
+
+        for (int i = 0; i < MAX_STEGS; i++)
+        {
+            GameObject go_steg = Instantiate(steg, GetRandomPosition(), Quaternion.identity) as GameObject;
+            BehaviorExecutor steg_executor = go_steg.GetComponent<BehaviorExecutor>();
+            //steg_executor.SetBehaviorParam("wanderArea", area);
             yield return null;
         }
     }

@@ -25,14 +25,13 @@ public class PlayerControllerBB : DinosaurBB
     {
         base.Start();
 
+        this.is_player = true;
         mouseLook.Init (this.transform, cam.transform);
         gameObject.transform.eulerAngles = rot;
         gameObject.transform.localScale = size;
         body = gameObject.GetComponent<Rigidbody>();
         renderer = transform.GetComponentInChildren<SkinnedMeshRenderer>();
         
-        
-
     }
  
     // Update is called once per frame

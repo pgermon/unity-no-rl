@@ -28,7 +28,7 @@ namespace BBUnity.Conditions
         public override bool Check()
 		{
             if(target == null){
-                Debug.Log("target null");
+                //Debug.Log("target null");
                 return false;
             }
             

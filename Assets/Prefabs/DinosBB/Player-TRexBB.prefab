@@ -892,13 +892,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210d9e08ec918d04d90f39baa42acbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  init_max_health: 1
   max_health: 1
   health: 1
   health_bar: {fileID: 1150854727402246411}
-  speed: 0
-  predators_names:
-  - VelociraptorBB
-  - TRexBoss
+  predators_names: []
   currentPredator: {fileID: 0}
   preys_names:
   - VelociraptorBB

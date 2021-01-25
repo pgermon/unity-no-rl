@@ -21,7 +21,7 @@ public class DinoEscape : GOAction {
 	public override TaskStatus OnUpdate(){
 		if (this.predator != null) {
 
-			Debug.Log(gameObject.name + " running from " + predator.gameObject.name);
+			//Debug.Log(gameObject.name + " running from " + predator.gameObject.name);
 
 			Vector3 runDirection = gameObject.transform.position - predator.gameObject.transform.position;
 			this.position = gameObject.transform.position + runDirection;

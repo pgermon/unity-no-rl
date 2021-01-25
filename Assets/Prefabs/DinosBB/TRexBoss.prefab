@@ -955,12 +955,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f94818a44e0fab44b1ec86c36342a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  init_max_health: 4
   max_health: 4
   health: 4
   health_bar: {fileID: 1240702722984377243}
-  speed: 0
-  predators_names:
-  - Player-TRexBB
+  predators_names: []
   currentPredator: {fileID: 0}
   preys_names:
   - Player-TRexBB
@@ -989,21 +988,15 @@ MonoBehaviour:
     boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
-    - 30
-    - 5
-    - 10
-    - 20
-    - 25
-    - 8
+    - 40
     - 15
+    - 10
+    - 5
     floatParamsNames:
-    - runDistance
-    - wanderSpeed
-    - runSpeed
     - chaseDistance
     - chaseSpeed
     - attackDistance
-    - security
+    - wanderSpeed
     floatParamsLostDefaultValue: 
     stringParams: []
     stringParamsNames: []
@@ -1548,7 +1541,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dino
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1470312537822409109}
     - target: {fileID: 6748498425458801216, guid: 451235dd8f79b2b468df0cacfbb7a18e,
         type: 3}
       propertyPath: m_RootOrder

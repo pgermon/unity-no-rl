@@ -29824,7 +29824,7 @@ MonoBehaviour:
     - 40
     - 15
     - 15
-    - 10
+    - 8
     - 5
     - 15
     floatParamsNames:
@@ -29886,6 +29886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f94818a44e0fab44b1ec86c36342a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  init_max_health: 1
   max_health: 1
   health: 1
   health_bar: {fileID: 6088650320090023904}

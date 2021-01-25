@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeadCollisionHandlerBB : MonoBehaviour
+public class AttackCollisionHandlerBB : MonoBehaviour
 {
     [SerializeField]
     private DinosaurBB dino;
