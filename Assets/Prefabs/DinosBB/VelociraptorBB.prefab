@@ -29770,7 +29770,6 @@ GameObject:
   - component: {fileID: 8646837686257639564}
   - component: {fileID: 3645276706950126290}
   - component: {fileID: 9208825859641508563}
-  - component: {fileID: 3819869996334052926}
   - component: {fileID: 3645276706950126288}
   m_Layer: 12
   m_Name: VelociraptorBB
@@ -29944,19 +29943,6 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 5, z: 10}
-  m_Center: {x: 0, y: 2.5, z: 0}
---- !u!65 &3819869996334052926
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8880769443526175919}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.5, y: 5, z: 10}
   m_Center: {x: 0, y: 2.5, z: 0}

@@ -852,7 +852,6 @@ GameObject:
   - component: {fileID: 6706366696701450449}
   - component: {fileID: 3481571274003808252}
   - component: {fileID: 3360943824097022169}
-  - component: {fileID: 3481571274003808243}
   - component: {fileID: 3481571274003808253}
   m_Layer: 14
   m_Name: Player-TRexBB
@@ -943,19 +942,6 @@ BoxCollider:
   m_GameObject: {fileID: 4364110572189293387}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8, y: 10, z: 18}
-  m_Center: {x: 0, y: 5, z: 3}
---- !u!65 &3481571274003808243
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4364110572189293387}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 8, y: 10, z: 18}
