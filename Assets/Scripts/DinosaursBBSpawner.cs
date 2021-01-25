@@ -5,7 +5,7 @@ using UnityEngine;
 public class DinosaursBBSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject player, raptor, para, stego, tric;
+    private GameObject player, boss, raptor, para, stego, tric;
 
     [SerializeField]
     private int MAX_RAPTORS, MAX_PARAS, MAX_STEGOS, MAX_TRICS = 1;
@@ -16,7 +16,11 @@ public class DinosaursBBSpawner : MonoBehaviour
                 GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices), 
                 Quaternion.identity);
 
-       for(int i = 0; i < MAX_RAPTORS; i++){
+        GameObject go_boss = Instantiate(boss,
+                GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices),
+                Quaternion.identity);
+
+        for (int i = 0; i < MAX_RAPTORS; i++){
            float scale = Random.Range(0.3f, 1.2f);
            GameObject go_raptor = Instantiate(raptor, 
                     GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices), 
@@ -50,6 +54,8 @@ public class DinosaursBBSpawner : MonoBehaviour
             go_tric.transform.localScale = new Vector3(scale, scale, scale);
 
         }
+
+
 
     }
 

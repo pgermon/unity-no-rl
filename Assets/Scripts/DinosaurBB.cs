@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DinosaurBB : MonoBehaviour
 {
     /* Dinosaur properties */
     [SerializeField]
-    protected float max_health = 1.0f;
+    protected float max_health, health = 1.0f;
     //protected float health;
 
     [SerializeField]
@@ -42,7 +43,6 @@ public class DinosaurBB : MonoBehaviour
     protected List<GameObject> herd;
 
     protected ParticleSystem[] blood;
-    protected float health;
 
 
     /* Dinosaur methods */
@@ -67,6 +67,8 @@ public class DinosaurBB : MonoBehaviour
     public virtual void die(){
         Debug.Log("die");
         this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        this.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         this.anim.Play("Base Layer.Die");
         Collider[] colliders = this.gameObject.GetComponents<BoxCollider>();
         for(int i = 0; i < colliders.Length; i++){
@@ -85,8 +87,8 @@ public class DinosaurBB : MonoBehaviour
             }
         }
 
-        
-        Destroy(this.gameObject, 1.5f);
+       
+        Destroy(this.gameObject, 5.5f);
         enabled = false;
     }
 
@@ -160,20 +162,39 @@ public class DinosaurBB : MonoBehaviour
 
     public void UpdateBlood(){
         if(blood.Length != 0){
-            if (this.health<0.8*max_health)
+            if (this.health<0.8f*max_health)
             {
-                blood[0].Play();
-                blood[1].Play();
+                if (!blood[0].isPlaying)
+                {
+                    blood[0].Play();
+                }
+                if (!blood[1].isPlaying)
+                {
+                    blood[1].Play();
+                }
+                
             }
-            if (this.health < 0.5*max_health)
+            if (this.health < 0.5f*max_health)
             {
-                blood[2].Play();
-                blood[3].Play();
+                if (!blood[2].isPlaying)
+                {
+                    blood[2].Play();
+                }
+                if (!blood[3].isPlaying)
+                {
+                    blood[3].Play();
+                }
             }
-            if (this.health < 0.4 * max_health)
+            if (this.health < 0.4f * max_health)
             {
-                blood[4].Play();
-                blood[5].Play();
+                if (!blood[4].isPlaying)
+                {
+                    blood[3].Play();
+                }
+                if (!blood[5].isPlaying)
+                {
+                    blood[5].Play();
+                }
             }
         }
     }

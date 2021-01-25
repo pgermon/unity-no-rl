@@ -896,13 +896,16 @@ MonoBehaviour:
   health: 1
   health_bar: {fileID: 1150854727402246411}
   speed: 0
-  predators_names: []
+  predators_names:
+  - VelociraptorBB
+  - TRexBoss
   currentPredator: {fileID: 0}
   preys_names:
   - VelociraptorBB
   - ParasaurolophusBB
   - TriceratopsBB
   - StegosaurusBB
+  - TRexBoss
   currentPrey: {fileID: 0}
   cam: {fileID: 3481571275271561352}
   mouseLook:
