@@ -17,27 +17,38 @@ public class DinosaursBBSpawner : MonoBehaviour
                 Quaternion.identity);
 
        for(int i = 0; i < MAX_RAPTORS; i++){
+           float scale = Random.Range(0.3f, 1.2f);
            GameObject go_raptor = Instantiate(raptor, 
                     GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices), 
                     Quaternion.identity);
+            go_raptor.transform.localScale = new Vector3(scale, scale, scale);
        }
 
        for(int i = 0; i < MAX_PARAS; i++){
-           GameObject go_para = Instantiate(para, 
+            float scale = Random.Range(0.3f, 1.2f);
+            GameObject go_para = Instantiate(para, 
                     GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices), 
                     Quaternion.identity);
-       }
+            go_para.transform.localScale = new Vector3(scale, scale, scale);
+
+        }
         for (int i = 0; i < MAX_STEGOS; i++)
         {
+            float scale = Random.Range(0.3f, 1.2f);
             GameObject go_stego = Instantiate(stego,
                      GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices),
                      Quaternion.identity);
+            go_stego.transform.localScale = new Vector3(scale, scale, scale);
+
         }
         for (int i = 0; i < MAX_TRICS; i++)
         {
+            float scale = Random.Range(0.3f, 1.2f);
             GameObject go_tric = Instantiate(tric,
                      GetRandomPosition(levelLength, levelWidth, distanceBetweenVertices, levelData, tileLengthInVertices, tileWidthInVertices),
                      Quaternion.identity);
+            go_tric.transform.localScale = new Vector3(scale, scale, scale);
+
         }
 
     }

@@ -7,7 +7,7 @@ public class DinosaurBB : MonoBehaviour
 {
     /* Dinosaur properties */
     [SerializeField]
-    protected float max_health, health = 1.0f;
+    protected float max_health = 1.0f;
     //protected float health;
 
     [SerializeField]
@@ -42,6 +42,7 @@ public class DinosaurBB : MonoBehaviour
     protected List<GameObject> herd;
 
     protected ParticleSystem[] blood;
+    protected float health;
 
 
     /* Dinosaur methods */
@@ -89,8 +90,8 @@ public class DinosaurBB : MonoBehaviour
         enabled = false;
     }
 
-    protected virtual void Start(){
-
+    protected virtual void Start() {
+        this.max_health = this.max_health * this.transform.localScale[0];
         this.health = this.max_health;
         health_bar.SetMaxHealth(this.max_health);
 
@@ -117,7 +118,7 @@ public class DinosaurBB : MonoBehaviour
     protected virtual void Update(){
         //this.health -= 0.0001f;
         //this.speed *= this.health;
-
+        
         this.health_bar.SetHealth(this.health);
 
         if(this.health <= 0){
@@ -159,17 +160,17 @@ public class DinosaurBB : MonoBehaviour
 
     public void UpdateBlood(){
         if(blood.Length != 0){
-            if (this.health<0.8)
+            if (this.health<0.8*max_health)
             {
                 blood[0].Play();
                 blood[1].Play();
             }
-            if (this.health < 0.5)
+            if (this.health < 0.5*max_health)
             {
                 blood[2].Play();
                 blood[3].Play();
             }
-            if (this.health < 0.4)
+            if (this.health < 0.4 * max_health)
             {
                 blood[4].Play();
                 blood[5].Play();
@@ -267,7 +268,7 @@ public class DinosaurBB : MonoBehaviour
         if(this.preys.Contains(other.gameObject)){
             Debug.Log(this.gameObject.name + " deals damage to " + other.gameObject.name);
             this.is_attacking = false;
-            other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.1f);
+            other.gameObject.GetComponent<DinosaurBB>().decreaseHealth(0.4f*this.transform.localScale[0]);
 
             // if the dino kills other, it grows up and regens its health
             if(other.gameObject.GetComponent<DinosaurBB>().getHealth() <= 0){
@@ -276,6 +277,8 @@ public class DinosaurBB : MonoBehaviour
                 this.preys_in_range.Remove(other.gameObject);
                 this.growUp(0.05f);
                 this.increaseHealth(0.5f);
+                this.max_health = 1 * this.transform.localScale[0];
+                this.health_bar.SetMaxHealth(this.max_health);
 
                 if(this.currentPrey == other.gameObject){
                     this.currentPrey = null;
