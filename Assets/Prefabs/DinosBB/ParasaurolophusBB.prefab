@@ -14773,12 +14773,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2971470315381263347}
-  m_LocalRotation: {x: -0.20502482, y: -0.17954357, z: -0.0000020544974, w: 0.9621481}
+  m_LocalRotation: {x: -0.22878174, y: 0.6085187, z: -0.2674009, w: 0.7112388}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5000004, y: 1.4999999, z: 1.5000004}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
-  m_Father: {fileID: 1106000269417393223}
-  m_RootOrder: 0
+  m_Father: {fileID: 8390918330396456098}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 81.09901, z: -41.209003}
 --- !u!198 &889710595018216416
 ParticleSystem:
@@ -25042,7 +25042,6 @@ MonoBehaviour:
   max_health: 1
   health: 1
   health_bar: {fileID: 3426392562116621912}
-  speed: 0
   predators_names:
   - Player-TRexBB
   - VelociraptorBB
@@ -25160,6 +25159,7 @@ Transform:
   m_LocalScale: {x: 0.009999999, y: 0.01, z: 0.009999999}
   m_Children:
   - {fileID: 1106000269417393223}
+  - {fileID: 3017102036672347381}
   m_Father: {fileID: 538218600240912915}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
@@ -25314,8 +25314,7 @@ Transform:
   m_LocalRotation: {x: -0.02628895, y: 0.6583601, z: -0.42311552, w: 0.6219679}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children:
-  - {fileID: 3017102036672347381}
+  m_Children: []
   m_Father: {fileID: 8390918330396456098}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 31.629002, y: 81.09901, z: -41.209003}

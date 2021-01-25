@@ -122,7 +122,7 @@ public class DinosaurBB : MonoBehaviour
         blood = this.gameObject.GetComponentsInChildren<ParticleSystem>();
         foreach (var stain in blood)
         {
-            stain.Stop();
+            //stain.Stop();
         }
     }
 
@@ -185,7 +185,7 @@ public class DinosaurBB : MonoBehaviour
             }
             if (this.health < 0.5f * max_health)
             {
-                if (!blood[2].isPlaying)
+               if (!blood[2].isPlaying)
                 {
                     blood[2].Play();
                 }
@@ -196,11 +196,11 @@ public class DinosaurBB : MonoBehaviour
             }
             if (this.health < 0.4f * max_health)
             {
-                if (!blood[4].isPlaying)
+               if (!blood[4].isPlaying)
                 {
                     blood[3].Play();
                 }
-                if (!blood[5].isPlaying)
+               if (!blood[5].isPlaying)
                 {
                     blood[5].Play();
                 }
