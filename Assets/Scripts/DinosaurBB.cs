@@ -275,7 +275,7 @@ public class DinosaurBB : MonoBehaviour
                 other.gameObject.GetComponent<DinosaurBB>().die();
                 this.preys.Remove(other.gameObject);
                 this.preys_in_range.Remove(other.gameObject);
-                this.growUp(0.05f);
+                this.growUp(0.07f*other.gameObject.transform.localScale[0]);
                 this.increaseHealth(0.5f);
                 this.max_health = 1 * this.transform.localScale[0];
                 this.health_bar.SetMaxHealth(this.max_health);
