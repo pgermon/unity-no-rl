@@ -122,7 +122,7 @@ public class DinosaurBB : MonoBehaviour
         blood = this.gameObject.GetComponentsInChildren<ParticleSystem>();
         foreach (var stain in blood)
         {
-            //stain.Stop();
+            stain.Stop();
         }
     }
 
