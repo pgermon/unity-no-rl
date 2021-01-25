@@ -54,7 +54,7 @@ public class DinosaurBB : MonoBehaviour
             //Debug.Log(this.gameObject.name + " tries to attack " + prey.gameObject.name);
             if(this.gameObject.name.Split('(')[0] != "StegosaurusBB"){
                 this.transform.LookAt(prey.transform);
-                Debug.Log("lookAt");
+                //Debug.Log("lookAt");
             }
             
             return true;
