@@ -102,7 +102,7 @@ MonoBehaviour:
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ConditionEvalNode id=\"5\" />\r\n          <PrioritySelectorNode
     id=\"1\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
-    <SequenceNode id=\"4\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"True\"
+    <SequenceNode id=\"4\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
     position=\"1068.711 661.0159\" name=\"Sequence\" description=\"Executes all its
     children in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"4\" />\r\n        </data>\r\n     

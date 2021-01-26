@@ -16,7 +16,7 @@ public class PlayerControllerBB : DinosaurBB
     protected float boostTime = 5f;
     protected float coolDown = 20f;
     protected float timeStamp, timeStamp2 = 0f;
-    private new SkinnedMeshRenderer renderer;
+    private SkinnedMeshRenderer rend;
     public Material MaterialBoost, MaterialN;
     private bool boosting = false;
 
@@ -30,7 +30,7 @@ public class PlayerControllerBB : DinosaurBB
         gameObject.transform.eulerAngles = rot;
         gameObject.transform.localScale = size;
         body = gameObject.GetComponent<Rigidbody>();
-        renderer = transform.GetComponentInChildren<SkinnedMeshRenderer>();
+        rend = transform.GetComponentInChildren<SkinnedMeshRenderer>();
         
     }
  
@@ -48,9 +48,9 @@ public class PlayerControllerBB : DinosaurBB
         {
             //Debug.Log(timeStamp + "  "  +  Time.time);
             this.movementSpeed /= 2;
-            Material[] mats = renderer.materials;
+            Material[] mats = rend.materials;
             mats[2] = MaterialN;
-            renderer.materials = mats;
+            rend.materials = mats;
             boosting = true;
             boosting = false;
         }
@@ -132,9 +132,9 @@ public class PlayerControllerBB : DinosaurBB
             {
                 this.movementSpeed *= 2f;
                 timeStamp = Time.time + coolDown;
-                Material[] mats = renderer.materials;
+                Material[] mats = rend.materials;
                 mats[2] = MaterialBoost;
-                renderer.materials = mats;
+                rend.materials = mats;
                 boosting = true;
 
             }

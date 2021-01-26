@@ -8,7 +8,8 @@ public class DetectionHandlerBB : MonoBehaviour
     private DinosaurBB dino;
 
     void OnTriggerEnter(Collider other){
-        if(other.gameObject.layer == 12){
+        if(other.gameObject.layer == LayerMask.NameToLayer("Dino") 
+            || other.gameObject.layer == LayerMask.NameToLayer("DinoPlayer")){
             dino.OnEnterDetection(other);
         }
     }

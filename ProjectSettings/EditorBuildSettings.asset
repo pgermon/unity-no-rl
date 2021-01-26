@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/JurassicPark.unity
+    guid: 1cdcbc82dd64b8af696d22daa050d2d8
   m_configObjects: {}

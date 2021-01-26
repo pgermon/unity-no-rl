@@ -61,7 +61,7 @@ MonoBehaviour:
     <SubbehaviorNode id=\"46\" />\r\n            </child>\r\n          </GuardAndNode>\r\n       
     </elem>\r\n      </children>\r\n      <inputParams />\r\n      <outputParams
     />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
-    id=\"58\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Behaviors/DinoConditions/HasPrey\">\r\n     
+    id=\"58\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Behaviors/DinoConditions/HasPrey\">\r\n     
     <inputParams />\r\n      <outputParams>\r\n        <outputValues>\r\n         
     <entry name=\"prey\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"prey\"
     />\r\n        </outputValues>\r\n      </outputParams>\r\n      <localParams
@@ -74,7 +74,7 @@ MonoBehaviour:
     <SubbehaviorNode id=\"39\" />\r\n            </child>\r\n          </GuardAndNode>\r\n       
     </elem>\r\n      </children>\r\n      <inputParams />\r\n      <outputParams
     />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
-    id=\"56\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n     
+    id=\"56\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"51\">\r\n      <_guid>3c2e1dd88e0c2e24da76f8ab4d4908d5</_guid>\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"wanderArea\"

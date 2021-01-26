@@ -31,7 +31,7 @@ MonoBehaviour:
     <SequenceNode id=\"4\" />\r\n            </child>\r\n          </GuardAndNode>\r\n       
     </elem>\r\n      </children>\r\n      <inputParams />\r\n      <outputParams
     />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
-    id=\"3\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsTargetClose\">\r\n     
+    id=\"3\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsTargetClose\">\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"prey\" />\r\n          <entry name=\"closeDistance\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"attackDistance\" />\r\n       
@@ -41,7 +41,7 @@ MonoBehaviour:
     isBlackboard=\"True\" blackboard=\"prey\" />\r\n          <entry name=\"attackDistance\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"attackDistance\" />\r\n       
     </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n      <localParams
-    />\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"5\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\"
+    />\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"5\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\"
     name=\"AlwaysTrue\">\r\n      <inputParams />\r\n      <outputParams />\r\n     
     <localParams />\r\n    </ConditionEvalNode>\r\n    <SequenceNode id=\"4\">\r\n     
     <children>\r\n        <elem>\r\n          <ActionNode id=\"8\" />\r\n       
