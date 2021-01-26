@@ -470,7 +470,13 @@ public class DinosaurBB : MonoBehaviour
         return this.currentPredator;
     }
 
-    // Sets the currentPredator as the closest among the predators in range
+    /** @brief Désigne le prédateur.
+     *
+     * Définit le {@link currentPredator} comme le prédateur le plus proche.
+     * Le prédateur actuel peut être remplacé par un prédateur plus proche.
+     * 
+     * Les prédateurs potentiels sont enregistrés par {@link OnEnterDetection(Collider)} dans {@link predators_in_range}.
+     */
     public virtual void selectCurrentPredator(){
         
         float current_predator_dist = Mathf.Infinity;
@@ -498,7 +504,10 @@ public class DinosaurBB : MonoBehaviour
         return this.currentPrey;
     }
 
-    // Sets the currentPrey as the closest among the preys in range
+    /** @brief Choisit une proie.
+     *
+     * Choisit la proie la plus proche et actualise {@link currentPrey}.
+     */
     public virtual void selectCurrentPrey(){
         
         float current_prey_dist = Mathf.Infinity;

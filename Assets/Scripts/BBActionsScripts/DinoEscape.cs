@@ -4,6 +4,12 @@ using Pada1.BBCore.Tasks;     // TaskStatus
 using BBUnity.Actions;
 using UnityEngine.AI;
 
+/** @brief Cherche un lieu où fuir.
+ *
+ * Quand un prédateur est trop proche, le dinosaure va chercher un lieu qui lui permet de s'éloigner.
+ * La direction de fuite est à l'opposé du prédateur le plus proche.
+ * La distance de fuite à parcourir peut être de seulement quelques mêtres mais renouvelée tant qu'il y a danger.
+ */
 [Action("Behaviors/DinoActions/FindEscape")]
 [Help("Find somewhere to escape the predator")]
 public class DinoEscape : GOAction {
@@ -11,6 +17,7 @@ public class DinoEscape : GOAction {
 	[InParam("predator")]
     public GameObject predator;
 
+	// TODO: à supprimer ou remplacer par longueur de fuite
 	[InParam("security")]
 	[Help("Minimum distance to preserve")]
 	public float security;

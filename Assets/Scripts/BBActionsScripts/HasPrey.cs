@@ -7,6 +7,11 @@ using Pada1.BBCore.Tasks;     // TaskStatus
 using Pada1.BBCore.Framework; // BasePrimitiveAction
 using BBUnity.Conditions;
 
+/** @brief Charge la proie dans l'arbre.
+ *
+ * Si une proie a été choisie par \link DinosaurBB::getCurrentPrey() \endlink,
+ * importe l'objet dans l'arbre de comportements et retourne true.
+ */
 [Condition("Behaviors/DinoConditions/HasPrey")]
 [Help("Search a prey and true if found")]
 public class HasPrey : GOCondition 
