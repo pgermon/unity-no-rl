@@ -61,7 +61,7 @@ MonoBehaviour:
     <SubbehaviorNode id=\"46\" />\r\n            </child>\r\n          </GuardAndNode>\r\n       
     </elem>\r\n      </children>\r\n      <inputParams />\r\n      <outputParams
     />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
-    id=\"58\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Behaviors/DinoConditions/HasPrey\">\r\n     
+    id=\"58\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Behaviors/DinoConditions/HasPrey\">\r\n     
     <inputParams />\r\n      <outputParams>\r\n        <outputValues>\r\n         
     <entry name=\"prey\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"prey\"
     />\r\n        </outputValues>\r\n      </outputParams>\r\n      <localParams
@@ -121,7 +121,7 @@ MonoBehaviour:
     <outputParams>\r\n        <outputValues>\r\n          <entry name=\"wanderPosition\"
     type=\"UnityEngine.Vector3\" isBlackboard=\"True\" blackboard=\"\" />\r\n       
     </outputValues>\r\n      </outputParams>\r\n      <localParams />\r\n    </SubbehaviorNode>\r\n   
-    <ConditionEvalNode id=\"38\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsTargetClose\">\r\n     
+    <ConditionEvalNode id=\"38\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsTargetClose\">\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"prey\" />\r\n          <entry name=\"closeDistance\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"chaseDistance\" />\r\n       
@@ -133,7 +133,7 @@ MonoBehaviour:
     <entry name=\"chaseSpeed\" type=\"System.Single\" isBlackboard=\"True\" blackboard=\"chaseSpeed\"
     />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n     
     <localParams />\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode id=\"40\"
-    policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n      <inputParams
+    policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n      <inputParams
     />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"39\">\r\n      <_guid>3c2e1dd88e0c2e24da76f8ab4d4908d5</_guid>\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"wanderArea\"
@@ -141,7 +141,7 @@ MonoBehaviour:
     />\r\n          <entry name=\"wanderSpeed\" type=\"System.Single\" isBlackboard=\"True\"
     blackboard=\"wanderSpeed\" />\r\n        </inputValues>\r\n      </inputParams>\r\n     
     <outputParams />\r\n      <localParams />\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode
-    id=\"29\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsTargetClose\">\r\n     
+    id=\"29\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsTargetClose\">\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"True\" blackboard=\"prey\" />\r\n          <entry name=\"closeDistance\"
     type=\"System.Single\" isBlackboard=\"True\" blackboard=\"chaseDistance\" />\r\n       
@@ -153,7 +153,7 @@ MonoBehaviour:
     <entry name=\"chaseSpeed\" type=\"System.Single\" isBlackboard=\"True\" blackboard=\"chaseSpeed\"
     />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n     
     <localParams />\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode id=\"60\"
-    policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n      <inputParams
+    policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n      <inputParams
     />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"7\">\r\n      <_guid>3c2e1dd88e0c2e24da76f8ab4d4908d5</_guid>\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"wanderArea\"

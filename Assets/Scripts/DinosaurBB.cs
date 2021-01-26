@@ -150,7 +150,7 @@ public class DinosaurBB : MonoBehaviour
         selectCurrentPrey();
         
         // update bleeding according to health
-        UpdateBlood();
+        //UpdateBlood();
 
         /*bool is_anim_attack = this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack");
         if(!this.is_attacking && is_anim_attack){
@@ -345,7 +345,7 @@ public class DinosaurBB : MonoBehaviour
     public void OnMessageDie(GameObject other){
 
         string other_name = other.gameObject.name.Split('(')[0];
-        Debug.Log("OnMessageDie received by " + this.gameObject.name + " from " + other_name);
+        //Debug.Log("OnMessageDie received by " + this.gameObject.name + " from " + other_name);
 
         // if the message sender is a herd-mate, it is removed from the corresponding lists
         if(this.gameObject.name == other.gameObject.name){
@@ -379,7 +379,7 @@ public class DinosaurBB : MonoBehaviour
 
     public void OnHerdAlert(GameObject mate, GameObject other){
         string other_name = other.gameObject.name.Split('(')[0];
-        Debug.Log("OnHerdAlert received by " + this.gameObject.name + " from " + mate.gameObject.name + " about " + other_name);
+        //Debug.Log("OnHerdAlert received by " + this.gameObject.name + " from " + mate.gameObject.name + " about " + other_name);
         
         if(this.predators_names.Contains(other_name) && !this.predators.Contains(other.gameObject)){
             this.predators.Add(other);
@@ -387,7 +387,7 @@ public class DinosaurBB : MonoBehaviour
             if(this.is_wandering){
                 this.currentPredator = other.gameObject;
             }
-            Debug.Log(other_name + " set as predator of " + this.gameObject.name);
+            //Debug.Log(other_name + " set as predator of " + this.gameObject.name);
         }
         else if(this.preys_names.Contains(other_name) && !this.preys.Contains(other.gameObject)){
             this.preys.Add(other.gameObject);
@@ -395,7 +395,7 @@ public class DinosaurBB : MonoBehaviour
             if(this.is_wandering){
                 this.currentPredator = other.gameObject;
             }
-            Debug.Log(other_name + " set as prey of " + this.gameObject.name);
+            //Debug.Log(other_name + " set as prey of " + this.gameObject.name);
         }
     }
 
