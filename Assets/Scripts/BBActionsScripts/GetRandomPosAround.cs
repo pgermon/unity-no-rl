@@ -13,9 +13,6 @@ using BBUnity.Actions;
 
 public class GetRandomPosAround : GOAction
 {
-    [InParam("wanderSpeed")]
-    public float wanderSpeed;
-
     [OutParam("randomPosition")]
     public Vector3 randomPosition;
 
@@ -24,7 +21,7 @@ public class GetRandomPosAround : GOAction
         Vector3 randomDir = Quaternion.AngleAxis(Random.Range(-180f, 180f), gameObject.transform.up) * gameObject.transform.forward;
         randomPosition = gameObject.transform.position + randomDir.normalized * Random.Range(5, 15);
 
-        gameObject.GetComponent<NavMeshAgent>().speed = wanderSpeed;
+        gameObject.GetComponent<DinosaurBB>().setIsWandering(true);
 
         return TaskStatus.COMPLETED;
     }

@@ -20,10 +20,11 @@ public class DinosaurBB : MonoBehaviour
     protected UnityEngine.AI.NavMeshAgent agent;
     protected ParticleSystem[] blood;
 
-    /* Anim states */
+    /* Dino states */
     protected bool is_attacking = false;
     protected bool is_walking = false;
     protected bool is_running = false;
+    protected bool is_wandering = false;
 
     [SerializeField]
     protected List<string> predators_names;
@@ -42,6 +43,7 @@ public class DinosaurBB : MonoBehaviour
     protected GameObject currentPrey = null;
 
     protected List<GameObject> herd;
+    protected List<GameObject> herd_in_range;
 
 
     /* Dinosaur methods */
@@ -68,7 +70,7 @@ public class DinosaurBB : MonoBehaviour
     }
 
     public virtual void die(){
-        
+        Debug.Log(this.gameObject.name + " died");
         this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         
@@ -83,7 +85,13 @@ public class DinosaurBB : MonoBehaviour
             colliders[i].enabled = false;
         }
 
-        // When the dino dies, it sends a message to alert its predators and preys
+        // When the dino dies, it sends a message to alert its herd-mates, predators and preys
+
+        foreach(GameObject mate in this.herd){
+            if(mate != null){
+                mate.gameObject.GetComponent<DinosaurBB>().OnMessageDie(this.gameObject);
+            }
+        }
         foreach(GameObject predator in this.predators){
             if(predator != null){
                 predator.gameObject.GetComponent<DinosaurBB>().OnMessageDie(this.gameObject);
@@ -96,7 +104,7 @@ public class DinosaurBB : MonoBehaviour
         }
 
        
-        Destroy(this.gameObject, 5.5f);
+        Destroy(this.gameObject, 4.0f);
         enabled = false;
     }
 
@@ -113,6 +121,7 @@ public class DinosaurBB : MonoBehaviour
         this.preys_in_range = new List<GameObject>();
 
         this.herd = new List<GameObject>();
+        this.herd_in_range = new List<GameObject>();
 
         this.anim = this.gameObject.GetComponent<Animator>();
         if(!is_player){
@@ -160,11 +169,11 @@ public class DinosaurBB : MonoBehaviour
             }
             else if(speed < 6){
                 this.anim.Play("Base Layer.Walk");
-                this.is_walking = true;
+                //this.is_walking = true;
             }
             else{
                 this.anim.Play("Base Layer.Run");
-                this.is_running = true;
+                //this.is_running = true;
             }
         }
     }
@@ -212,11 +221,12 @@ public class DinosaurBB : MonoBehaviour
     // Called by the DetectionHandlerBB script when another dinosaur enters the detection range collider
     public void OnEnterDetection(Collider other){
 
-        if(this.predators != null && this.preys != null){
+        if(this.predators != null && this.preys != null && this.herd != null){
 
-            // Case a dino of the same species is detected
+            // Case a new dino of the same species is detected
             if(this.gameObject.name == other.gameObject.name && !this.herd.Contains(other.gameObject)){
                 this.herd.Add(other.gameObject);
+                this.herd_in_range.Add(other.gameObject);
                 //Debug.Log(other.gameObject.name + " set as herd-mate of " + this.gameObject.name);
             }
 
@@ -284,12 +294,15 @@ public class DinosaurBB : MonoBehaviour
     public void OnExitDetection(Collider other){
 
         // If another dino leaves the detection range, it is removed from the corresponding list
-        if(this.predators_names.Contains(other.gameObject.name.Split('(')[0])){
+        if(this.gameObject.name == other.gameObject.name){
+            this.herd_in_range.Remove(other.gameObject);
+        }
+        else if(this.predators_names.Contains(other.gameObject.name.Split('(')[0])){
             this.predators_in_range.Remove(other.gameObject);
         }
         else if(this.preys_names.Contains(other.gameObject.name.Split('(')[0])){
             this.preys_in_range.Remove(other.gameObject);
-        } 
+        }
     }
 
 
@@ -332,10 +345,16 @@ public class DinosaurBB : MonoBehaviour
     public void OnMessageDie(GameObject other){
 
         string other_name = other.gameObject.name.Split('(')[0];
-        //Debug.Log("OnMessageDie received by " + this.gameObject.name + " from " + other_name);
+        Debug.Log("OnMessageDie received by " + this.gameObject.name + " from " + other_name);
+
+        // if the message sender is a herd-mate, it is removed from the corresponding lists
+        if(this.gameObject.name == other.gameObject.name){
+            this.herd.Remove(other.gameObject);
+            this.herd_in_range.Remove(other.gameObject);
+        }
 
         // if the message sender is a predator, it is removed from the corresponding lists
-        if(this.predators_names.Contains(other_name)){
+        else if(this.predators_names.Contains(other_name)){
             this.predators.Remove(other.gameObject);
             this.predators_in_range.Remove(other.gameObject);
 
@@ -358,10 +377,32 @@ public class DinosaurBB : MonoBehaviour
     }
 
 
+    public void OnHerdAlert(GameObject mate, GameObject other){
+        string other_name = other.gameObject.name.Split('(')[0];
+        Debug.Log("OnHerdAlert received by " + this.gameObject.name + " from " + mate.gameObject.name + " about " + other_name);
+        
+        if(this.predators_names.Contains(other_name) && !this.predators.Contains(other.gameObject)){
+            this.predators.Add(other);
+            this.predators_in_range.Add(other);
+            if(this.is_wandering){
+                this.currentPredator = other.gameObject;
+            }
+            Debug.Log(other_name + " set as predator of " + this.gameObject.name);
+        }
+        else if(this.preys_names.Contains(other_name) && !this.preys.Contains(other.gameObject)){
+            this.preys.Add(other.gameObject);
+            this.preys_in_range.Add(other.gameObject);
+            if(this.is_wandering){
+                this.currentPredator = other.gameObject;
+            }
+            Debug.Log(other_name + " set as prey of " + this.gameObject.name);
+        }
+    }
+
+
     /* GETTERS AND SETTERS */
 
-    // is_attacking
-
+    /* is_attacking */
     public virtual bool getIsAttacking(){
         return this.is_attacking;
     }
@@ -370,7 +411,16 @@ public class DinosaurBB : MonoBehaviour
         this.is_attacking = b;
     }
 
-    // Health
+    /* is_wandering */
+        public virtual bool getIsWandering(){
+        return this.is_wandering;
+    }
+
+    public virtual void setIsWandering(bool b){
+        this.is_wandering = b;
+    }
+
+    /* Health */
     public virtual float getHealth(){
         return this.health;
     }
@@ -400,7 +450,7 @@ public class DinosaurBB : MonoBehaviour
 
     }
 
-    // Speed
+    /* speed */
     public virtual float getSpeed(){
         return this.speed;
     }
@@ -410,6 +460,12 @@ public class DinosaurBB : MonoBehaviour
         this.anim.speed = new_speed;
     }
 
+    /* Herd */
+    public virtual List<GameObject> getHerdInRange(){
+        return this.herd_in_range;
+    }
+
+    /* Predators */
     public virtual GameObject getCurrentPredator(){
         return this.currentPredator;
     }
@@ -436,6 +492,7 @@ public class DinosaurBB : MonoBehaviour
         }
     }
 
+    /* Preys */
 
     public virtual GameObject getCurrentPrey(){
         return this.currentPrey;

@@ -156,10 +156,10 @@ MonoBehaviour:
   steg: {fileID: 5106767962723491201, guid: 0e0af9069b7b98a4e88dd97f9a5378b3, type: 3}
   area: {fileID: 1125242342}
   player: {fileID: 4364110572189293387, guid: 2c6113c64d48bac498a223ebc7cc3a02, type: 3}
-  MAX_RAPTORS: 0
+  MAX_RAPTORS: 3
   MAX_PARAS: 0
-  MAX_TRICS: 0
-  MAX_STEGS: 1
+  MAX_TRICS: 3
+  MAX_STEGS: 0
 --- !u!4 &1057684677
 Transform:
   m_ObjectHideFlags: 0
@@ -379,6 +379,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047809477869851431, guid: c693f58ed5f9200ce81361b76a1ae2f0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047809477869851431, guid: c693f58ed5f9200ce81361b76a1ae2f0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3047809477869851431, guid: c693f58ed5f9200ce81361b76a1ae2f0,
         type: 3}

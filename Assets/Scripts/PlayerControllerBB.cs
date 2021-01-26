@@ -46,7 +46,7 @@ public class PlayerControllerBB : DinosaurBB
 
         if (boosting && Time.time >= timeStamp - coolDown + boostTime  )
         {
-            Debug.Log(timeStamp + "  "  +  Time.time);
+            //Debug.Log(timeStamp + "  "  +  Time.time);
             this.movementSpeed /= 2;
             Material[] mats = renderer.materials;
             mats[2] = MaterialN;

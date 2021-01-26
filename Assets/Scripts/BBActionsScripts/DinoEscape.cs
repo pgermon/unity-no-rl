@@ -23,6 +23,8 @@ public class DinoEscape : GOAction {
 
 			//Debug.Log(gameObject.name + " running from " + predator.gameObject.name);
 
+			gameObject.GetComponent<DinosaurBB>().setIsWandering(false);
+
 			Vector3 runDirection = gameObject.transform.position - predator.gameObject.transform.position;
 			this.position = gameObject.transform.position + runDirection;
 

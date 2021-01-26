@@ -86,49 +86,49 @@ MonoBehaviour:
     id=\"18\" />\r\n          <ActionNode id=\"19\" />\r\n          <SequenceNode
     id=\"22\" />\r\n        </nodes>\r\n      </_nodes>\r\n    </BehaviorTree>\r\n   
     <SequenceNode id=\"22\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"225.5 -84.75\" name=\"Sequence\" description=\"Executes all its children
+    position=\"421.5 105.25\" name=\"Sequence\" description=\"Executes all its children
     in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"22\" />\r\n       
     </data>\r\n      </_data>\r\n    </SequenceNode>\r\n    <ActionNode id=\"14\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"-5.500214
-    119.0836\" name=\"Behaviors/DinoActions/FindEscape\" description=\"Find somewhere
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"190.4998
+    309.0836\" name=\"Behaviors/DinoActions/FindEscape\" description=\"Find somewhere
     to escape the predator\" cardinality=\"0\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ActionNode id=\"14\" />\r\n          <SequenceNode
     id=\"22\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   
     <PrioritySelectorNode id=\"15\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"231.75 115.25\" name=\"Priority Selector\" description=\"\"
+    selected=\"False\" position=\"427.75 305.25\" name=\"Priority Selector\" description=\"\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <PrioritySelectorNode id=\"15\" />\r\n          <SequenceNode id=\"22\" />\r\n       
     </data>\r\n      </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
     id=\"18\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"385.8401 395.8066\" name=\"Perception/IsTargetClose\" description=\"Eval\"
+    position=\"581.8401 585.8066\" name=\"Perception/IsTargetClose\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ConditionEvalNode id=\"18\" />\r\n          <PrioritySelectorNode id=\"15\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SequenceNode
     id=\"4\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"206.1221 258.8453\" name=\"Sequence\" description=\"Executes all its
+    position=\"402.1221 448.8453\" name=\"Sequence\" description=\"Executes all its
     children in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"4\" />\r\n        </data>\r\n     
     </_data>\r\n    </SequenceNode>\r\n    <ConditionEvalNode id=\"21\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"725.938
-    461.5\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"921.938
+    651.5\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"21\" />\r\n         
     <PrioritySelectorNode id=\"15\" />\r\n        </data>\r\n      </_data>\r\n   
     </ConditionEvalNode>\r\n    <ActionNode id=\"20\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"478.7501 280.25\" name=\"Navigation/MoveToPosition\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"674.7501 470.25\" name=\"Navigation/MoveToPosition\"
     description=\"Moves the game object to a given position by using a NavMeshAgent\"
     cardinality=\"0\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ActionNode id=\"20\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   
     <ActionNode id=\"19\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"-80.83334 469\" name=\"Behaviors/DinoActions/SetDinoSpeed\" description=\"Set
+    position=\"115.1667 659\" name=\"Behaviors/DinoActions/SetDinoSpeed\" description=\"Set
     the speed of the dino's NavMeshAgent component to the specified value\" cardinality=\"0\"
-    hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
-    id=\"19\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   
-    <ActionNode id=\"2\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"195.76 481.4998\" name=\"Navigation/MoveToPosition\" description=\"Moves
-    the game object to a given position by using a NavMeshAgent\" cardinality=\"0\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
-    id=\"2\" />\r\n          <SequenceNode id=\"4\" />\r\n        </data>\r\n     
+    id=\"19\" />\r\n          <SequenceNode id=\"4\" />\r\n        </data>\r\n     
+    </_data>\r\n    </ActionNode>\r\n    <ActionNode id=\"2\">\r\n      <_data>\r\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"391.76 671.4998\" name=\"Navigation/MoveToPosition\"
+    description=\"Moves the game object to a given position by using a NavMeshAgent\"
+    cardinality=\"0\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
+    <ActionNode id=\"2\" />\r\n          <SequenceNode id=\"4\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
   zoom: 0.5
   subslist: []
