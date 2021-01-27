@@ -51,7 +51,6 @@ public class PlayerControllerBB : DinosaurBB
             Material[] mats = rend.materials;
             mats[2] = MaterialN;
             rend.materials = mats;
-            boosting = true;
             boosting = false;
         }
 
