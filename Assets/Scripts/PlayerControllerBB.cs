@@ -19,12 +19,11 @@ public class PlayerControllerBB : DinosaurBB
     private SkinnedMeshRenderer rend;
     public Material MaterialBoost, MaterialN;
     private bool boosting = false;
-
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-
+        
         this.is_player = true;
         mouseLook.Init (this.transform, cam.transform);
         gameObject.transform.eulerAngles = rot;
