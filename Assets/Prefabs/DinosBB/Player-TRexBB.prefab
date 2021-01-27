@@ -863,6 +863,7 @@ GameObject:
   - component: {fileID: 3481571274003808252}
   - component: {fileID: 3360943824097022169}
   - component: {fileID: 3481571274003808253}
+  - component: {fileID: 7935807558388521328}
   m_Layer: 14
   m_Name: Player-TRexBB
   m_TagString: Untagged
@@ -916,12 +917,8 @@ MonoBehaviour:
   currentPrey: {fileID: 0}
   cam: {fileID: 3481571275271561352}
   mouseLook:
-    XSensitivity: 25
-    YSensitivity: 5
-    clampVerticalRotation: 1
     MinimumX: -45
     MaximumX: 45
-    smooth: 1
     smoothTime: 5
     lockCursor: 0
   MaterialBoost: {fileID: -382652638819485698, guid: 13d42de4b1cca624482e26fa407a7827,
@@ -935,7 +932,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4364110572189293387}
   serializedVersion: 2
-  m_Mass: 500000
+  m_Mass: 50000000
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -951,7 +948,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4364110572189293387}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 8, y: 10, z: 18}
@@ -975,6 +972,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &7935807558388521328
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4364110572189293387}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 10, z: 18}
+  m_Center: {x: 0, y: 5, z: 3}
 --- !u!1 &4387185990440326095
 GameObject:
   m_ObjectHideFlags: 0

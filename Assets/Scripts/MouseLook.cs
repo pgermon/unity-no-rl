@@ -34,15 +34,14 @@ public class MouseLook
 
         // m_CharacterTargetRot *= Quaternion.Euler (0f, xRot, 0f);
         //    m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
-        m_CameraTargetRot *= Quaternion.Euler(-yRot, xRot, 0f);
+        m_CameraTargetRot *= Quaternion.Euler(-yRot, 0f, 0f);
 
         if (clampVerticalRotation)
-            Debug.Log("Clamp");
             m_CameraTargetRot = ClampRotationAroundXAxis (m_CameraTargetRot);
 
         if(smooth)
         {
-            Debug.Log("Smooth");
+          
 
             character.localRotation = Quaternion.Slerp(character.localRotation, m_CharacterTargetRot,
                 smoothTime * Time.deltaTime);
@@ -52,7 +51,6 @@ public class MouseLook
         else
         {
             // character.localRotation = m_CharacterTargetRot;
-            float z = camera.eulerAngles.z;
             Debug.Log(m_CameraTargetRot);
             camera.localRotation = m_CameraTargetRot;
             
