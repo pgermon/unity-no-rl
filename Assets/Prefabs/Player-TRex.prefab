@@ -936,7 +936,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  predators_names: []
+  predators_names:
+  - Velociraptor
+  - StegosaurusG
+  - TriceratopsG
+  - 
   preys_names:
   - Velociraptor
   - StegosaurusG

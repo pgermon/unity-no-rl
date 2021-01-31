@@ -9,7 +9,7 @@ public class AttackCollisionHandlerBB : MonoBehaviour
     public Rigidbody body;
 
     void OnTriggerEnter(Collider other){
-        if (dino.getIsAttacking() && other.gameObject.layer == LayerMask.NameToLayer("Dino"))
+        if (dino.getIsAttacking() && (other.gameObject.layer == LayerMask.NameToLayer("Dino")   || other.gameObject.layer == LayerMask.NameToLayer("DinoPlayer")))
         {
             dino.OnSuccessfulAttack(other);
         }

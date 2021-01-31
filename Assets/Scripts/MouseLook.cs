@@ -4,12 +4,13 @@ using UnityEngine;
 [Serializable]
 public class MouseLook
 {
-    public float XSensitivity = 2f;
-    public float YSensitivity = 2f;
-    public bool clampVerticalRotation = true;
+    private float XSensitivity = 3f;
+    private float YSensitivity = 5f;
+    private bool clampVerticalRotation = false;
+
     public float MinimumX = -90F;
     public float MaximumX = 90F;
-    public bool smooth = true;
+    private bool smooth = false;
     public float smoothTime = 5f;
     public bool lockCursor = false;
 
@@ -27,26 +28,32 @@ public class MouseLook
 
     public void LookRotation(Transform character, Transform camera)
     {
-        float yRot = Input.GetAxis("Mouse X") * XSensitivity;
-        float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
+        float yRot = Input.GetAxis("Mouse Y") * YSensitivity;
+        float xRot = Input.GetAxis("Mouse X") * XSensitivity;
 
-        m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
-        m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
 
-        if(clampVerticalRotation)
+        // m_CharacterTargetRot *= Quaternion.Euler (0f, xRot, 0f);
+        //    m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
+        m_CameraTargetRot *= Quaternion.Euler(-yRot, 0f, 0f);
+
+        if (clampVerticalRotation)
             m_CameraTargetRot = ClampRotationAroundXAxis (m_CameraTargetRot);
 
         if(smooth)
         {
-            character.localRotation = Quaternion.Slerp (character.localRotation, m_CharacterTargetRot,
+          
+
+            character.localRotation = Quaternion.Slerp(character.localRotation, m_CharacterTargetRot,
                 smoothTime * Time.deltaTime);
-            camera.localRotation = Quaternion.Slerp (camera.localRotation, m_CameraTargetRot,
+            camera.localRotation = Quaternion.Slerp(camera.localRotation, m_CameraTargetRot,
                 smoothTime * Time.deltaTime);
         }
         else
         {
-            character.localRotation = m_CharacterTargetRot;
+            // character.localRotation = m_CharacterTargetRot;
+            Debug.Log(m_CameraTargetRot);
             camera.localRotation = m_CameraTargetRot;
+            
         }
 
         UpdateCursorLock();

@@ -150,7 +150,7 @@ public class DinosaurBB : MonoBehaviour
         selectCurrentPrey();
         
         // update bleeding according to health
-        //UpdateBlood();
+        UpdateBlood();
 
         /*bool is_anim_attack = this.anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack");
         if(!this.is_attacking && is_anim_attack){
